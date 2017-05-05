@@ -28,6 +28,6 @@
             "keyboard|keyboardHidden|screenLayout|screenSize|orientation"
         android:label="@string/app_name" />
 
-    
+
 
 </manifest>
