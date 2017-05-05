@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">GroupOut1</string>
+    <string name="facebook_app_id">455669514778143</string>
+    <string name="fb_login_protocol_scheme">fb455669514778143</string>
+</resources>

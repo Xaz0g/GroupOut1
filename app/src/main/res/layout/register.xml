@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/tom"
+    tools:context="com.example.marietopphem.groupout1.Register"
+    tools:layout_editor_absoluteX="0dp"
+    tools:layout_editor_absoluteY="25dp">
+
+    <Button
+        android:id="@+id/CreateAccount"
+        android:layout_width="292dp"
+        android:layout_height="38dp"
+        android:background="@color/Purplebutton"
+        android:text="Skapa Konto"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        tools:layout_editor_absoluteX="46dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp" />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="134dp"
+        android:layout_height="34dp"
+        android:background="@color/colorPrimary"
+        android:backgroundTint="@android:color/transparent"
+        android:text="Visa lösenord"
+        android:textColor="?attr/colorControlNormal"
+        android:textSize="12sp"
+        tools:layout_editor_absoluteX="204dp"
+        tools:layout_editor_absoluteY="401dp" />
+
+    <EditText
+        android:id="@+id/editText8"
+        android:layout_width="292dp"
+        android:layout_height="38dp"
+        android:background="@color/Field"
+        android:ems="10"
+        android:fontFamily="sans-serif"
+        android:hint="Upprepa lösenord"
+        android:inputType="textPassword"
+        android:textAllCaps="false"
+        tools:layout_editor_absoluteX="46dp"
+        tools:layout_editor_absoluteY="356dp" />
+
+    <EditText
+        android:id="@+id/editText7"
+        android:layout_width="292dp"
+        android:layout_height="38dp"
+        android:background="@color/Field"
+        android:ems="10"
+        android:fontFamily="sans-serif"
+        android:hint="Lösenord"
+        android:inputType="textPassword"
+        android:textAllCaps="false"
+        tools:layout_editor_absoluteX="46dp"
+        tools:layout_editor_absoluteY="306dp" />
+
+    <EditText
+        android:id="@+id/editText3"
+        android:layout_width="292dp"
+        android:layout_height="38dp"
+        android:background="@color/Field"
+        android:ems="10"
+        android:fontFamily="sans-serif"
+        android:hint="E-post"
+        android:inputType="textEmailAddress"
+        tools:layout_editor_absoluteX="46dp"
+        tools:layout_editor_absoluteY="253dp" />
+
+    <EditText
+        android:id="@+id/editText4"
+        android:layout_width="292dp"
+        android:layout_height="38dp"
+        android:background="@color/Field"
+        android:ems="10"
+        android:fontFamily="sans-serif"
+        android:hint="Förnamn"
+        android:inputType="textPersonName"
+        tools:layout_editor_absoluteX="46dp"
+        tools:layout_editor_absoluteY="149dp" />
+
+    <Button
+        android:id="@+id/button7"
+        android:layout_width="44dp"
+        android:layout_height="51dp"
+        android:background="@android:drawable/ic_menu_revert"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="500dp" />
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="292dp"
+        android:layout_height="38dp"
+        android:background="@color/Field"
+        android:ems="10"
+        android:hint="Ålder"
+        android:inputType="number"
+        tools:layout_editor_absoluteX="46dp"
+        tools:layout_editor_absoluteY="202dp" />
+
+</android.support.constraint.ConstraintLayout>

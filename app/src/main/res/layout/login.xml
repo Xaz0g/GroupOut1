@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/log"
+    tools:context="com.example.marietopphem.groupout1.MainActivity"
+    tools:layout_editor_absoluteX="0dp"
+    tools:layout_editor_absoluteY="25dp">
+
+
+    <EditText
+        android:id="@+id/epostFält"
+        android:layout_width="292dp"
+        android:layout_height="38dp"
+        android:background="@color/Field"
+        android:ems="10"
+        android:fontFamily="sans-serif"
+        android:hint="E-post"
+        android:inputType="textEmailAddress"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/lösenordFält"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
+        app:layout_constraintVertical_bias="0.915"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <Button
+        android:id="@+id/create_account"
+        android:layout_width="292dp"
+        android:layout_height="48dp"
+        android:background="@color/Purplebutton"
+        android:text="Skapa Konto"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="62dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <EditText
+        android:id="@+id/lösenordFält"
+        android:layout_width="292dp"
+        android:layout_height="38dp"
+        android:background="@color/Field"
+        android:ems="10"
+        android:fontFamily="sans-serif"
+        android:hint="Lösenord"
+        android:inputType="textPassword"
+        android:textAllCaps="false"
+        android:layout_marginBottom="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/logIn"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <Button
+        android:id="@+id/logIn"
+        android:layout_width="130dp"
+        android:layout_height="41dp"
+        android:background="@color/Greenbutton"
+        android:backgroundTint="@color/Greenbutton"
+        android:onClick="onButtonClick"
+        android:text="Logga In"
+        android:textColor="@android:color/white"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/fb_login_button"
+        android:layout_marginRight="46dp"
+        app:layout_constraintRight_toRightOf="parent" />
+
+
+    <com.facebook.login.widget.LoginButton
+        android:layout_width="294dp"
+        android:layout_height="28dp"
+        android:id="@+id/fb_login_button"
+        android:layout_centerInParent="true"
+        tools:layout_editor_absoluteX="44dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView2" />
+
+    <Button
+        android:id="@+id/glömtLösen"
+        android:layout_width="127dp"
+        android:layout_height="37dp"
+        android:background="@color/colorPrimary"
+        android:backgroundTint="@android:color/transparent"
+        android:text="Glömt lösenord"
+        android:textColor="?attr/colorControlNormal"
+        android:textSize="12sp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/fb_login_button"
+        android:layout_marginLeft="46dp"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Inget Konto?"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/create_account"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+
+
+</android.support.constraint.ConstraintLayout>
