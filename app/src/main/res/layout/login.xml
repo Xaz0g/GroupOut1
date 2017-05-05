@@ -23,7 +23,7 @@
         app:layout_constraintBottom_toTopOf="@+id/lösenordFält"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="8dp"
-        app:layout_constraintVertical_bias="0.915"
+        app:layout_constraintVertical_bias="0.922"
         android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginRight="8dp"
@@ -38,7 +38,7 @@
         android:textAlignment="center"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="62dp"
+        android:layout_marginBottom="125dp"
         android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginLeft="8dp"
@@ -54,7 +54,7 @@
         android:hint="Lösenord"
         android:inputType="textPassword"
         android:textAllCaps="false"
-        android:layout_marginBottom="15dp"
+        android:layout_marginBottom="18dp"
         app:layout_constraintBottom_toTopOf="@+id/logIn"
         android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
@@ -81,8 +81,8 @@
         android:layout_height="28dp"
         android:id="@+id/fb_login_button"
         android:layout_centerInParent="true"
-        tools:layout_editor_absoluteX="44dp"
-        android:layout_marginBottom="8dp"
+        tools:layout_editor_absoluteX="45dp"
+        android:layout_marginBottom="12dp"
         app:layout_constraintBottom_toTopOf="@+id/textView2" />
 
     <Button
@@ -94,7 +94,7 @@
         android:text="Glömt lösenord"
         android:textColor="?attr/colorControlNormal"
         android:textSize="12sp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="9dp"
         app:layout_constraintBottom_toTopOf="@+id/fb_login_button"
         android:layout_marginLeft="46dp"
         app:layout_constraintLeft_toLeftOf="parent" />
@@ -107,12 +107,13 @@
         android:textColor="@color/colorPrimaryDark"
         android:textSize="15sp"
         android:textStyle="bold"
-        android:layout_marginBottom="15dp"
+        android:layout_marginBottom="12dp"
         app:layout_constraintBottom_toTopOf="@+id/create_account"
         android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintHorizontal_bias="0.501" />
 
 
 
