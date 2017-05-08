@@ -9,7 +9,6 @@
     tools:layout_editor_absoluteX="0dp"
     tools:layout_editor_absoluteY="25dp">
 
-
     <EditText
         android:id="@+id/epostFält"
         android:layout_width="292dp"
@@ -23,7 +22,7 @@
         app:layout_constraintBottom_toTopOf="@+id/lösenordFält"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="8dp"
-        app:layout_constraintVertical_bias="0.922"
+        app:layout_constraintVertical_bias="0.915"
         android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginRight="8dp"
@@ -33,16 +32,17 @@
         android:id="@+id/create_account"
         android:layout_width="292dp"
         android:layout_height="48dp"
+        android:layout_marginBottom="137dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
         android:background="@color/Purplebutton"
+        android:onClick="newAccount"
         android:text="Skapa Konto"
         android:textAlignment="center"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="125dp"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 
     <EditText
         android:id="@+id/lösenordFält"
@@ -54,49 +54,53 @@
         android:hint="Lösenord"
         android:inputType="textPassword"
         android:textAllCaps="false"
-        android:layout_marginBottom="18dp"
-        app:layout_constraintBottom_toTopOf="@+id/logIn"
+        android:layout_marginBottom="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/login_button"
         android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="parent" />
 
     <Button
-        android:id="@+id/logIn"
+        android:id="@+id/login_button"
         android:layout_width="130dp"
         android:layout_height="41dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="46dp"
         android:background="@color/Greenbutton"
         android:backgroundTint="@color/Greenbutton"
-        android:onClick="onButtonClick"
+        android:onClick="logIn"
         android:text="Logga In"
         android:textColor="@android:color/white"
-        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/fb_login_button"
-        android:layout_marginRight="46dp"
         app:layout_constraintRight_toRightOf="parent" />
 
-
     <com.facebook.login.widget.LoginButton
+        android:id="@+id/fb_login_button"
         android:layout_width="294dp"
         android:layout_height="28dp"
-        android:id="@+id/fb_login_button"
         android:layout_centerInParent="true"
-        tools:layout_editor_absoluteX="45dp"
-        android:layout_marginBottom="12dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView2" />
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:onClick="fbLogIn"
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 
     <Button
         android:id="@+id/glömtLösen"
         android:layout_width="127dp"
         android:layout_height="37dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="46dp"
         android:background="@color/colorPrimary"
         android:backgroundTint="@android:color/transparent"
+        android:onClick="forgotPassword"
         android:text="Glömt lösenord"
         android:textColor="?attr/colorControlNormal"
         android:textSize="12sp"
-        android:layout_marginBottom="9dp"
         app:layout_constraintBottom_toTopOf="@+id/fb_login_button"
-        android:layout_marginLeft="46dp"
         app:layout_constraintLeft_toLeftOf="parent" />
 
     <TextView
@@ -107,14 +111,12 @@
         android:textColor="@color/colorPrimaryDark"
         android:textSize="15sp"
         android:textStyle="bold"
-        android:layout_marginBottom="12dp"
+        android:layout_marginBottom="15dp"
         app:layout_constraintBottom_toTopOf="@+id/create_account"
         android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintHorizontal_bias="0.501" />
-
+        app:layout_constraintLeft_toLeftOf="parent" />
 
 
 </android.support.constraint.ConstraintLayout>
