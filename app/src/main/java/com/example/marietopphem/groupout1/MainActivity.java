@@ -41,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onCancel() {
 
-                textView.setText("Login Cancelled");
             }
 
             @Override
@@ -56,14 +55,6 @@ public class MainActivity extends AppCompatActivity {
         callbackManager.onActivityResult(requestCode,resultCode,data);
     }
 
-    public void onButtonClick(View v){
-        if(v.getId()==R.id.logIn ){
-            Intent i = new Intent(MainActivity.this, Home.class);
-            startActivity(i);
-        }
-
-
-    }
 
 
 }
