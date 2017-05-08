@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
 
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -17,7 +16,6 @@ import com.facebook.login.widget.LoginButton;
 public class MainActivity extends AppCompatActivity {
 
     LoginButton loginButton;
-    TextView textView;
     CallbackManager callbackManager;
 
     @Override
@@ -26,22 +24,17 @@ public class MainActivity extends AppCompatActivity {
         FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.login);
         loginButton = (LoginButton)findViewById(R.id.fb_login_button);
-        textView =(TextView)findViewById(R.id.textView);
         callbackManager = CallbackManager.Factory.create();
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
 
             @Override
             public void onSuccess(LoginResult loginResult) {
 
-                textView.setText("Login success \n" +
-                        loginResult.getAccessToken().getUserId()+
-                        "\n" + loginResult.getAccessToken().getToken());
             }
 
             @Override
             public void onCancel() {
 
-                textView.setText("Login Cancelled");
             }
 
             @Override
@@ -56,14 +49,24 @@ public class MainActivity extends AppCompatActivity {
         callbackManager.onActivityResult(requestCode,resultCode,data);
     }
 
-    public void onButtonClick(View v){
-        if(v.getId()==R.id.logIn ){
+    public void logIn(View v) {
+        if(v.getId()==R.id.login_button){
             Intent i = new Intent(MainActivity.this, Home.class);
             startActivity(i);
         }
-
-
     }
 
+    public void newAccount(View v){
+        if (v.getId()==R.id.create_account){
+            Intent i = new Intent(MainActivity.this, Register.class);
+            startActivity(i);
+        }
+    }
 
+    public void fbLogIn(View v){
+        if (v.getId()==R.id.fb_login_button){
+            Intent i = new Intent(MainActivity.this, Home.class);
+            startActivity(i);
+        }
+    }
 }
