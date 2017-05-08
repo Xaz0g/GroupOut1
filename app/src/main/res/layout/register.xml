@@ -10,16 +10,20 @@
     tools:layout_editor_absoluteY="25dp">
 
     <Button
-        android:id="@+id/CreateAccount"
+        android:id="@+id/create_account"
         android:layout_width="292dp"
         android:layout_height="38dp"
+        android:layout_marginBottom="65dp"
         android:background="@color/Purplebutton"
+        android:onClick="createAccount"
         android:text="Skapa Konto"
         android:textAlignment="center"
         android:textColor="@android:color/white"
-        tools:layout_editor_absoluteX="46dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="8dp" />
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent" />
 
     <Button
         android:id="@+id/button5"
@@ -30,8 +34,12 @@
         android:text="Visa lösenord"
         android:textColor="?attr/colorControlNormal"
         android:textSize="12sp"
-        tools:layout_editor_absoluteX="204dp"
-        tools:layout_editor_absoluteY="401dp" />
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginBottom="14dp"
+        app:layout_constraintBottom_toTopOf="@+id/create_account" />
 
     <EditText
         android:id="@+id/editText8"
@@ -43,8 +51,12 @@
         android:hint="Upprepa lösenord"
         android:inputType="textPassword"
         android:textAllCaps="false"
-        tools:layout_editor_absoluteX="46dp"
-        tools:layout_editor_absoluteY="356dp" />
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginBottom="21dp"
+        app:layout_constraintBottom_toTopOf="@+id/button5" />
 
     <EditText
         android:id="@+id/editText7"
@@ -56,8 +68,12 @@
         android:hint="Lösenord"
         android:inputType="textPassword"
         android:textAllCaps="false"
-        tools:layout_editor_absoluteX="46dp"
-        tools:layout_editor_absoluteY="306dp" />
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/editText8" />
 
     <EditText
         android:id="@+id/editText3"
@@ -68,8 +84,12 @@
         android:fontFamily="sans-serif"
         android:hint="E-post"
         android:inputType="textEmailAddress"
-        tools:layout_editor_absoluteX="46dp"
-        tools:layout_editor_absoluteY="253dp" />
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginBottom="9dp"
+        app:layout_constraintBottom_toTopOf="@+id/editText7" />
 
     <EditText
         android:id="@+id/editText4"
@@ -80,16 +100,15 @@
         android:fontFamily="sans-serif"
         android:hint="Förnamn"
         android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="46dp"
-        tools:layout_editor_absoluteY="149dp" />
-
-    <Button
-        android:id="@+id/button7"
-        android:layout_width="44dp"
-        android:layout_height="51dp"
-        android:background="@android:drawable/ic_menu_revert"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="500dp" />
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/editText"
+        app:layout_constraintVertical_bias="1.0" />
 
     <EditText
         android:id="@+id/editText"
@@ -99,7 +118,11 @@
         android:ems="10"
         android:hint="Ålder"
         android:inputType="number"
-        tools:layout_editor_absoluteX="46dp"
-        tools:layout_editor_absoluteY="202dp" />
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginBottom="11dp"
+        app:layout_constraintBottom_toTopOf="@+id/editText3" />
 
 </android.support.constraint.ConstraintLayout>
