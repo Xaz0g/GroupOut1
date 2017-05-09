@@ -15,7 +15,7 @@ public class Create extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create);
 
-        Spinner p = (Spinner) findViewById(R.id.spinner);
+        Spinner p = (Spinner) findViewById(R.id.platsSpinner);
         p.setPrompt("Plats");
 
         p.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
