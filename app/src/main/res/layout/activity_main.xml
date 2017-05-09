@@ -7,6 +7,47 @@
     android:background="@drawable/tom"
     tools:context="com.example.marietopphem.groupout1.Home">
 
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="89dp"
+        android:layout_height="67dp"
+        android:background="@android:color/transparent"
+        android:text="Hem"
+        android:textSize="12sp"
+        tools:layout_editor_absoluteX="4dp"
+        tools:layout_editor_absoluteY="504dp" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="106dp"
+        android:layout_height="65dp"
+        android:background="@android:color/transparent"
+        android:text="Inställningar"
+        android:textSize="12sp"
+        tools:layout_editor_absoluteX="280dp"
+        tools:layout_editor_absoluteY="504dp" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="99dp"
+        android:layout_height="66dp"
+        android:background="@android:color/transparent"
+        android:text="Skapa Aktivitet"
+        android:textSize="12sp"
+        tools:layout_editor_absoluteX="181dp"
+        tools:layout_editor_absoluteY="504dp" />
+
+    <Button
+        android:id="@+id/button6"
+        android:layout_width="90dp"
+        android:layout_height="67dp"
+        android:background="@android:color/transparent"
+        android:text="Hitta Aktivitet"
+        android:textSize="12sp"
+        tools:layout_editor_absoluteX="91dp"
+        tools:layout_editor_absoluteY="504dp" />
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -23,66 +64,6 @@
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintLeft_creator="1" />
 
-    <TabHost
-        android:layout_width="0dp"
-        android:layout_height="78dp"
-        tools:layout_editor_absoluteY="501dp"
-        android:id="@+id/tabHost"
-        tools:layout_constraintRight_creator="1"
-        android:layout_marginStart="1dp"
-        android:layout_marginEnd="1dp"
-        app:layout_constraintRight_toRightOf="parent"
-        tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginLeft="1dp"
-        android:layout_marginRight="1dp">
-
-        <android.support.constraint.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <TabWidget
-                android:id="@android:id/tabs"
-                android:layout_width="366dp"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                tools:layout_editor_absoluteY="501dp"
-                tools:layout_editor_absoluteX="8dp" />
-
-            <FrameLayout
-                android:id="@android:id/tabcontent"
-                android:layout_width="366dp"
-                android:layout_height="0dp"
-                tools:layout_editor_absoluteY="565dp"
-                tools:layout_editor_absoluteX="8dp">
-
-                <LinearLayout
-                    android:id="@+id/tab1"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/tab2"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/tab3"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                </LinearLayout>
-            </FrameLayout>
-        </android.support.constraint.ConstraintLayout>
-    </TabHost>
 
     <TextView
         android:id="@+id/textView3"
