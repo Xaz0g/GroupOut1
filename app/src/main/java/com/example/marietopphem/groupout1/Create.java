@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.app.FragmentTransaction;
 import android.app.TimePickerDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -129,5 +130,12 @@ public class Create extends AppCompatActivity {
             }
         }, hour, minute, true);
         finishTimePickerDialog.show();
+    }
+
+    public void goHome(View view){
+        if (view.getId()== R.id.home){
+            Intent i = new Intent(Create.this, Home.class);
+            startActivity(i);
+        }
     }
 }
