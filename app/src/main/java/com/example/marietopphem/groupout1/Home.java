@@ -19,7 +19,7 @@ public class Home extends Activity{
     }
 
     public void createNewEvent(View view){
-        if (view.getId()== R.id.create_activity){
+        if (view.getId()== R.id.createActivity){
             Intent i = new Intent(Home.this, Create.class);
             startActivity(i);
         }
