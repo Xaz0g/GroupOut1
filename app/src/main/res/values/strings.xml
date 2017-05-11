@@ -9,8 +9,22 @@
     </string-array>
 
     <string-array name="activity">
+        <item>Aerobic</item>
+        <item>Boxning</item>
+        <item>Calistherics</item>
+        <item>Cirkelträning</item>
+        <item>Cykling</item>
+        <item>Fotboll</item>
+        <item>Golf</item>
+        <item>Längdskidor</item>
         <item>Löpning</item>
-        <item>Klättring</item>
+        <item>Parkour</item>
+        <item>Powerwalk</item>
+        <item>Tabata</item>
+        <item>Tai Chi</item>
+        <item>Tennis</item>
+        <item>Volleyboll</item>
         <item>Yoga</item>
+        <item>Zumba</item>
     </string-array>
 </resources>

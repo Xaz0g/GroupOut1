@@ -22,8 +22,6 @@ import java.util.Calendar;
 public class Create extends AppCompatActivity {
 
     ImageButton calendar;
-    ImageButton starttime;
-    ImageButton finishtime;
     TextView df;
     TextView st;
     TextView ft;
@@ -43,8 +41,6 @@ public class Create extends AppCompatActivity {
         day_x = c.get(Calendar.DAY_OF_MONTH);
         showDialogOnCalendarClick();
 
-        starttime = (ImageButton) findViewById(R.id.starttime);
-        finishtime = (ImageButton) findViewById(R.id.finishtime);
 
         Spinner p = (Spinner) findViewById(R.id.platsSpinner);
         Spinner kat = (Spinner) findViewById(R.id.kategoriSpinner);
