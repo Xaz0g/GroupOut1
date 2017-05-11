@@ -3,6 +3,7 @@ package com.example.marietopphem.groupout1;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.FragmentTransaction;
+import android.app.TimePickerDialog;
 import android.content.Context;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
@@ -13,6 +14,7 @@ import android.widget.DatePicker;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import java.util.Calendar;
@@ -20,22 +22,29 @@ import java.util.Calendar;
 public class Create extends AppCompatActivity {
 
     ImageButton calendar;
+    ImageButton starttime;
+    ImageButton finishtime;
     TextView df;
+    TextView st;
+    TextView ft;
     int year_x;
     int month_x;
     int day_x;
     static final int DIALOG_ID = 0;
+    final Calendar c = Calendar.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create);
 
-        final Calendar c = Calendar.getInstance();
         year_x = c.get(Calendar.YEAR);
         month_x = c.get(Calendar.MONTH);
         day_x = c.get(Calendar.DAY_OF_MONTH);
         showDialogOnCalendarClick();
+
+        starttime = (ImageButton) findViewById(R.id.starttime);
+        finishtime = (ImageButton) findViewById(R.id.finishtime);
 
         Spinner p = (Spinner) findViewById(R.id.platsSpinner);
         Spinner kat = (Spinner) findViewById(R.id.kategoriSpinner);
@@ -95,4 +104,34 @@ public class Create extends AppCompatActivity {
 
         }
     };
+
+    public void setStartTime(View view){
+        int hour = c.get(Calendar.HOUR);
+        int minute = c.get(Calendar.MINUTE);
+
+        TimePickerDialog startTimePickerDialog = new TimePickerDialog(Create.this, new TimePickerDialog.OnTimeSetListener(){
+            @Override
+            public void onTimeSet(TimePicker view, int hourOfDay, int minute){
+                st = (TextView) findViewById(R.id.startTfield);
+                st.setText(hourOfDay + ":" + minute);
+
+            }
+        }, hour, minute, true);
+        startTimePickerDialog.show();
+    }
+
+    public void setFinishTime(View view){
+        int hour = c.get(Calendar.HOUR);
+        int minute = c.get(Calendar.MINUTE);
+
+        TimePickerDialog finishTimePickerDialog = new TimePickerDialog(Create.this, new TimePickerDialog.OnTimeSetListener(){
+            @Override
+            public void onTimeSet(TimePicker view, int hourOfDay, int minute){
+                ft = (TextView) findViewById(R.id.finishTfield);
+                ft.setText(hourOfDay + ":" + minute);
+
+            }
+        }, hour, minute, true);
+        finishTimePickerDialog.show();
+    }
 }
