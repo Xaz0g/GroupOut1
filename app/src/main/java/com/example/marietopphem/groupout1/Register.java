@@ -18,6 +18,9 @@ public class Register extends  Activity{
         }
 
         public void createAccount(View view){
+
+
+
             if (view.getId()==R.id.create_account){
                 Intent i = new Intent(Register.this, Home.class);
                 startActivity(i);
