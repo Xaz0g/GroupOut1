@@ -1,8 +1,9 @@
 package com.example.marietopphem.groupout1;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 
 import com.facebook.CallbackManager;
@@ -12,15 +13,26 @@ import com.facebook.FacebookSdk;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 
+import java.io.IOException;
 
-public class MainActivity extends AppCompatActivity {
+import handlers.GetUrlContentTask;
+import handlers.HttpHandler;
 
+/**
+ * Created by Xaz0g on 2017-05-12.
+ */
+
+public class MainActivity extends AppCompatActivity
+{
+    private static final String TAG = MainActivity.class.getSimpleName();
     LoginButton loginButton;
     CallbackManager callbackManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        new GetUrlContentTask().execute("https://testpvt.herokuapp.com/participation/cancelParticipation/p042o4nb2oi1fch9kp6k2a6qqe/10");
+
         FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.login);
         loginButton = (LoginButton)findViewById(R.id.fb_login_button);
