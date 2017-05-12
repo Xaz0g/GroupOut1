@@ -26,6 +26,7 @@
         android:orientation="vertical"
         android:text=" Sök"
         android:visibility="visible"
+        android:textColor="#454A54"
         tools:layout_editor_absoluteX="52dp"
         tools:layout_editor_absoluteY="109dp"
         android:layout_below="@+id/section_label"
