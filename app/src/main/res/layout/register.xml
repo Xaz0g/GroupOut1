@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/tom"
+    android:id="@+id/register"
+    android:background="#e6e7ef"
     tools:context="com.example.marietopphem.groupout1.Register"
     tools:layout_editor_absoluteX="0dp"
     tools:layout_editor_absoluteY="25dp">
@@ -13,39 +14,41 @@
         android:id="@+id/create_account"
         android:layout_width="292dp"
         android:layout_height="38dp"
-        android:layout_marginBottom="65dp"
-        android:background="@color/Purplebutton"
+        android:layout_marginBottom="153dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:background="#6ac15e"
         android:onClick="createAccount"
         android:text="Skapa Konto"
         android:textAlignment="center"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginRight="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        app:layout_constraintHorizontal_bias="0.495" />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/show_password"
         android:layout_width="134dp"
         android:layout_height="34dp"
         android:background="@color/colorPrimary"
         android:backgroundTint="@android:color/transparent"
         android:text="Visa lösenord"
-        android:textColor="?attr/colorControlNormal"
+        android:textColor="#1e96fe"
         android:textSize="12sp"
         android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginBottom="14dp"
-        app:layout_constraintBottom_toTopOf="@+id/create_account" />
+        android:layout_marginBottom="12dp"
+        app:layout_constraintBottom_toTopOf="@+id/create_account"
+        app:layout_constraintHorizontal_bias="0.498" />
 
     <EditText
-        android:id="@+id/editText8"
+        android:id="@+id/password2"
         android:layout_width="292dp"
         android:layout_height="38dp"
-        android:background="@color/Field"
+        android:background="#f8f8ff"
         android:ems="10"
         android:fontFamily="sans-serif"
         android:hint="Upprepa lösenord"
@@ -55,14 +58,15 @@
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginBottom="21dp"
-        app:layout_constraintBottom_toTopOf="@+id/button5" />
+        android:layout_marginBottom="13dp"
+        app:layout_constraintBottom_toTopOf="@+id/show_password"
+        app:layout_constraintHorizontal_bias="0.495" />
 
     <EditText
-        android:id="@+id/editText7"
+        android:id="@+id/password1"
         android:layout_width="292dp"
         android:layout_height="38dp"
-        android:background="@color/Field"
+        android:background="#f8f8ff"
         android:ems="10"
         android:fontFamily="sans-serif"
         android:hint="Lösenord"
@@ -73,13 +77,14 @@
         android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/editText8" />
+        app:layout_constraintBottom_toTopOf="@+id/password2"
+        app:layout_constraintHorizontal_bias="0.495" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/email"
         android:layout_width="292dp"
         android:layout_height="38dp"
-        android:background="@color/Field"
+        android:background="#f8f8ff"
         android:ems="10"
         android:fontFamily="sans-serif"
         android:hint="E-post"
@@ -88,14 +93,15 @@
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginBottom="9dp"
-        app:layout_constraintBottom_toTopOf="@+id/editText7" />
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/password1"
+        app:layout_constraintHorizontal_bias="0.495" />
 
     <EditText
-        android:id="@+id/editText4"
+        android:id="@+id/firstName"
         android:layout_width="292dp"
         android:layout_height="38dp"
-        android:background="@color/Field"
+        android:background="#f8f8ff"
         android:ems="10"
         android:fontFamily="sans-serif"
         android:hint="Förnamn"
@@ -105,24 +111,23 @@
         android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="188dp"
         android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/editText"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintBottom_toTopOf="@+id/email"
+        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.495" />
 
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="292dp"
-        android:layout_height="38dp"
-        android:background="@color/Field"
-        android:ems="10"
-        android:hint="Ålder"
-        android:inputType="number"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/logotype_2"
         android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginBottom="11dp"
-        app:layout_constraintBottom_toTopOf="@+id/editText3" />
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="26dp"
+        app:layout_constraintHorizontal_bias="0.492" />
 
 </android.support.constraint.ConstraintLayout>

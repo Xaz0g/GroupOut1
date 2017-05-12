@@ -43,8 +43,8 @@ public class Create extends AppCompatActivity {
         showDialogOnCalendarClick();
 
 
-        Spinner p = (Spinner) findViewById(R.id.platsSpinner);
-        Spinner kat = (Spinner) findViewById(R.id.kategoriSpinner);
+        Spinner p = (Spinner) findViewById(R.id.place_roll_list);
+        Spinner kat = (Spinner) findViewById(R.id.category_roll_list);
         p.setPrompt("Plats");
         kat.setPrompt("Kategori");
 
@@ -96,7 +96,7 @@ public class Create extends AppCompatActivity {
             year_x = year;
             month_x = monthOfYear;
             day_x = dayOfMonth;
-            df = (TextView) findViewById(R.id.datefield);
+            df = (TextView) findViewById(R.id.choose_date);
             df.setText(day_x + "/" + (month_x+1) + "-" + year_x);
 
         }
@@ -109,7 +109,7 @@ public class Create extends AppCompatActivity {
         TimePickerDialog startTimePickerDialog = new TimePickerDialog(Create.this, new TimePickerDialog.OnTimeSetListener(){
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute){
-                st = (TextView) findViewById(R.id.startTfield);
+                st = (TextView) findViewById(R.id.choose_starttime);
                 st.setText(hourOfDay + ":" + minute);
 
             }
@@ -124,7 +124,7 @@ public class Create extends AppCompatActivity {
         TimePickerDialog finishTimePickerDialog = new TimePickerDialog(Create.this, new TimePickerDialog.OnTimeSetListener(){
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute){
-                ft = (TextView) findViewById(R.id.finishTfield);
+                ft = (TextView) findViewById(R.id.choose_end_time);
                 ft.setText(hourOfDay + ":" + minute);
 
             }
