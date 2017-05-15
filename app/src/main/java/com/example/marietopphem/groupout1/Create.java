@@ -6,9 +6,12 @@ import android.app.FragmentTransaction;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.DatePicker;
@@ -36,6 +39,10 @@ public class Create extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create);
+
+
+        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation_bar);
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         year_x = c.get(Calendar.YEAR);
         month_x = c.get(Calendar.MONTH);
@@ -132,10 +139,38 @@ public class Create extends AppCompatActivity {
         finishTimePickerDialog.show();
     }
 
-    public void goHome(View view){
-        if (view.getId()== R.id.home){
-            Intent i = new Intent(Create.this, Home.class);
-            startActivity(i);
+
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.navigation_home:
+                    Intent home = new Intent(Create.this, Home.class);
+                    startActivity(home);
+                    return true;
+                case R.id.navigation_add:
+                    Intent add = new Intent(Create.this, Create.class);
+                    startActivity(add);
+                    return true;
+                case R.id.navigation_search:
+                    Intent search = new Intent(Create.this, Search.class);
+                    startActivity(search);
+                    return true;
+                case R.id.navigation_settings:
+                    Intent settings = new Intent(Create.this, Settings.class);
+                    startActivity(settings);
+                    return true;
+            }
+            return false;
         }
-    }
+
+    };
+
+     public void create_activity(View v){
+         Intent i = new Intent(Create.this, Home.class);
+         startActivity(i);
+     }
+
 }
