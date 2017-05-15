@@ -13,7 +13,7 @@
         android:id="@+id/create_account"
         android:layout_width="292dp"
         android:layout_height="38dp"
-        android:layout_marginBottom="65dp"
+        android:layout_marginBottom="69dp"
         android:background="@color/Purplebutton"
         android:onClick="createAccount"
         android:text="Skapa Konto"
