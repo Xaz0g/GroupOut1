@@ -15,17 +15,19 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
-import android.widget.Toast;
+import java.util.Date;
 
 import java.util.Calendar;
 
 public class Create extends AppCompatActivity {
 
     ImageButton calendar;
+    Date dateFormat;
     TextView df;
     TextView st;
     TextView ft;
@@ -50,8 +52,8 @@ public class Create extends AppCompatActivity {
         showDialogOnCalendarClick();
 
 
-        Spinner p = (Spinner) findViewById(R.id.place_roll_list);
-        Spinner kat = (Spinner) findViewById(R.id.category_roll_list);
+        Spinner p = (Spinner) findViewById(R.id.placeRollList);
+        Spinner kat = (Spinner) findViewById(R.id.categoryRollList);
         p.setPrompt("Plats");
         kat.setPrompt("Kategori");
 
@@ -103,8 +105,10 @@ public class Create extends AppCompatActivity {
             year_x = year;
             month_x = monthOfYear;
             day_x = dayOfMonth;
-            df = (TextView) findViewById(R.id.choose_date);
+            df = (TextView) findViewById(R.id.chooseDate);
             df.setText(day_x + "/" + (month_x+1) + "-" + year_x);
+
+            dateFormat = new Date(day_x, (month_x+1), year_x);
 
         }
     };
@@ -117,7 +121,11 @@ public class Create extends AppCompatActivity {
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute){
                 st = (TextView) findViewById(R.id.choose_starttime);
-                st.setText(hourOfDay + ":" + minute);
+                if (minute < 10){
+                    st.setText(hourOfDay + ":" + "0" + minute);
+                }else {
+                    st.setText(hourOfDay + ":" + minute);
+                }
 
             }
         }, hour, minute, true);
@@ -132,7 +140,12 @@ public class Create extends AppCompatActivity {
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute){
                 ft = (TextView) findViewById(R.id.choose_end_time);
-                ft.setText(hourOfDay + ":" + minute);
+                if (minute < 10){
+                    ft.setText(hourOfDay + ":" +"0" + minute);
+                }else {
+                    ft.setText(hourOfDay + ":" + minute);
+                }
+
 
             }
         }, hour, minute, true);
@@ -169,6 +182,14 @@ public class Create extends AppCompatActivity {
     };
 
      public void createActivity(View v){
+         if(v.getId()==R.id.createActivity) {
+          /*   String eventName = (EditText) findViewById(R.id.eventName);
+             Spinner placelist = (Spinner) findViewById(R.id.placeRollList);
+             String placeName = placelist.;
+
+             Date date = dateFormat;
+             */
+         }
          Intent i = new Intent(Create.this, Home.class);
          startActivity(i);
      }

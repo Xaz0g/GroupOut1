@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void logIn(View v) {
-        if(v.getId()==R.id.login_button){
+        if(v.getId()==R.id.loginButton){
             Intent i = new Intent(MainActivity.this, Home.class);
             startActivity(i);
         }
