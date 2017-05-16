@@ -13,6 +13,7 @@ import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 
 
+
 public class MainActivity extends AppCompatActivity {
 
     LoginButton loginButton;
@@ -23,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.login);
-        loginButton = (LoginButton)findViewById(R.id.fb_login_button);
+        loginButton = (LoginButton)findViewById(R.id.fbLoginButton);
         callbackManager = CallbackManager.Factory.create();
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
 
@@ -57,14 +58,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void newAccount(View v){
-        if (v.getId()==R.id.create_account){
+        if (v.getId()==R.id.createAccountPrimary){
             Intent i = new Intent(MainActivity.this, Register.class);
             startActivity(i);
         }
     }
 
     public void fbLogIn(View v){
-        if (v.getId()==R.id.fb_login_button){
+        if (v.getId()==R.id.fbLoginButton){
             Intent i = new Intent(MainActivity.this, Home.class);
             startActivity(i);
         }

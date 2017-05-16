@@ -6,9 +6,12 @@ import android.app.FragmentTransaction;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.DatePicker;
@@ -18,10 +21,7 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-import java.sql.Time;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
 
 public class Create extends AppCompatActivity {
 
@@ -40,14 +40,18 @@ public class Create extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create);
 
+
+        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation_bar);
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
         year_x = c.get(Calendar.YEAR);
         month_x = c.get(Calendar.MONTH);
         day_x = c.get(Calendar.DAY_OF_MONTH);
         showDialogOnCalendarClick();
 
 
-        Spinner p = (Spinner) findViewById(R.id.platsSpinner);
-        Spinner kat = (Spinner) findViewById(R.id.kategoriSpinner);
+        Spinner p = (Spinner) findViewById(R.id.place_roll_list);
+        Spinner kat = (Spinner) findViewById(R.id.category_roll_list);
         p.setPrompt("Plats");
         kat.setPrompt("Kategori");
 
@@ -99,7 +103,7 @@ public class Create extends AppCompatActivity {
             year_x = year;
             month_x = monthOfYear;
             day_x = dayOfMonth;
-            df = (TextView) findViewById(R.id.datefield);
+            df = (TextView) findViewById(R.id.choose_date);
             df.setText(day_x + "/" + (month_x+1) + "-" + year_x);
 
         }
@@ -112,7 +116,7 @@ public class Create extends AppCompatActivity {
         TimePickerDialog startTimePickerDialog = new TimePickerDialog(Create.this, new TimePickerDialog.OnTimeSetListener(){
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute){
-                st = (TextView) findViewById(R.id.startTfield);
+                st = (TextView) findViewById(R.id.choose_starttime);
                 st.setText(hourOfDay + ":" + minute);
 
             }
@@ -127,7 +131,7 @@ public class Create extends AppCompatActivity {
         TimePickerDialog finishTimePickerDialog = new TimePickerDialog(Create.this, new TimePickerDialog.OnTimeSetListener(){
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute){
-                ft = (TextView) findViewById(R.id.finishTfield);
+                ft = (TextView) findViewById(R.id.choose_end_time);
                 ft.setText(hourOfDay + ":" + minute);
 
             }
@@ -135,14 +139,38 @@ public class Create extends AppCompatActivity {
         finishTimePickerDialog.show();
     }
 
-    public void activityCreated(){
 
-    }
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+            = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
-    public void goHome(View view){
-        if (view.getId()== R.id.home){
-            Intent i = new Intent(Create.this, Home.class);
-            startActivity(i);
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.navigation_home:
+                    Intent home = new Intent(Create.this, Home.class);
+                    startActivity(home);
+                    return true;
+                case R.id.navigation_add:
+                    Intent add = new Intent(Create.this, Create.class);
+                    startActivity(add);
+                    return true;
+                case R.id.navigation_search:
+                    Intent search = new Intent(Create.this, Search.class);
+                    startActivity(search);
+                    return true;
+                case R.id.navigation_settings:
+                    Intent settings = new Intent(Create.this, Settings.class);
+                    startActivity(settings);
+                    return true;
+            }
+            return false;
         }
-    }
+
+    };
+
+     public void createActivity(View v){
+         Intent i = new Intent(Create.this, Home.class);
+         startActivity(i);
+     }
+
 }
