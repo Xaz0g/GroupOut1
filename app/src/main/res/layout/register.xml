@@ -122,8 +122,7 @@
         android:layout_marginTop="188dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/email"
-        app:layout_constraintVertical_bias="1.0"
-        app:layout_constraintHorizontal_bias="0.495" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <ImageView
         android:id="@+id/imageView3"

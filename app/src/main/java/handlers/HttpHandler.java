@@ -8,20 +8,11 @@ import android.util.Log;
 
 public class HttpHandler
 {
-    private final static GetUrlContentTask GET_URL_CONTENT_TASK = new GetUrlContentTask();
+    private static final String HOST_ADRESS = "https://testpvt.herokuapp.com/";
+    private static final String USER_NEW_USER = "user/newUser/";
 
-    protected static String response;
-
-    public String urlRequest(String url)
+    public static String newUser(String params)
     {
-        response = null;
-
-        GET_URL_CONTENT_TASK.execute(url);
-
-        while(response == null)
-        {
-        }
-
-        return response;
+        return HOST_ADRESS + USER_NEW_USER + params;
     }
 }
