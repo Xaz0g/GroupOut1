@@ -78,6 +78,7 @@ public class MainActivity extends AppCompatActivity
             if(checkEmailField() && checkPasswordField())
             {
                 try {
+                    String salt = new HttpTask().execute("wut?").get();
                     String httpResponse = new HttpTask().execute("get",HttpHandler.login(loginInfo())).get();
                     String tokenValidation = new HttpTask().execute("get",HttpHandler.checkToken(httpResponse)).get();
 
@@ -104,6 +105,13 @@ public class MainActivity extends AppCompatActivity
     public void newAccount(View v){
         if (v.getId()==R.id.create_account){
             Intent i = new Intent(MainActivity.this, Register.class);
+            startActivity(i);
+        }
+    }
+
+    public void forgotPassword(View v){
+        if (v.getId()==R.id.glömtLösen){
+            Intent i = new Intent(MainActivity.this, Home.class);
             startActivity(i);
         }
     }
