@@ -16,6 +16,7 @@ public class HttpHandler
 
     private static final String NEW_USER = "newUser/";
     private static final String CHECK_TOKEN = "checkToken/";
+    private static final String LOGIN = "login/";
 
     public static String newUser(String params)
     {
@@ -25,5 +26,10 @@ public class HttpHandler
     public static String checkToken(String params)
     {
         return HOST_ADRESS + USER + CHECK_TOKEN + params;
+    }
+
+    public static String login(String params)
+    {
+        return HOST_ADRESS + USER + LOGIN + params;
     }
 }

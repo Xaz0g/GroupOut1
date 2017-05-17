@@ -41,9 +41,6 @@ public class MainActivity extends AppCompatActivity
 
         sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this.getBaseContext());
 
-        emailField = (EditText) findViewById(R.id.emailField);
-        passwordField = (EditText) findViewById(R.id.editText6);
-
         FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.login);
         loginButton = (LoginButton)findViewById(R.id.fb_login_button);
@@ -66,6 +63,9 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
+        emailField = (EditText) findViewById(R.id.emailField);
+        passwordField = (EditText) findViewById(R.id.editText6);
+
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -78,14 +78,18 @@ public class MainActivity extends AppCompatActivity
             if(checkEmailField() && checkPasswordField())
             {
                 try {
-                    String httpResponse = new HttpTask().execute("hu?").get();
-                    String tokenValidation = new HttpTask().execute(HttpHandler.checkToken(httpResponse)).get();
+                    String httpResponse = new HttpTask().execute("get",HttpHandler.login(loginInfo())).get();
+                    String tokenValidation = new HttpTask().execute("get",HttpHandler.checkToken(httpResponse)).get();
 
                     if(tokenValidation.trim().equals("Ok"))
                     {
                         sharedPrefs.edit().putString("Token",httpResponse).apply();
                         Intent i = new Intent(MainActivity.this, Home.class);
                         startActivity(i);
+                    }
+                    else
+                    {
+                        Log.d(TAG,"Failed login: " + httpResponse + " " + tokenValidation);
                     }
 
                 } catch (InterruptedException e) {
@@ -109,6 +113,11 @@ public class MainActivity extends AppCompatActivity
             Intent i = new Intent(MainActivity.this, Home.class);
             startActivity(i);
         }
+    }
+
+    private String loginInfo()
+    {
+        return emailField.getText().toString() + "/" + passwordField.getText().toString();
     }
 
     private boolean checkEmailField()
