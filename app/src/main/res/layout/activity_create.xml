@@ -86,7 +86,7 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <EditText
-        android:id="@+id/event_name"
+        android:id="@+id/event_name_maker"
         android:layout_width="254dp"
         android:layout_height="38dp"
         android:layout_marginBottom="8dp"
