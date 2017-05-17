@@ -2,23 +2,20 @@ package com.example.marietopphem.groupout1;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.os.AsyncTask;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
-import java.net.URL;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 import java.util.concurrent.ExecutionException;
 
 import handlers.HttpHandler;
 import handlers.HttpTask;
+import handlers.PassworHandler;
 import models.NewUser;
 
 /**
@@ -27,12 +24,15 @@ import models.NewUser;
 
 public class Register extends Activity {
 
-    private final String TAG = RegisterNewUserTask.class.getSimpleName();
+
+    private final String TAG = Register.class.getSimpleName();
 
     private EditText nameField;
     private EditText emailField;
     private EditText passwordField;
     private EditText password2Field;
+
+    SharedPreferences sharedPrefs;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -42,6 +42,9 @@ public class Register extends Activity {
         emailField = (EditText)findViewById(R.id.email);
         passwordField = (EditText)findViewById(R.id.password1);
         password2Field = (EditText)findViewById(R.id.password2);
+
+        sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this.getBaseContext());
+
     }
 
     public void createAccount(View view) {
@@ -49,45 +52,49 @@ public class Register extends Activity {
         if (view.getId() == R.id.create_account) {
             if(checkValues()){
                 try {
-                    String salt = new HttpTask().execute("get","https://testpvt.herokuapp.com/user/newUser/getSalt").get();
-                    Log.d("Register salt",salt);
+                    String salt = new HttpTask().execute("get",HttpHandler.newUser("getSalt")).get();
+
+                    String json = createNewUser(salt);
+
+                    String httpResponse = new HttpTask().execute("put",HttpHandler.newUser(json)).get();
+
+                    String validation = new HttpTask().execute("get",HttpHandler.checkToken(httpResponse)).get();
+
+                    if(validation.trim().equals("Ok"))
+                    {
+                        sharedPrefs.edit().putString("Token",httpResponse).apply();
+                        Intent i = new Intent(Register.this, Home.class);
+                        startActivity(i);
+                    }
+                    else
+                    {
+                        Log.e(TAG, "Failed token check: " + validation);
+                    }
+
                 } catch (InterruptedException e) {
                     Log.d("Register",e.getMessage());
                 } catch (ExecutionException e) {
                     Log.d("Register",e.getMessage());
                 }
-                String json = createNewUser();
-                //Log.d("Register",json);
-                //new RegisterNewUserTask().execute(json);
-
-                Intent i = new Intent(Register.this, Home.class);
-                startActivity(i);
             }
         }
     }
 
-    private String createNewUser(){
+    private String createNewUser(String salt){
         NewUser user = new NewUser();
 
         user.setUserName(nameField.getText().toString());
         user.setEmail(emailField.getText().toString());
-        user.setPasswordHash(passwordField.getText().toString());
-        user.setSalt("burlesque");
+        try {
+            user.setPasswordHash(PassworHandler.hashPassword(passwordField.getText().toString(),salt));
+        } catch (NoSuchAlgorithmException e) {
+            Log.e(TAG, e.getMessage());
+        } catch (InvalidKeySpecException e) {
+            Log.e(TAG, e.getMessage());
+        }
+        user.setSalt(salt);
 
         return user.toJsonString();
-    }
-
-    private void checkNewUser(String response) {
-        Log.d(TAG, response);
-
-        if(response.equalsIgnoreCase("Bad request, error code: 400"))
-        {
-            
-        }
-        else
-        {
-
-        }
     }
 
     private boolean checkValues(){
@@ -101,7 +108,8 @@ public class Register extends Activity {
 
     private boolean chekEmailField()
     {
-        return emailField.getText().toString() != "";
+        String email = emailField.getText().toString();
+        return email != "" && validateEmail(email);
     }
 
     private boolean chekPasswordField()
@@ -111,55 +119,15 @@ public class Register extends Activity {
 
     private boolean chekPassword2FieldField()
     {
-        return password2Field.getText().toString() != "";
+        String password2 = password2Field.getText().toString();
+        return password2 != "" && password2.equals(passwordField.getText().toString());
     }
 
-    private class RegisterNewUserTask extends AsyncTask<String, Integer, String> {
-
-        private final String TAG = RegisterNewUserTask.class.getSimpleName();
-
-        @Override
-        protected String doInBackground(String... params) {
-
-            URL url = null;
-            try {
-                url = new URL(HttpHandler.newUser(params[0]));
-                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-                connection.setRequestMethod("PUT");
-                connection.setDoOutput(true);
-                connection.setConnectTimeout(5000);
-                connection.setReadTimeout(5000);
-                connection.connect();
-
-                int code = connection.getResponseCode();
-                if (code == 200) {
-                    BufferedReader rd = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-                    String content = "", line;
-                    while ((line = rd.readLine()) != null) {
-                        content += line + "\n";
-                    }
-                    return content;
-                } else {
-                    return "Bad request, error code: " + code;
-                }
-
-            } catch (MalformedURLException e) {
-                return "MalformedURL error: " + e.getMessage();
-            } catch (ProtocolException e) {
-                return "Protocol error: " + e.getMessage();
-            } catch (IOException e) {
-                return "IO error: " + e.getMessage();
-            }
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-            checkNewUser(result);
-        }
+    private boolean validateEmail(String email)
+    {
+        String ePattern = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
+        java.util.regex.Pattern p = java.util.regex.Pattern.compile(ePattern);
+        java.util.regex.Matcher m = p.matcher(email);
+        return m.matches();
     }
 }
-
-
-
-
-

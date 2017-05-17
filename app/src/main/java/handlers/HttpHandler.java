@@ -9,10 +9,21 @@ import android.util.Log;
 public class HttpHandler
 {
     private static final String HOST_ADRESS = "https://testpvt.herokuapp.com/";
+
     private static final String USER_NEW_USER = "user/newUser/";
+
+    private static final String USER = "user/";
+
+    private static final String NEW_USER = "newUser/";
+    private static final String CHECK_TOKEN = "checkToken/";
 
     public static String newUser(String params)
     {
-        return HOST_ADRESS + USER_NEW_USER + params;
+        return HOST_ADRESS + USER + NEW_USER + params;
+    }
+
+    public static String checkToken(String params)
+    {
+        return HOST_ADRESS + USER + CHECK_TOKEN + params;
     }
 }
