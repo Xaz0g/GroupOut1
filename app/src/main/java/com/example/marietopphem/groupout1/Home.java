@@ -40,10 +40,10 @@ public class Home extends AppCompatActivity{
 
         eventList = new ArrayList<>();
         //add data
-        eventList.add(new Event("Hoppning", "Hagaparken", "20170501", "10:00", "12:00", "6", "4"));
-        eventList.add(new Event("Springa", "Utegym", "20170501", "10:00", "12:00", "6", "4"));
-        eventList.add(new Event("Simma", "Farsta", "20170501",  "10:00", "12:00", "6", "4"));
-        eventList.add(new Event("Pilla", "Hagaparken", "20170501","10:00", "12:00", "6", "4"));
+        eventList.add(new Event("Hoppning", "Hagaparken", "20170501", "10:00", "12:00", "6", "4", true));
+        eventList.add(new Event("Springa", "Utegym", "20170501", "10:00", "12:00", "6", "4", false));
+        eventList.add(new Event("Simma", "Farsta", "20170501",  "10:00", "12:00", "6", "4", true));
+        eventList.add(new Event("Pilla", "Hagaparken", "20170501","10:00", "12:00", "6", "4", false));
 
         adapter = new EventListAdapter(getApplicationContext(), eventList);
         lvEvent.setAdapter(adapter);
@@ -57,6 +57,7 @@ public class Home extends AppCompatActivity{
                 Toast.makeText(getApplicationContext(), "Event klickat id" + view.getTag(), Toast.LENGTH_SHORT).show();
             }
         });
+
 
 
     }

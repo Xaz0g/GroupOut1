@@ -14,7 +14,13 @@ public class Event {
     private String participants;
     private String difficulty;
 
-    public Event(String name, String place, String date, String startTime, String endTime, String participants, String difficulty) {
+    public boolean isLeader() {
+        return leader;
+    }
+
+    private boolean leader;
+
+    public Event(String name, String place, String date, String startTime, String endTime, String participants, String difficulty, boolean leader) {
 
         this.name = name;
         this.place = place;
@@ -23,6 +29,7 @@ public class Event {
         this.endTime = endTime;
         this.participants = participants;
         this.difficulty = difficulty;
+        this.leader = leader;
     }
 
     public String getStartTime() {
