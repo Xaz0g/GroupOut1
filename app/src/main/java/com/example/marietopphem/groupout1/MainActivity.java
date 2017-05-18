@@ -117,7 +117,7 @@ public class MainActivity extends AppCompatActivity
 
     public void forgotPassword(View v){
         if (v.getId()==R.id.glömtLösen){
-            Intent i = new Intent(MainActivity.this, PlaceFinder.class);
+            Intent i = new Intent(MainActivity.this, Home.class);
             startActivity(i);
         }
     }

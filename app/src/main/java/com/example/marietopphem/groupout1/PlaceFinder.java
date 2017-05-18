@@ -57,7 +57,16 @@ public class PlaceFinder extends AppCompatActivity {
 
         @Override
         public int getCount() {
-            return 0;
+            return 1;
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            switch (position) {
+                case 0:
+                    return "Sök";
+            }
+            return null;
         }
     }
 }
