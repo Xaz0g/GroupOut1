@@ -86,9 +86,6 @@ public class Search extends AppCompatActivity {
                 case 2:
                     MapSearch t3 = new MapSearch();
                     return t3;
-                case 3:
-                    FavoriteSearch t4 = new FavoriteSearch();
-                    return t4;
                 default:
                     return null;
             }
@@ -96,8 +93,8 @@ public class Search extends AppCompatActivity {
 
         @Override
         public int getCount() {
-            // Show 4 total pages.
-            return 4;
+            // Show 3 total pages.
+            return 3;
         }
 
         @Override
@@ -109,8 +106,6 @@ public class Search extends AppCompatActivity {
                     return "Kategori";
                 case 2:
                     return "Karta";
-                case 3:
-                    return "Favoriter";
             }
             return null;
         }

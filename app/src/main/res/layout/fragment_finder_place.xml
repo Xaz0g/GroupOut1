@@ -9,12 +9,12 @@
         android:layout_width="wrap_content"
         android:layout_height="38dp"
         android:text="Sök"
+        android:layout_marginRight="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="21dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginRight="14dp"
-        android:layout_marginEnd="14dp"
-        android:layout_marginTop="21dp" />
+        android:layout_alignParentEnd="true" />
 
     <EditText
         android:id="@+id/finderPlaceField"
@@ -28,10 +28,10 @@
         android:textColor="?attr/colorPrimaryDark"
         android:textColorHighlight="@color/colorPrimaryDark"
         android:textColorHint="@color/colorPrimaryDark"
-        android:layout_marginRight="13dp"
-        android:layout_marginEnd="13dp"
         android:layout_alignTop="@+id/FinderSearchBtn"
-        android:layout_toLeftOf="@+id/FinderSearchBtn"
-        android:layout_toStartOf="@+id/FinderSearchBtn" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="32dp"
+        android:layout_marginStart="32dp" />
 
 </RelativeLayout>
