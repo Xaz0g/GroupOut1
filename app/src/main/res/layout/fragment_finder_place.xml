@@ -8,13 +8,14 @@
         android:id="@+id/FinderSearchBtn"
         android:layout_width="wrap_content"
         android:layout_height="38dp"
-        android:text="Sök"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginRight="14dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
         android:layout_marginEnd="14dp"
-        android:layout_marginTop="21dp" />
+        android:layout_marginRight="14dp"
+        android:layout_marginTop="21dp"
+        android:onClick="searchPlace"
+        android:text="Sök" />
 
     <EditText
         android:id="@+id/finderPlaceField"
