@@ -48,7 +48,6 @@ public class Home extends AppCompatActivity{
         adapter = new EventListAdapter(getApplicationContext(), eventList);
         lvEvent.setAdapter(adapter);
 
-
         lvEvent.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
@@ -57,8 +56,6 @@ public class Home extends AppCompatActivity{
                 Toast.makeText(getApplicationContext(), "Event klickat id" + view.getTag(), Toast.LENGTH_SHORT).show();
             }
         });
-
-
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -88,5 +85,4 @@ public class Home extends AppCompatActivity{
         }
 
     };
-
 }

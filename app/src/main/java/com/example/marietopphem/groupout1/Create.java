@@ -40,7 +40,6 @@ public class Create extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create);
 
-
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation_bar);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
@@ -61,7 +60,6 @@ public class Create extends AppCompatActivity {
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent){
-
             }
         });
 
@@ -71,7 +69,6 @@ public class Create extends AppCompatActivity {
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent){
-
             }
         });
     }
@@ -87,7 +84,6 @@ public class Create extends AppCompatActivity {
                     }
                 }
         );
-
     }
 
     @Override
@@ -105,7 +101,6 @@ public class Create extends AppCompatActivity {
             day_x = dayOfMonth;
             df = (TextView) findViewById(R.id.choose_date);
             df.setText(day_x + "/" + (month_x+1) + "-" + year_x);
-
         }
     };
 
@@ -138,7 +133,6 @@ public class Create extends AppCompatActivity {
         }, hour, minute, true);
         finishTimePickerDialog.show();
     }
-
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
