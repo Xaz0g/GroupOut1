@@ -11,10 +11,12 @@ public class HttpHandler
     private static final String HOST_ADRESS = "https://testpvt.herokuapp.com/";
 
     private static final String USER = "user/";
+    private static final String EVENT = "event/";
 
     private static final String NEW_USER = "newUser/";
     private static final String CHECK_TOKEN = "checkToken/";
     private static final String LOGIN = "login/";
+    private static final String NEW_EVENT = "newEvent/";
 
     private static final String GET_SALT = "getSalt/";
 
@@ -22,6 +24,12 @@ public class HttpHandler
     {
 
         return HOST_ADRESS + USER + NEW_USER + user;
+    }
+
+    public static String newEvent(String newEvent)
+    {
+
+        return HOST_ADRESS + EVENT + NEW_EVENT + newEvent;
     }
 
     public static String checkToken(String token)

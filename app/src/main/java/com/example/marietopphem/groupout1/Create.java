@@ -4,6 +4,8 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,21 +14,33 @@ import android.widget.AdapterView;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import java.sql.Date;
+import java.sql.Time;
 import java.util.Calendar;
+import java.util.concurrent.ExecutionException;
+
+import handlers.HttpHandler;
+import handlers.HttpTask;
+import models.NewEvent;
 
 public class Create extends AppCompatActivity {
 
     private static final String TAG = Create.class.getSimpleName();
+
+    SharedPreferences sharedPrefs;
 
     EditText nameField;
     ImageButton calendar;
     TextView df;
     TextView st;
     TextView ft;
+
     int year_x;
     int month_x;
     int day_x;
@@ -36,6 +50,13 @@ public class Create extends AppCompatActivity {
     int startMinute;
     int finishHour;
     int finishMinute;
+    Spinner kat;
+    EditText min;
+    EditText max;
+    EditText descField;
+    TextView placeText;
+
+    RadioGroup diff;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,10 +67,20 @@ public class Create extends AppCompatActivity {
         year_x = c.get(Calendar.YEAR);
         month_x = c.get(Calendar.MONTH);
         day_x = c.get(Calendar.DAY_OF_MONTH);
+        min = (EditText) findViewById(R.id.min_capacity);
+        max = (EditText) findViewById(R.id.max_capacity);
+        descField = (EditText) findViewById(R.id.description);
+        placeText = (TextView) findViewById(R.id.textView4);
+
+        diff = (RadioGroup) findViewById(R.id.radioGroup);
+        RadioButton but = (RadioButton) findViewById(R.id.level3);
+        but.setChecked(true);
+
+        sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this.getBaseContext());
 
         showDialogOnCalendarClick();
 
-        Spinner kat = (Spinner) findViewById(R.id.category_roll_list);
+        kat = (Spinner) findViewById(R.id.category_roll_list);
         kat.setPrompt("Kategori");
 
         kat.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
@@ -135,6 +166,7 @@ public class Create extends AppCompatActivity {
 
     public void pickPlace(View view){
         if (view.getId()== R.id.findPlaceButton){
+            placeText.setText("395561a3-f816-46fd-9c55-34afd436120e");
             Intent i = new Intent(Create.this, PlaceFinder.class);
             startActivity(i);
         }
@@ -143,22 +175,51 @@ public class Create extends AppCompatActivity {
     public void createEvent(View view){
         if (view.getId()== R.id.create_activity){
 
-            checkValues();
-            //ImageButton calendar;
-            //TextView df;
-            //TextView st;
-            //TextView ft;
-            //int year_x;
-            //int month_x;
-            //int day_x;
-            //static final int DIALOG_ID = 0;
-            //final Calendar c = Calendar.getInstance();
+            boolean check = checkValues();
+            Log.d(TAG, "Check: " + check);
+
+            if(check)
+            {
+                NewEvent e = createNewEvent();
+                String json = e.toJsonString();
+                Log.d(TAG, "json " + json);
+                String token = sharedPrefs.getString("Token","FAIL");
+                Log.d(TAG,token);
+
+                try {
+                    String httpResponse = new HttpTask().execute("put", HttpHandler.newEvent(json+ "/" + token)).get();
+                    Log.d(TAG, "httpResponse " + httpResponse);
+                } catch (InterruptedException e1) {
+                    Log.d(TAG, "InterruptedException " + e1.getMessage());
+                } catch (ExecutionException e1) {
+                    Log.d(TAG, "ExecutionException " + e1.getMessage());
+                }
+            }
         }
+    }
+
+    private NewEvent createNewEvent() {
+        NewEvent e = new NewEvent();
+        e.setName(nameField.getText().toString());
+        e.setPlaceId(placeText.getText().toString());       //temp
+        e.setEventDate(new Date(year_x - 1900, month_x, day_x));
+        int[] tempStart = parseTime(st.getText().toString());
+        e.setStartTime(new Time(tempStart[0],tempStart[1],0));
+        int[] tempEnd = parseTime(ft.getText().toString());
+        e.setEndTime(new Time(tempEnd[0],tempEnd[1],0));
+        e.setCategory((String)kat.getSelectedItem());   // is obj
+        e.setMinCapacity(Integer.parseInt(min.getText().toString()));
+        e.setMaxCapacity(Integer.parseInt(max.getText().toString()));
+        String s = ((RadioButton) findViewById(diff.getCheckedRadioButtonId() )).getText().toString();
+        e.setDifficulty(Integer.parseInt(s));
+        e.setDescription(descField.getText().toString());
+
+        return e;
     }
 
     private boolean checkValues(){
 
-        return checkNameField() && checkDate() && checkStartTime() && checkFinishTime();
+        return checkNameField() && checkDate() && checkStartTime() && checkFinishTime() && checkMinAndMax() && checkDescription() && checkPlace();
     }
 
     private boolean checkNameField(){
@@ -273,6 +334,32 @@ public class Create extends AppCompatActivity {
         return true;
     }
 
+    private boolean checkMinAndMax()
+    {
+        int minInt = Integer.parseInt(min.getText().toString());
+        if(minInt > 1)
+        {
+            if(Integer.parseInt(max.getText().toString()) >= minInt)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private boolean checkDescription()
+    {
+        return descField.getText().toString() != null && !descField.getText().toString().equals("");
+    }
+
+    private boolean checkPlace()
+    {
+        String place = placeText.getText().toString();
+        Log.d(TAG, "Place : " + place);
+        return !place.equalsIgnoreCase("Välj plats");
+    }
+
     private int[] parseTime(String time){
         int hour;
         int minute;
@@ -286,4 +373,5 @@ public class Create extends AppCompatActivity {
         timeAgain[1] = minute;
         return timeAgain;
     }
+
 }
