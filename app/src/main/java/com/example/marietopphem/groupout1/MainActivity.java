@@ -16,10 +16,13 @@ import com.facebook.FacebookSdk;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 import java.util.concurrent.ExecutionException;
 
 import handlers.HttpHandler;
 import handlers.HttpTask;
+import handlers.PassworHandler;
 
 /**
  * Created by Xaz0g on 2017-05-12.
@@ -78,7 +81,6 @@ public class MainActivity extends AppCompatActivity
             if(checkEmailField() && checkPasswordField())
             {
                 try {
-                    String salt = new HttpTask().execute("wut?").get();
                     String httpResponse = new HttpTask().execute("get",HttpHandler.login(loginInfo())).get();
                     String tokenValidation = new HttpTask().execute("get",HttpHandler.checkToken(httpResponse)).get();
 
@@ -96,6 +98,10 @@ public class MainActivity extends AppCompatActivity
                 } catch (InterruptedException e) {
                     Log.e(TAG,e.getMessage());
                 } catch (ExecutionException e) {
+                    Log.e(TAG,e.getMessage());
+                } catch (InvalidKeySpecException e) {
+                    Log.e(TAG,e.getMessage());
+                } catch (NoSuchAlgorithmException e) {
                     Log.e(TAG,e.getMessage());
                 }
             }
@@ -123,9 +129,17 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    private String loginInfo()
+    private String loginInfo() throws ExecutionException, InterruptedException, InvalidKeySpecException, NoSuchAlgorithmException
     {
-        return emailField.getText().toString() + "/" + passwordField.getText().toString();
+        String email = emailField.getText().toString();
+        Log.d(TAG, email);
+        String password = passwordField.getText().toString();
+        Log.d(TAG, password);
+        String salt = new HttpTask().execute("get",HttpHandler.getSalt(email)).get();
+        Log.d(TAG, salt);
+        String passwordHash = PassworHandler.hashPassword(password.trim(),salt.trim());
+        Log.d(TAG, passwordHash);
+        return emailField.getText().toString() + "/" + passwordHash ;
     }
 
     private boolean checkEmailField()

@@ -53,12 +53,17 @@ public class Register extends Activity {
             if(checkValues()){
                 try {
                     String salt = new HttpTask().execute("get",HttpHandler.newUser("getSalt")).get();
+                    salt = salt.trim();
+                    Log.d(TAG, salt);
 
                     String json = createNewUser(salt);
+                    Log.d(TAG, json);
 
                     String httpResponse = new HttpTask().execute("put",HttpHandler.newUser(json)).get();
+                    Log.d(TAG, httpResponse);
 
-                    String validation = new HttpTask().execute("get",HttpHandler.checkToken(httpResponse)).get();
+                    String validation = new HttpTask().execute("get",HttpHandler.checkToken(httpResponse.trim())).get();
+                    Log.d(TAG, validation);
 
                     if(validation.trim().equals("Ok"))
                     {
@@ -68,7 +73,7 @@ public class Register extends Activity {
                     }
                     else
                     {
-                        Log.e(TAG, "Failed token check: " + validation);
+                        Log.e(TAG, "Failed token check: " + validation + " " + httpResponse);
                     }
 
                 } catch (InterruptedException e) {
@@ -84,15 +89,15 @@ public class Register extends Activity {
         NewUser user = new NewUser();
 
         user.setUserName(nameField.getText().toString());
-        user.setEmail(emailField.getText().toString());
+        user.setEmail(emailField.getText().toString().trim());
         try {
-            user.setPasswordHash(PassworHandler.hashPassword(passwordField.getText().toString(),salt));
+            user.setPasswordHash(PassworHandler.hashPassword(passwordField.getText().toString().trim(),salt.trim()));
         } catch (NoSuchAlgorithmException e) {
             Log.e(TAG, e.getMessage());
         } catch (InvalidKeySpecException e) {
             Log.e(TAG, e.getMessage());
         }
-        user.setSalt(salt);
+        user.setSalt(salt.trim());
 
         return user.toJsonString();
     }
@@ -114,13 +119,13 @@ public class Register extends Activity {
 
     private boolean chekPasswordField()
     {
-        return passwordField.getText().toString() != "";
+        return passwordField.getText().toString().trim() != "";
     }
 
     private boolean chekPassword2FieldField()
     {
         String password2 = password2Field.getText().toString();
-        return password2 != "" && password2.equals(passwordField.getText().toString());
+        return password2 != "" && password2.equals(passwordField.getText().toString().trim());
     }
 
     private boolean validateEmail(String email)
