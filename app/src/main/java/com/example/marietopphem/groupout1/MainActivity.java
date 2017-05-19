@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -52,6 +53,13 @@ public class MainActivity extends AppCompatActivity {
 
     public void logIn(View v) {
         if(v.getId()==R.id.loginButton){
+            EditText em = (EditText) findViewById(R.id.emailField);
+            String email = em.getText().toString();
+            EditText pa = (EditText) findViewById(R.id.passwordField);
+            String password = pa.getText().toString();
+
+            //Skicka string email & password till server för check
+
             Intent i = new Intent(MainActivity.this, Home.class);
             startActivity(i);
         }
@@ -59,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void newAccount(View v){
         if (v.getId()==R.id.createAccountPrimary){
+
             Intent i = new Intent(MainActivity.this, Register.class);
             startActivity(i);
         }
@@ -68,6 +77,15 @@ public class MainActivity extends AppCompatActivity {
         if (v.getId()==R.id.fbLoginButton){
             Intent i = new Intent(MainActivity.this, Home.class);
             startActivity(i);
+        }
+    }
+
+    public void forgotPassword(View v){
+        if (v.getId()==R.id.passwordForgotten){
+            EditText fcem = (EditText) findViewById(R.id.emailField);
+            String forCheckEmail = fcem.getText().toString();
+
+            //Vad vill vi den ska göra här?
         }
     }
 }

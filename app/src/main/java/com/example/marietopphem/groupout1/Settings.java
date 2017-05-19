@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.Switch;
 
 /**
  * Created by Elina on 2017-05-10.
@@ -17,9 +19,27 @@ public class Settings extends Activity{
         setContentView(R.layout.settings);
     }
 
-    public void save_settings(View v){
-        Intent i = new Intent(Settings.this, Home.class);
-        startActivity(i);
+    public void saveSettings(View v){
+        if(v.getId()== R.id.saveButton) {
+            EditText em = (EditText) findViewById(R.id.email);
+            EditText na = (EditText) findViewById(R.id.username);
+            EditText pa = (EditText) findViewById(R.id.passwordField);
+            Switch sw = (Switch) findViewById((R.id.notificationSwitch));
+
+            String email = em.getText().toString();
+            String name = na.getText().toString();
+            String password = pa.getText().toString();
+            boolean notificationSwitch;
+            if (sw.isChecked()){
+                notificationSwitch = true;
+            }else{
+                notificationSwitch = false;
+            }
+
+            //Send status of email, name, password & notificationSwitch to server then change view to home
+            Intent i = new Intent(Settings.this, Home.class);
+            startActivity(i);
+        }
     }
 }
 

@@ -10,7 +10,8 @@ import android.support.v4.app.Fragment;
         import android.view.LayoutInflater;
         import android.view.View;
         import android.view.ViewGroup;
-        import android.widget.TextView;
+import android.widget.EditText;
+import android.widget.TextView;
 
 public class MapSearch extends Fragment {
     @Override
@@ -18,5 +19,15 @@ public class MapSearch extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.t3map, container, false);
         return rootView;
+    }
+
+    //OBS! denna metod aktiveras inte och kan därför inte kolla om den är korrekt
+    public void searchOnMap(View v){
+        if(v.getId() == R.id.searchButton){
+            EditText s = (EditText) getView().findViewById(R.id.mapSearchTextField);
+            String searchMap = s.getText().toString();
+
+            //Check string searchMap towards server and place on map
+        }
     }
 }

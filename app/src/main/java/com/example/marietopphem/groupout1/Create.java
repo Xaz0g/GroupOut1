@@ -11,23 +11,29 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import java.util.Date;
+import java.sql.Time;
 
+import java.text.DateFormat;
+import java.text.NumberFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class Create extends AppCompatActivity {
 
     ImageButton calendar;
-    Date dateFormat;
     TextView df;
     TextView st;
     TextView ft;
@@ -106,30 +112,42 @@ public class Create extends AppCompatActivity {
             month_x = monthOfYear;
             day_x = dayOfMonth;
             df = (TextView) findViewById(R.id.chooseDate);
-            df.setText(day_x + "/" + (month_x+1) + "-" + year_x);
-
-            dateFormat = new Date(day_x, (month_x+1), year_x);
+            if(month_x < 10) {
+                if(day_x < 10){
+                    df.setText(year_x + "-" + "0" + (month_x + 1) + "-" + "0" + day_x);
+                }else {
+                    df.setText(year_x + "-" + "0" + (month_x + 1) + "-" + day_x);
+                }
+            }else{
+                if(day_x < 10){
+                    df.setText(year_x + "-" + (month_x + 1) + "-" + "0" + day_x);
+                }else {
+                    df.setText(year_x + "-" + (month_x + 1) + "-" + day_x);
+                }
+            }
 
         }
     };
 
     public void setStartTime(View view){
-        int hour = c.get(Calendar.HOUR);
+        final int hour = c.get(Calendar.HOUR);
         int minute = c.get(Calendar.MINUTE);
 
         TimePickerDialog startTimePickerDialog = new TimePickerDialog(Create.this, new TimePickerDialog.OnTimeSetListener(){
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute){
                 st = (TextView) findViewById(R.id.choose_starttime);
+                int hour_x = hourOfDay;
+                int minute_x = minute;
                 if (minute < 10){
-                    st.setText(hourOfDay + ":" + "0" + minute);
+                    st.setText(hour_x + ":" + "0" + minute_x);
                 }else {
-                    st.setText(hourOfDay + ":" + minute);
+                    st.setText(hour_x + ":" + minute_x);
                 }
-
             }
         }, hour, minute, true);
         startTimePickerDialog.show();
+
     }
 
     public void setFinishTime(View view){
@@ -140,10 +158,12 @@ public class Create extends AppCompatActivity {
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute){
                 ft = (TextView) findViewById(R.id.choose_end_time);
+                int hour_x = hourOfDay;
+                int minute_x = minute;
                 if (minute < 10){
-                    ft.setText(hourOfDay + ":" +"0" + minute);
+                    ft.setText(hour_x + ":" +"0" + minute_x);
                 }else {
-                    ft.setText(hourOfDay + ":" + minute);
+                    ft.setText(hour_x+ ":" + minute_x);
                 }
 
 
@@ -181,17 +201,85 @@ public class Create extends AppCompatActivity {
 
     };
 
-     public void createActivity(View v){
+     public void createActivity(View v) throws ParseException {
          if(v.getId()==R.id.createActivity) {
-          /*   String eventName = (EditText) findViewById(R.id.eventName);
-             Spinner placelist = (Spinner) findViewById(R.id.placeRollList);
-             String placeName = placelist.;
+             df = (TextView) findViewById(R.id.chooseDate);
+             String da = df.getText().toString();
+             String expectedPattern = "yyyy-MM-dd";
+             SimpleDateFormat formatter = new SimpleDateFormat(expectedPattern);
+             Date utilDate = formatter.parse(da);
+             java.sql.Date date = convertUtilToSql(utilDate);
 
-             Date date = dateFormat;
-             */
+             st = (TextView) findViewById(R.id.choose_starttime);
+             String start = st.getText().toString();
+             String[] startSeparate = start.split(":");
+             String sHour = startSeparate[0];
+             String sMinute = startSeparate[1];
+             Time startTime = new Time(Integer.valueOf(sHour), Integer.valueOf(sMinute), 0);
+
+             ft = (TextView) findViewById(R.id.choose_end_time);
+             String end = ft.getText().toString();
+             String[] endSeparate = end.split(":");
+             String eHour = endSeparate[0];
+             String eMinute = endSeparate[1];
+             Time endTime = new Time(Integer.valueOf(eHour), Integer.valueOf(eMinute), 0);
+
+
+             EditText event = (EditText) findViewById(R.id.eventName);
+             Spinner placelist = (Spinner) findViewById(R.id.placeRollList);
+             Spinner categorylist = (Spinner) findViewById(R.id.categoryRollList);
+             EditText mi = (EditText) findViewById(R.id.minCapacity);
+             EditText ma = (EditText) findViewById(R.id.maxCapacity);
+
+             RadioButton l1 = (RadioButton) findViewById(R.id.level1);
+             RadioButton l2 = (RadioButton) findViewById(R.id.level2);
+             RadioButton l3 = (RadioButton) findViewById(R.id.level3);
+             RadioButton l4 = (RadioButton) findViewById(R.id.level4);
+             RadioButton l5 = (RadioButton) findViewById(R.id.level5);
+
+             //enum difficulty? enum vill va class så hur skriver vi den?
+             String difficulty;
+
+             EditText descrip = (EditText) findViewById(R.id.description);
+
+             String eventName = event.getText().toString();
+             String placeName = placelist.getSelectedItem().toString();
+             String category = categorylist.getSelectedItem().toString();
+
+             String min = mi.getText().toString();
+             String max = ma.getText().toString();
+             int minCapacity = Integer.parseInt(min);
+             int maxCapacity= Integer.parseInt(max);
+
+             if (l1.isChecked()){
+                 difficulty = "1";
+             }
+             if (l2.isChecked()){
+                 difficulty = "2";
+             }
+             if (l3.isChecked()){
+                 difficulty = "3";
+             }
+             if (l4.isChecked()){
+                 difficulty = "4";
+             }
+             if (l5.isChecked()){
+                 difficulty = "5";
+             }else{
+                 System.out.println("Error: Har inte valt nivå!");
+                 //Popup om error (tillfälligt utgår från mitten nivå)
+                 difficulty = "3";
+             }
+             String description = descrip.getText().toString();
+             System.out.println(eventName +" "+ placeName +" "+ date +" "+ startTime +" "+ endTime +" "+ category +" "+ minCapacity+" "+ maxCapacity+" "+ difficulty +" "+ description);
          }
          Intent i = new Intent(Create.this, Home.class);
          startActivity(i);
      }
+
+    private static java.sql.Date convertUtilToSql(java.util.Date utilDate) {
+        java.sql.Date date = new java.sql.Date(utilDate.getTime());
+        return date;
+    }
 
 }

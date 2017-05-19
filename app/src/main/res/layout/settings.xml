@@ -94,7 +94,7 @@
         android:layout_marginRight="0dp"
         android:layout_marginTop="0dp"
         android:background="#6ac15e"
-        android:onClick="save_settings"
+        android:onClick="saveSettings"
         android:text="Spara"
         android:textColor="@color/cardview_light_background"
         app:layout_constraintBottom_toBottomOf="parent"
