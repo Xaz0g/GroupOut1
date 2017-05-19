@@ -8,8 +8,8 @@
     <string name="title_settings">Settings</string>
 
     <string-array name="place_name">
-    <item>Hagaparken</item>
-    <item>Tantolunden</item>
+        <item>Hagaparken</item>
+        <item>Tantolunden</item>
     </string-array>
 
     <string-array name="activity">
@@ -31,4 +31,5 @@
         <item>Yoga</item>
         <item>Zumba</item>
     </string-array>
+    <string name="title_activity_maps">Map</string>
 </resources>

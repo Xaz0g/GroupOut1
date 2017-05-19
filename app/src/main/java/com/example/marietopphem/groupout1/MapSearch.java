@@ -12,6 +12,15 @@ import android.support.v4.app.Fragment;
         import android.view.ViewGroup;
         import android.widget.TextView;
 
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+
 public class MapSearch extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -19,4 +28,8 @@ public class MapSearch extends Fragment {
         View rootView = inflater.inflate(R.layout.t3map, container, false);
         return rootView;
     }
+
+
+
+
 }
