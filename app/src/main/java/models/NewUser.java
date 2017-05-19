@@ -1,13 +1,5 @@
 package models;
 
-import android.util.Log;
-
-import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
-
-import handlers.PassworHandler;
-import handlers.UserInputHandler;
-
 /**
  * Created by Xaz0g on 2017-05-15.
  */

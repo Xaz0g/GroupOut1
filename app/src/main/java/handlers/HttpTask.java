@@ -23,26 +23,26 @@ public class HttpTask extends AsyncTask<String, Integer, String> {
         String urlString = params[1];
 
         try {
-            URL url = new URL(HttpHandler.newUser(urlString));
+            URL url = new URL(urlString);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
             if(httpMethod.equalsIgnoreCase("put"))
             {
                 connection.setRequestMethod("PUT");
+                connection.setDoOutput(true);
             }
             else
             {
                 connection.setRequestMethod("GET");
             }
 
-            connection.setDoOutput(true);
-            connection.setConnectTimeout(5000);
-            connection.setReadTimeout(5000);
+            connection.setConnectTimeout(10000);
+            connection.setReadTimeout(10000);
             connection.connect();
 
             int code = connection.getResponseCode();
             if (code == 200) {
-                BufferedReader rd = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                BufferedReader rd = new BufferedReader(new InputStreamReader(connection.getInputStream(), "UTF-8"));
                 String content = "", line;
                 while ((line = rd.readLine()) != null) {
                     content += line + "\n";

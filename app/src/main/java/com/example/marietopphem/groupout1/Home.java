@@ -1,15 +1,22 @@
 package com.example.marietopphem.groupout1;
 
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import handlers.EventListAdapter;
+import models.Event;
 
 /**
  * Created by marietopphem on 2017-05-05.
@@ -17,14 +24,40 @@ import android.view.View;
 
 public class Home extends AppCompatActivity{
 
+    private ListView lvEvent;
+    private EventListAdapter adapter;
+    private List<Event> eventList;
+
     @Override
-    public void onCreate(Bundle savedInstanceState){
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+        lvEvent = (ListView) findViewById(R.id.listView);
+
+        eventList = new ArrayList<>();
+        //add data
+        eventList.add(new Event("Hoppning", "Hagaparken", "20170501", "10:00", "12:00", "6", "4"));
+        eventList.add(new Event("Springa", "Utegym", "20170501", "10:00", "12:00", "6", "4"));
+        eventList.add(new Event("Simma", "Farsta", "20170501",  "10:00", "12:00", "6", "4"));
+        eventList.add(new Event("Pilla", "Hagaparken", "20170501","10:00", "12:00", "6", "4"));
+
+        adapter = new EventListAdapter(getApplicationContext(), eventList);
+        lvEvent.setAdapter(adapter);
+
+
+        lvEvent.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long name) {
+
+                Toast.makeText(getApplicationContext(), "Event klickat id" + view.getTag(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
 
     }
 
@@ -55,4 +88,5 @@ public class Home extends AppCompatActivity{
         }
 
     };
+
 }
