@@ -166,7 +166,6 @@ public class Create extends AppCompatActivity {
 
     public void pickPlace(View view){
         if (view.getId()== R.id.findPlaceButton){
-            placeText.setText("395561a3-f816-46fd-9c55-34afd436120e");
             Intent i = new Intent(Create.this, PlaceFinder.class);
             startActivity(i);
         }
@@ -189,6 +188,8 @@ public class Create extends AppCompatActivity {
                 try {
                     String httpResponse = new HttpTask().execute("put", HttpHandler.newEvent(json+ "/" + token)).get();
                     Log.d(TAG, "httpResponse " + httpResponse);
+                    Intent i = new Intent(Create.this, Home.class);
+                    startActivity(i);
                 } catch (InterruptedException e1) {
                     Log.d(TAG, "InterruptedException " + e1.getMessage());
                 } catch (ExecutionException e1) {
