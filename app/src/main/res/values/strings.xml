@@ -1,16 +1,18 @@
 <resources>
-    <string name="app_name">GroupOut1</string>
+    <string name="app_name">GroupOut</string>
     <string name="facebook_app_id">455669514778143</string>
     <string name="fb_login_protocol_scheme">fb455669514778143</string>
-
-    <string-array name="place_name">
-    <item>Hagaparken</item>
-    <item>Tantolunden</item>
-    </string-array>
+    <string name="title_home">Home</string>
+    <string name="title_add">Add</string>
+    <string name="title_search">Search</string>
+    <string name="title_settings">Settings</string>
 
     <string-array name="activity">
-        <item>Löpning</item>
-        <item>Klättring</item>
-        <item>Yoga</item>
+        <item>Styrketräning</item>
+        <item>Kondition</item>
+        <item>Rörlighet och dans</item>
+        <item>Bollsport</item>
+        <item>Övrigt</item>
     </string-array>
+
 </resources>

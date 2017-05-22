@@ -1,0 +1,38 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.marietopphem.groupout1.FinderPlace">
+
+    <Button
+        android:id="@+id/FinderSearchBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="38dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="14dp"
+        android:layout_marginRight="14dp"
+        android:layout_marginTop="21dp"
+        android:onClick="searchPlace"
+        android:text="Sök" />
+
+    <EditText
+        android:id="@+id/finderPlaceField"
+        android:layout_width="250dp"
+        android:layout_height="38dp"
+        android:background="#f8f8ff"
+        android:ems="10"
+        android:fontFamily="sans-serif"
+        android:hint="Platsnamn"
+        android:inputType="textEmailAddress"
+        android:textColor="?attr/colorPrimaryDark"
+        android:textColorHighlight="@color/colorPrimaryDark"
+        android:textColorHint="@color/colorPrimaryDark"
+        android:layout_marginRight="13dp"
+        android:layout_marginEnd="13dp"
+        android:layout_alignTop="@+id/FinderSearchBtn"
+        android:layout_toLeftOf="@+id/FinderSearchBtn"
+        android:layout_toStartOf="@+id/FinderSearchBtn" />
+
+</RelativeLayout>
