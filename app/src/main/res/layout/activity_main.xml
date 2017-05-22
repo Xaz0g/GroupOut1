@@ -16,22 +16,10 @@
         android:layout_height="0dp"
         android:layout_weight="8.49">
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:src="@drawable/logotype_2"
-            app:layout_constraintHorizontal_bias="0.494"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
             android:fontFamily="sans-serif"
             android:gravity="top"
             android:text="Kommande aktiviteter"
@@ -41,14 +29,15 @@
             app:layout_constraintHorizontal_bias="0.485"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView"
             tools:layout_constraintLeft_creator="1"
-            tools:layout_constraintRight_creator="1" />
+            tools:layout_constraintRight_creator="1"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="8dp" />
 
         <TextView
             android:id="@+id/noBookedActivities"
-            android:layout_width="332dp"
-            android:layout_height="306dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:gravity="top"
             android:text='Du har ännu inga bokade aktiviteter. Klicka på "Hitta aktivitet" för att delta i en, eller skapa en egen!'
             android:textAlignment="center"
@@ -59,12 +48,14 @@
             app:layout_constraintTop_toBottomOf="@+id/textView"
             tools:layout_constraintLeft_creator="1"
             tools:layout_constraintRight_creator="1"
-            app:layout_constraintHorizontal_bias="0.493" />
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintVertical_bias="0.06"
+            android:layout_marginTop="8dp" />
 
         <ListView
             android:id="@+id/listView"
-            android:layout_width="391dp"
-            android:layout_height="389dp"
+            android:layout_width="401dp"
+            android:layout_height="519dp"
             android:layout_marginBottom="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
@@ -78,8 +69,7 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0"
-            tools:layout_editor_absoluteY="190dp" />
+            app:layout_constraintVertical_bias="1.0" />
 
     </android.support.constraint.ConstraintLayout>
 
