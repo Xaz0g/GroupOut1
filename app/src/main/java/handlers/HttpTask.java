@@ -25,6 +25,8 @@ public class HttpTask extends AsyncTask<String, Integer, String> {
         try {
             URL url = new URL(urlString);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestProperty("Accept-Charset", "UTF-8");
+            connection.setRequestProperty("Content-Type", "text/plain; charset=utf-8");
 
             if(httpMethod.equalsIgnoreCase("put"))
             {
