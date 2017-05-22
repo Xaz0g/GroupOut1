@@ -76,7 +76,7 @@ public class EventListAdapter extends BaseAdapter{
                 public void onClick(View v) {
                     //do something
 
-                    mEventList.remove(position); //or some other task
+                    mEventList.remove(position); //or some other task (tar för tillfället bort)
                     notifyDataSetChanged();
                 }
             });
@@ -85,7 +85,8 @@ public class EventListAdapter extends BaseAdapter{
             settings.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v) {
-                    //do something
+                    mEventList.remove(position); //or some other task (tar för tillfället bort)
+                    notifyDataSetChanged();
                 }
             });
             participants.setText("Du är skapare");
