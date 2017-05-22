@@ -9,8 +9,6 @@
     android:paddingBottom="5dp"
     android:paddingTop="5dp"
     android:background="#6c6a6a"
-
-
     android:weightSum="1">
 
 
