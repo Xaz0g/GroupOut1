@@ -51,7 +51,6 @@ public class Home extends AppCompatActivity{
         adapter = new EventListAdapter(getApplicationContext(), eventList);
         lvEvent.setAdapter(adapter);
 
-
         lvEvent.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
