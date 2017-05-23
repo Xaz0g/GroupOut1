@@ -1,4 +1,4 @@
-package com.example.marietopphem.groupout1;
+/*package com.example.marietopphem.groupout1;
 
 import android.content.Context;
 import android.location.LocationListener;
@@ -98,7 +98,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
      * it inside the SupportMapFragment. This method will only be triggered once the user has
      * installed Google Play services and returned to the app.
      */
-    @Override
+   /* @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
@@ -131,14 +131,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
             PositionObject posObject = new PositionObject(name, id, x, y);
             javaPositions.add(posObject);
-
         }
-
-
-
     }
-
-
 }
+*/
 
 
