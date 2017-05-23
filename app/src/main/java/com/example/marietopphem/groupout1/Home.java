@@ -1,6 +1,7 @@
 package com.example.marietopphem.groupout1;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -28,6 +29,8 @@ public class Home extends AppCompatActivity{
     private EventListAdapter adapter;
     private List<Event> eventList;
 
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,14 +43,13 @@ public class Home extends AppCompatActivity{
 
         eventList = new ArrayList<>();
         //add data
-        eventList.add(new Event("Hoppning", "Hagaparken", "20170501", "10:00", "12:00", "6", "4", true));
-        eventList.add(new Event("Springa", "Utegym", "20170501", "10:00", "12:00", "6", "4", false));
-        eventList.add(new Event("Simma", "Farsta", "20170501",  "10:00", "12:00", "6", "4", true));
-        eventList.add(new Event("Pilla", "Hagaparken", "20170501","10:00", "12:00", "6", "4", false));
+        eventList.add(new Event("Hoppning", "Hagaparken", "20170501", "10:00", "12:00", "6", "4", "Hej", true));
+        eventList.add(new Event("Springa", "Utegym", "20170501", "10:00", "12:00", "6", "4", "Fångad av en stormvind!", false));
+        eventList.add(new Event("Simma", "Farsta", "20170501",  "10:00", "12:00", "6", "4","Hej igen", true));
+        eventList.add(new Event("Pilla", "Hagaparken", "20170501","10:00", "12:00", "6", "4", "Kolla här!", false));
 
         adapter = new EventListAdapter(getApplicationContext(), eventList);
         lvEvent.setAdapter(adapter);
-
 
         lvEvent.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 

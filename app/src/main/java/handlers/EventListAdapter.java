@@ -2,12 +2,14 @@ package handlers;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.widget.BaseAdapter;
 import android.view.ViewGroup;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.marietopphem.groupout1.Home;
 import com.example.marietopphem.groupout1.R;
 
 import java.util.List;
@@ -22,6 +24,8 @@ public class EventListAdapter extends BaseAdapter{
 
     private Context mContext;
     private List<Event> mEventList;
+
+    DescriptionPopUp dpu;
 
     public EventListAdapter(Context mContext, List<Event> mEventList) {
         this.mContext = mContext;
@@ -48,6 +52,7 @@ public class EventListAdapter extends BaseAdapter{
     public View getView(final int position, View convertView, ViewGroup parent) {
         View v = View.inflate(mContext, R.layout.item_list, null);
         Button deleteBtn = (Button)v.findViewById(R.id.delete_btn);
+        Button infoBtn = (Button)v.findViewById(R.id.info_btn);
         Button settings = (Button)v.findViewById(R.id.settings);
 
 
@@ -57,6 +62,7 @@ public class EventListAdapter extends BaseAdapter{
         TextView startTime = (TextView)v.findViewById(R.id.startTime_maker);
         TextView endTime = (TextView)v.findViewById(R.id.endTime_maker);
         TextView participants = (TextView)v.findViewById(R.id.numberOfParticipants);
+        TextView owner = (TextView)v.findViewById(R.id.owner_or_participant);
         TextView difficulty = (TextView)v.findViewById(R.id.difficulty);
 
         //set text for textview
@@ -65,12 +71,12 @@ public class EventListAdapter extends BaseAdapter{
         date.setText(mEventList.get(position).getDate());
         startTime.setText(mEventList.get(position).getStartTime());
         endTime.setText(mEventList.get(position).getEndTime());
-
+        participants.setText(mEventList.get(position).getParticipants());
         difficulty.setText(mEventList.get(position).getDifficulty());
 
         if(!mEventList.get(position).isLeader()){
             settings.setVisibility(View.GONE);
-            participants.setText("Du är anmäld");
+            owner.setText("Du är anmäld");
             deleteBtn.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v) {
@@ -80,6 +86,18 @@ public class EventListAdapter extends BaseAdapter{
                     notifyDataSetChanged();
                 }
             });
+            infoBtn.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View view){
+                    String descrip = mEventList.get(position).getDescription();
+                    Intent info = new Intent(mContext, DescriptionPopUp.class);
+                    info.putExtra("Description", descrip);
+                    mContext.startActivity(info);
+
+                }
+            } );
+
+
         }else if(mEventList.get(position).isLeader()){
 
             settings.setOnClickListener(new View.OnClickListener(){
@@ -89,8 +107,18 @@ public class EventListAdapter extends BaseAdapter{
                     notifyDataSetChanged();
                 }
             });
-            participants.setText("Du är skapare");
+            owner.setText("Du är skapare");
             deleteBtn.setVisibility(View.GONE);
+            infoBtn.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View view){
+                    String descrip = mEventList.get(position).getDescription();
+                    Intent info = new Intent(mContext, DescriptionPopUp.class);
+                    info.putExtra("Description", descrip);
+                    mContext.startActivity(info);
+
+                }
+            } );
         }
 
 
