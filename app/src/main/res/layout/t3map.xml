@@ -22,7 +22,7 @@
         android:fontFamily="sans-serif"
         android:inputType="text"
         android:orientation="vertical"
-        android:text=" Sök"
+        android:text="Sök"
         android:textColor="#454A54"
         android:visibility="visible"
         tools:layout_editor_absoluteX="52dp"
@@ -55,5 +55,4 @@
         android:layout_below="@+id/searchByMap"
         android:layout_toRightOf="@+id/section_label"
         android:layout_toEndOf="@+id/section_label" />
-
 </RelativeLayout>

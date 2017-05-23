@@ -17,6 +17,7 @@ public class CategorySearch extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.t2category, container, false);
+
         return rootView;
     }
 }
