@@ -34,7 +34,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/cancelButton"
         android:layout_marginTop="14dp"
         android:text="Bollplan"
         android:textStyle="bold|italic"

@@ -118,14 +118,10 @@
         android:inputType="textPersonName"
         android:textColorHint="#454A54"
         android:textColor="#454A54"
-        android:textColorHint="#454A54"
-        app:layout_constraintBottom_toTopOf="@+id/email"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="188dp"
-        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/email"
         app:layout_constraintVertical_bias="1.0" />
 
