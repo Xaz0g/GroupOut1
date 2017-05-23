@@ -11,7 +11,7 @@
     tools:layout_editor_absoluteY="25dp">
 
     <Button
-        android:id="@+id/create_account"
+        android:id="@+id/createAccountSecondary"
         android:layout_width="292dp"
         android:layout_height="38dp"
         android:layout_marginBottom="153dp"
@@ -28,7 +28,7 @@
         app:layout_constraintHorizontal_bias="0.495" />
 
     <Button
-        android:id="@+id/show_password"
+        android:id="@+id/showPassword"
         android:layout_width="134dp"
         android:layout_height="34dp"
         android:background="@color/colorPrimary"
@@ -40,9 +40,9 @@
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginBottom="12dp"
-        app:layout_constraintBottom_toTopOf="@+id/create_account"
-        app:layout_constraintHorizontal_bias="0.498" />
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/createAccountSecondary"
+        app:layout_constraintHorizontal_bias="0.455" />
 
     <EditText
         android:id="@+id/password2"
@@ -61,7 +61,7 @@
         android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginBottom="13dp"
-        app:layout_constraintBottom_toTopOf="@+id/show_password"
+        app:layout_constraintBottom_toTopOf="@+id/showPassword"
         app:layout_constraintHorizontal_bias="0.495" />
 
     <EditText
@@ -104,9 +104,13 @@
         app:layout_constraintHorizontal_bias="0.495" />
 
     <EditText
-        android:id="@+id/firstName"
+        android:id="@+id/username"
         android:layout_width="292dp"
         android:layout_height="38dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="188dp"
         android:background="#f8f8ff"
         android:ems="10"
         android:fontFamily="sans-serif"
@@ -114,10 +118,11 @@
         android:inputType="textPersonName"
         android:textColorHint="#454A54"
         android:textColor="#454A54"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginLeft="8dp"
+        android:textColorHint="#454A54"
+        app:layout_constraintBottom_toTopOf="@+id/email"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="188dp"
         android:layout_marginBottom="8dp"

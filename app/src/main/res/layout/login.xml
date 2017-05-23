@@ -29,7 +29,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/create_account"
+        android:id="@+id/createAccountPrimary"
         android:layout_width="292dp"
         android:layout_height="48dp"
         android:layout_marginBottom="202dp"
@@ -46,7 +46,7 @@
         app:layout_constraintHorizontal_bias="0.495" />
 
     <Button
-        android:id="@+id/login_button"
+        android:id="@+id/loginButton"
         android:layout_width="130dp"
         android:layout_height="41dp"
         android:layout_marginBottom="11dp"
@@ -55,12 +55,12 @@
         android:onClick="logIn"
         android:text="Logga In"
         android:textColor="@android:color/white"
-        app:layout_constraintBottom_toTopOf="@+id/fb_login_button"
+        app:layout_constraintBottom_toTopOf="@+id/fbLoginButton"
         app:layout_constraintRight_toRightOf="parent" />
     <!--android:background="#1e96fe" make the login button very fat-->
 
     <com.facebook.login.widget.LoginButton
-        android:id="@+id/fb_login_button"
+        android:id="@+id/fbLoginButton"
         android:layout_width="294dp"
         android:layout_height="28dp"
         android:layout_centerInParent="true"
@@ -68,12 +68,12 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:onClick="fbLogIn"
-        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintBottom_toTopOf="@+id/noAccount"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
 
     <Button
-        android:id="@+id/glömtLösen"
+        android:id="@+id/passwordForgotten"
         android:layout_width="127dp"
         android:layout_height="37dp"
         android:layout_marginBottom="13dp"
@@ -84,11 +84,11 @@
         android:text="Glömt lösenord"
         android:textColor="#1e96fe"
         android:textSize="12sp"
-        app:layout_constraintBottom_toTopOf="@+id/fb_login_button"
+        app:layout_constraintBottom_toTopOf="@+id/fbLoginButton"
         app:layout_constraintLeft_toLeftOf="parent" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/noAccount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Inget Konto?"
@@ -96,7 +96,7 @@
         android:textSize="15sp"
         android:textStyle="bold"
         android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/create_account"
+        app:layout_constraintBottom_toTopOf="@+id/createAccountPrimary"
         android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginLeft="8dp"
@@ -116,7 +116,7 @@
         app:layout_constraintRight_toRightOf="parent" />
 
     <EditText
-        android:id="@+id/editText6"
+        android:id="@+id/passwordField"
         android:layout_width="294dp"
         android:layout_height="42dp"
         android:layout_marginLeft="0dp"

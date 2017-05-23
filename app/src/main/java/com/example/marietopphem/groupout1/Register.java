@@ -17,6 +17,7 @@ import handlers.HttpHandler;
 import handlers.HttpTask;
 import handlers.PassworHandler;
 import models.NewUser;
+import android.widget.EditText;
 
 /**
  * Created by marietopphem on 2017-05-05.

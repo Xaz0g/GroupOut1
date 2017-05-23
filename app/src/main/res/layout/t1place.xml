@@ -15,67 +15,72 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-    <SearchView
-        android:id="@+id/searchByPlace"
-        android:layout_width="300dp"
-        android:layout_height="40dp"
-        android:background="?attr/colorControlHighlight"
-        android:ems="10"
-        android:fontFamily="sans-serif"
-        android:inputType="text"
-        android:orientation="vertical"
-        android:text=" Sök"
-        android:textColor="#454A54"
-        android:visibility="visible"
-        tools:layout_editor_absoluteX="52dp"
-        tools:layout_editor_absoluteY="109dp"
-        android:layout_above="@+id/checkBollplan"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_toLeftOf="@+id/cancelButton"
-        android:layout_toStartOf="@+id/cancelButton"
-        android:layout_alignParentTop="true" />
-
     <Button
-        android:id="@+id/cancelButton"
+        android:id="@+id/searchButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Avbryt"
+        android:onClick="searchForPlace"
+        android:text="Sök"
         android:textAppearance="@style/TextAppearance.AppCompat.Caption"
         android:textSize="14sp"
         tools:layout_editor_absoluteX="50dp"
         tools:layout_editor_absoluteY="100dp"
-        android:layout_alignParentTop="true"
+        android:layout_below="@+id/section_label"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
     <CheckBox
-        android:id="@+id/checkBollplan"
+        android:id="@+id/checkBallCourt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/cancelButton"
         android:layout_marginTop="14dp"
         android:text="Bollplan"
-        android:textColor="?attr/colorAccent"
-        android:textStyle="bold|italic" />
+        android:textStyle="bold|italic"
+        android:layout_below="@+id/searchButton"
+        android:layout_alignParentEnd="true" />
 
     <CheckBox
-        android:id="@+id/checkUtegym"
+        android:id="@+id/checkOutdoorGym"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/checkMotionsspår"
-        android:layout_alignBottom="@+id/checkMotionsspår"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
+        android:layout_alignBaseline="@+id/checkBallCourt"
+        android:layout_alignBottom="@+id/checkBallCourt"
+        android:layout_toEndOf="@+id/section_label"
         android:text="Utegym"
-        android:textColor="?attr/colorAccent"
         android:textStyle="bold|italic" />
 
     <CheckBox
-        android:id="@+id/checkMotionsspår"
+        android:id="@+id/checkRunningTracks"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/checkBallCourt"
+        android:layout_alignBottom="@+id/checkBallCourt"
+        android:layout_centerHorizontal="true"
+        android:text="Motionsspår"
+        android:textStyle="bold|italic" />
+
+    <EditText
+        android:id="@+id/placeSearchTextField"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/searchButton"
+        android:layout_marginLeft="37dp"
+        android:layout_marginStart="37dp"
+        android:layout_toRightOf="@+id/section_label"
+        android:ems="10"
+        android:hint="Sök"
+        android:inputType="textPersonName" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@android:drawable/ic_menu_search"
+        android:layout_alignBottom="@+id/placeSearchTextField"
+        android:layout_toRightOf="@+id/section_label"
+        android:layout_toEndOf="@+id/section_label" />
         android:layout_alignBaseline="@+id/checkBollplan"
         android:layout_alignBottom="@+id/checkBollplan"
         android:layout_centerHorizontal="true"
