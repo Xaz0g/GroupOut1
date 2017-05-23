@@ -1,4 +1,4 @@
-package com.example.marietopphem.groupout1;
+package models;
 
 /**
  * Created by Elina on 2017-05-23.

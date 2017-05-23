@@ -14,6 +14,7 @@ import com.example.marietopphem.groupout1.R;
 
 import java.util.List;
 
+import models.EveObject;
 import models.Event;
 
 /**
@@ -23,11 +24,11 @@ import models.Event;
 public class EventListAdapter extends BaseAdapter{
 
     private Context mContext;
-    private List<Event> mEventList;
+    private List<EveObject> mEventList;
 
     DescriptionPopUp dpu;
 
-    public EventListAdapter(Context mContext, List<Event> mEventList) {
+    public EventListAdapter(Context mContext, List<EveObject> mEventList) {
         this.mContext = mContext;
         this.mEventList = mEventList;
     }
@@ -67,14 +68,14 @@ public class EventListAdapter extends BaseAdapter{
 
         //set text for textview
         eventName.setText(mEventList.get(position).getName());
-        placeName.setText(mEventList.get(position).getPlace());
-        date.setText(mEventList.get(position).getDate());
+        placeName.setText(mEventList.get(position).getPlaceId());
+        date.setText(mEventList.get(position).getEventDate());
         startTime.setText(mEventList.get(position).getStartTime());
         endTime.setText(mEventList.get(position).getEndTime());
-        participants.setText(mEventList.get(position).getParticipants());
+        participants.setText(mEventList.get(position).getRegistration());
         difficulty.setText(mEventList.get(position).getDifficulty());
 
-        if(!mEventList.get(position).isLeader()){
+       /* if(!mEventList.get(position){
             settings.setVisibility(View.GONE);
             owner.setText("Du är anmäld");
             deleteBtn.setOnClickListener(new View.OnClickListener(){
@@ -119,7 +120,7 @@ public class EventListAdapter extends BaseAdapter{
 
                 }
             } );
-        }
+        }*/
 
 
         v.setTag(mEventList.get(position).getStartTime());

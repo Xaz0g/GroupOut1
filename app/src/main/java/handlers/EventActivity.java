@@ -1,10 +1,13 @@
-package com.example.marietopphem.groupout1;
+package handlers;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import android.util.Log;
 
 import java.util.ArrayList;
+
+import models.EveObject;
+
 /**
  * Created by Elina on 2017-05-23.
  */

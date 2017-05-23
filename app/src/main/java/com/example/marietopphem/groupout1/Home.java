@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import handlers.EventListAdapter;
+import models.EveObject;
 import models.Event;
 
 /**
@@ -27,7 +28,7 @@ public class Home extends AppCompatActivity{
 
     private ListView lvEvent;
     private EventListAdapter adapter;
-    private List<Event> eventList;
+    private List<EveObject> eventList;
 
 
 
@@ -41,7 +42,7 @@ public class Home extends AppCompatActivity{
 
         lvEvent = (ListView) findViewById(R.id.listView);
 
-        eventList = new ArrayList<>();
+        /*eventList = new ArrayList<>();
         //add data
         eventList.add(new Event("Hoppning", "Hagaparken", "20170501", "10:00", "12:00", "6", "4", "Hej", true));
         eventList.add(new Event("Springa", "Utegym", "20170501", "10:00", "12:00", "6", "4", "Fångad av en stormvind!", false));
@@ -49,7 +50,7 @@ public class Home extends AppCompatActivity{
         eventList.add(new Event("Pilla", "Hagaparken", "20170501","10:00", "12:00", "6", "4", "Kolla här!", false));
 
         adapter = new EventListAdapter(getApplicationContext(), eventList);
-        lvEvent.setAdapter(adapter);
+        lvEvent.setAdapter(adapter);*/
 
         lvEvent.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
