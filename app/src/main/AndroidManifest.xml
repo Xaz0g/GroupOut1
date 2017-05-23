@@ -39,18 +39,19 @@
             android:label="@string/app_name" />
         <activity
             android:name=".Create"
-            android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".Settings"
-            android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".Search"
-            android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".PlaceFinder"
-            android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
-
-
+            android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity
+            android:name="handlers.DescriptionPopUp"
+            android:theme="@style/AppTheme.DescriptionTheme"></activity>
 
     </application>
 
