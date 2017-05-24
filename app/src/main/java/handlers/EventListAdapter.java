@@ -82,7 +82,7 @@ public class EventListAdapter extends BaseAdapter{
         participants.setText(mEventList.get(position).getRegistration());
         difficulty.setText(mEventList.get(position).getDifficulty());
 
-       if(mEventList.get(position).getLeaderId()!=userId){
+       if(!(mEventList.get(position).getLeaderId() !=userId)){
             settings.setVisibility(View.GONE);
             owner.setText("Du är anmäld");
             deleteBtn.setOnClickListener(new View.OnClickListener(){
