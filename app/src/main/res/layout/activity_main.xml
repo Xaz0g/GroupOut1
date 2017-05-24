@@ -11,10 +11,10 @@
 
 
     <android.support.constraint.ConstraintLayout
-        android:id="@+id/content"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="8.49">
+    android:id="@+id/content"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="8.49">
 
         <TextView
             android:id="@+id/textView"
@@ -80,7 +80,9 @@
         android:layout_weight="1"
         android:background="?android:attr/windowBackground"
         app:menu="@menu/navigation"
-        android:gravity="bottom">
+        android:gravity="bottom"
+        app:itemIconTint="@drawable/tab_marked"
+        app:itemTextColor="@drawable/tab_marked">
 
     </android.support.design.widget.BottomNavigationView>
 
