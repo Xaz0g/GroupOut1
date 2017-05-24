@@ -15,30 +15,34 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-    <SearchView
+
+    <EditText
         android:id="@+id/placeSearchTextField"
-        android:layout_width="300dp"
-        android:layout_height="40dp"
-        android:background="?attr/colorControlHighlight"
-        android:ems="10"
-        android:fontFamily="sans-serif"
-        android:inputType="text"
-        android:orientation="vertical"
-        android:text=" Sök"
-        android:textColor="#454A54"
-        android:visibility="visible"
-        tools:layout_editor_absoluteX="52dp"
-        tools:layout_editor_absoluteY="109dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/searchButton"
+        android:ems="13"
+        android:textSize="15dp"
+        android:textStyle="italic"
+        android:hint="Sök på en plats"
+        android:inputType="textPersonName"
+        android:layout_toRightOf="@+id/imageView4"
+        android:layout_toEndOf="@+id/imageView4" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@android:drawable/ic_menu_search"
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/section_label"
-        android:layout_toLeftOf="@+id/cancelButton"
-        android:layout_toStartOf="@+id/cancelButton" />
+        android:layout_toEndOf="@+id/section_label" />
 
     <Button
         android:id="@+id/cancelButton"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:text="Avbryt"
+        android:text="Sök"
         android:textAppearance="@style/TextAppearance.AppCompat.Caption"
         android:textSize="14sp"
         tools:layout_editor_absoluteX="50dp"
