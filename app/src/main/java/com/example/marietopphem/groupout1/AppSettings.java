@@ -37,7 +37,7 @@ public class AppSettings extends Activity{
             }
 
             //Send status of email, name, password & notificationSwitch to server then change view to home
-            Intent i = new Intent(Settings.this, Home.class);
+            Intent i = new Intent(AppSettings.this, Home.class);
             startActivity(i);
         }
     }

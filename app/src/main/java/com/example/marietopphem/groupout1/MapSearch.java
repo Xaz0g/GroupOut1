@@ -33,7 +33,7 @@ public class MapSearch extends Fragment {
     //OBS! denna metod aktiveras inte och kan därför inte kolla om den är korrekt
     public void searchOnMap(View v){
         if(v.getId() == R.id.searchButton){
-            EditText s = (EditText) getView().findViewById(R.id.mapSearchTextField);
+            EditText s = (EditText) getView().findViewById(R.id.searchByMap);
             String searchMap = s.getText().toString();
 
             //Check string searchMap towards server and place on map
