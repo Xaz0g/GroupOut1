@@ -141,7 +141,19 @@ public class Create extends AppCompatActivity {
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute){
                 st = (TextView) findViewById(R.id.choose_starttime);
-                st.setText(hourOfDay + ":" + minute);
+                if(hourOfDay<10){
+                    if(minute<10){
+                        st.setText("0" + hourOfDay + ":" + "0" + minute);
+                    }else{
+                        st.setText("0" + hourOfDay + ":" + minute);
+                    }
+                }else{
+                    if(minute<10){
+                        st.setText(hourOfDay + ":" + "0" + minute);
+                    }else{
+                        st.setText(hourOfDay + ":" + minute);
+                    }
+                }
 
             }
         }, startHour, startMinute, true);
@@ -156,7 +168,19 @@ public class Create extends AppCompatActivity {
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute){
                 ft = (TextView) findViewById(R.id.choose_end_time);
-                ft.setText(hourOfDay + ":" + minute);
+                if(hourOfDay<10){
+                    if(minute<10){
+                        ft.setText("0" + hourOfDay + ":" + "0" + minute);
+                    }else{
+                        ft.setText("0" + hourOfDay + ":" + minute);
+                    }
+                }else{
+                    if(minute<10){
+                        ft.setText(hourOfDay + ":" + "0" + minute);
+                    }else{
+                        ft.setText(hourOfDay + ":" + minute);
+                    }
+                }
 
             }
         }, finishHour, finishMinute, true);
