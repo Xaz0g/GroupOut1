@@ -13,6 +13,7 @@ public class Event {
     private String endTime;
     private String participants;
     private String difficulty;
+    private String description;
 
     public boolean isLeader() {
         return leader;
@@ -20,7 +21,7 @@ public class Event {
 
     private boolean leader;
 
-    public Event(String name, String place, String date, String startTime, String endTime, String participants, String difficulty, boolean leader) {
+    public Event(String name, String place, String date, String startTime, String endTime, String participants, String difficulty, String description, boolean leader) {
 
         this.name = name;
         this.place = place;
@@ -29,6 +30,7 @@ public class Event {
         this.endTime = endTime;
         this.participants = participants;
         this.difficulty = difficulty;
+        this.description = description;
         this.leader = leader;
     }
 
@@ -86,6 +88,14 @@ public class Event {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
 }

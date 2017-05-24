@@ -73,7 +73,7 @@ public class Create extends AppCompatActivity {
         placeText = (TextView) findViewById(R.id.textView4);
 
         diff = (RadioGroup) findViewById(R.id.radioGroup);
-        RadioButton but = (RadioButton) findViewById(R.id.level3);
+        RadioButton but = (RadioButton) findViewById(R.id.level1);
         but.setChecked(true);
 
         sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this.getBaseContext());
@@ -171,6 +171,18 @@ public class Create extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onResume(){
+        super.onResume();
+        String str = sharedPrefs.getString("Name", "FAIL");
+
+        Log.d(TAG, str);
+        if(!str.equalsIgnoreCase("FAIL")){
+            placeText.setText(str);
+        }
+
+    }
+
     public void createEvent(View view){
         if (view.getId()== R.id.create_activity){
 
@@ -188,8 +200,7 @@ public class Create extends AppCompatActivity {
                 try {
                     String httpResponse = new HttpTask().execute("put", HttpHandler.newEvent(json+ "/" + token)).get();
                     Log.d(TAG, "httpResponse " + httpResponse);
-                    Intent i = new Intent(Create.this, Home.class);
-                    startActivity(i);
+                    finish();
                 } catch (InterruptedException e1) {
                     Log.d(TAG, "InterruptedException " + e1.getMessage());
                 } catch (ExecutionException e1) {
@@ -199,10 +210,11 @@ public class Create extends AppCompatActivity {
         }
     }
 
+
     private NewEvent createNewEvent() {
         NewEvent e = new NewEvent();
         e.setName(nameField.getText().toString());
-        e.setPlaceId(placeText.getText().toString());       //temp
+        e.setPlaceId(sharedPrefs.getString("Id","FAIL"));       //temp
         e.setEventDate(new Date(year_x - 1900, month_x, day_x));
         int[] tempStart = parseTime(st.getText().toString());
         e.setStartTime(new Time(tempStart[0],tempStart[1],0));
@@ -356,9 +368,9 @@ public class Create extends AppCompatActivity {
 
     private boolean checkPlace()
     {
-        String place = placeText.getText().toString();
-        Log.d(TAG, "Place : " + place);
-        return !place.equalsIgnoreCase("Välj plats");
+        String s = sharedPrefs.getString("Id","FAIL");
+        Log.d(TAG, s);
+        return !s.equalsIgnoreCase("fail");
     }
 
     private int[] parseTime(String time){
