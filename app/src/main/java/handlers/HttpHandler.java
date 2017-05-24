@@ -19,6 +19,8 @@ public class HttpHandler
     private static final String LOGIN = "login/";
     private static final String NEW_EVENT = "newEvent/";
     private static final String SEARCH = "search/";
+    private static final String USER_ID = "userId/";
+    private static final String GET_EVENT = "getEvent/";
 
     private static final String GET_SALT = "getSalt/";
 
@@ -52,5 +54,15 @@ public class HttpHandler
     public static String searchForPlace(String category, String searchTerm)
     {
         return  HOST_ADRESS + PLACE + SEARCH + category + "/" + searchTerm;
+    }
+
+    public static String userId(String token)
+    {
+        return HOST_ADRESS + USER + USER_ID + token;
+    }
+
+    public static String getEvent(String by, String token, String parameter){
+
+        return HOST_ADRESS + EVENT + GET_EVENT + by + "/" + token + "/" + parameter;
     }
 }

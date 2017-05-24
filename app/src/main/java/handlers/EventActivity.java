@@ -13,8 +13,6 @@ import models.EveObject;
  */
 
 public class EventActivity {
-    static EventActivity program = new EventActivity();
-    private ArrayList<EveObject> eveList = new ArrayList<>();
     private static String JSON_EVENT_DATA =
             "["
                     + " { "+" \"id\" : \"12\","
@@ -64,13 +62,15 @@ public class EventActivity {
                     + "]"
             ;
 
-    public void parseJSON () throws JSONException{
-        final JSONArray events = new JSONArray(JSON_EVENT_DATA);
-        final int n = events.length();
+    public static ArrayList<EveObject> parseJSON (String json) throws JSONException{
+        JSONArray events = new JSONArray(json);
+        int n = events.length();
+
+        ArrayList<EveObject> eveList = new ArrayList<>();
 
         for(int i = 0; i < n; i++){
 
-            final JSONObject event = events.getJSONObject(i);
+            JSONObject event = events.getJSONObject(i);
 
             int id = event.getInt("id");
             int leaderId = event.getInt("leaderId");
@@ -92,16 +92,7 @@ public class EventActivity {
             eveList.add(eve);
 
         }
-        Log.v("Print that shit", eveList.toString());
-    }
 
-    public static void main(String[]args)  {
-        try {
-            program.parseJSON();
-        } catch (JSONException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-
+        return eveList;
     }
 }

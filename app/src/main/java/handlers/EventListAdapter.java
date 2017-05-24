@@ -3,6 +3,8 @@ package handlers;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.widget.BaseAdapter;
 import android.view.ViewGroup;
 import android.view.View;
@@ -25,7 +27,7 @@ public class EventListAdapter extends BaseAdapter{
 
     private Context mContext;
     private List<EveObject> mEventList;
-
+    private int userId;
     DescriptionPopUp dpu;
 
     public EventListAdapter(Context mContext, List<EveObject> mEventList) {
@@ -33,6 +35,10 @@ public class EventListAdapter extends BaseAdapter{
         this.mEventList = mEventList;
     }
 
+
+    public void setUserId(int id){
+        userId = id;
+    }
 
     @Override
     public int getCount(){
@@ -52,6 +58,7 @@ public class EventListAdapter extends BaseAdapter{
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         View v = View.inflate(mContext, R.layout.item_list, null);
+
         Button deleteBtn = (Button)v.findViewById(R.id.delete_btn);
         Button infoBtn = (Button)v.findViewById(R.id.info_btn);
         Button settings = (Button)v.findViewById(R.id.settings);
@@ -75,7 +82,7 @@ public class EventListAdapter extends BaseAdapter{
         participants.setText(mEventList.get(position).getRegistration());
         difficulty.setText(mEventList.get(position).getDifficulty());
 
-       /* if(!mEventList.get(position){
+       if(mEventList.get(position).getLeaderId()!=userId){
             settings.setVisibility(View.GONE);
             owner.setText("Du är anmäld");
             deleteBtn.setOnClickListener(new View.OnClickListener(){
@@ -99,7 +106,7 @@ public class EventListAdapter extends BaseAdapter{
             } );
 
 
-        }else if(mEventList.get(position).isLeader()){
+        }else{
 
             settings.setOnClickListener(new View.OnClickListener(){
                 @Override
@@ -120,7 +127,7 @@ public class EventListAdapter extends BaseAdapter{
 
                 }
             } );
-        }*/
+        }
 
 
         v.setTag(mEventList.get(position).getStartTime());

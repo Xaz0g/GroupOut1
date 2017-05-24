@@ -140,12 +140,12 @@ public class EveObject {
         return minCapacity;
     }
 
-    public int getRegistration (){
-        return registration;
+    public String getRegistration (){
+        return "" + registration;
     }
 
-    public int getDifficulty(){
-        return difficulty;
+    public String getDifficulty(){
+        return "" + difficulty;
     }
     public String toString(){
         return name + "\n" + category + "\n" + description + "\n" + placeId + "\n" + eventDate + "\n" + startTime + "\n" + endTime + "\n" + visible + "\n" + id + "\n" + leaderId + "\n" + minCapacity + "\n" + maxCapacity + "\n" + registration + "\n" + difficulty + "\n" + "\n";
