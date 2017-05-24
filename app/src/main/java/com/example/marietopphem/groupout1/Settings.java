@@ -21,6 +21,7 @@ public class Settings extends Activity{
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        navigation.getMenu().getItem(3).setChecked(true);
     }
 
     public void save_settings(View v){

@@ -68,6 +68,7 @@ public class Create extends AppCompatActivity {
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        navigation.getMenu().getItem(2).setChecked(true);
 
         nameField = (EditText) findViewById(R.id.event_name_maker);
         year_x = c.get(Calendar.YEAR);
