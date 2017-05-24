@@ -48,12 +48,12 @@
             tools:layout_editor_absoluteY="109dp"
             android:layout_toRightOf="@+id/section_label"
             android:layout_alignParentTop="true"
-            android:layout_toLeftOf="@+id/cancelButton"
-            android:layout_toStartOf="@+id/cancelButton"
-            android:layout_alignBottom="@+id/cancelButton" />
+            android:layout_toLeftOf="@+id/searhPlaceBtn"
+            android:layout_toStartOf="@+id/searhPlaceBtn"
+            android:layout_alignBottom="@+id/searhPlaceBtn" />
 
         <Button
-            android:id="@+id/cancelButton"
+            android:id="@+id/searhPlaceBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
