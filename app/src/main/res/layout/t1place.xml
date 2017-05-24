@@ -16,7 +16,7 @@
         android:layout_height="wrap_content" />
 
     <SearchView
-        android:id="@+id/searchByPlace"
+        android:id="@+id/placeSearchTextField"
         android:layout_width="300dp"
         android:layout_height="40dp"
         android:background="?attr/colorControlHighlight"
@@ -29,28 +29,26 @@
         android:visibility="visible"
         tools:layout_editor_absoluteX="52dp"
         tools:layout_editor_absoluteY="109dp"
-        android:layout_above="@+id/checkBollplan"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/section_label"
         android:layout_toLeftOf="@+id/cancelButton"
-        android:layout_toStartOf="@+id/cancelButton"
-        android:layout_alignParentTop="true" />
+        android:layout_toStartOf="@+id/cancelButton" />
 
     <Button
         android:id="@+id/cancelButton"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:text="Avbryt"
         android:textAppearance="@style/TextAppearance.AppCompat.Caption"
         android:textSize="14sp"
         tools:layout_editor_absoluteX="50dp"
         tools:layout_editor_absoluteY="100dp"
-        android:layout_alignParentTop="true"
+        android:layout_alignBottom="@+id/placeSearchTextField"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
     <CheckBox
-        android:id="@+id/checkBollplan"
+        android:id="@+id/checkBallCourt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
@@ -61,11 +59,11 @@
         android:textStyle="bold|italic" />
 
     <CheckBox
-        android:id="@+id/checkUtegym"
+        android:id="@+id/checkOutdoorGym"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/checkMotionsspår"
-        android:layout_alignBottom="@+id/checkMotionsspår"
+        android:layout_alignBaseline="@+id/checkRunningTracks"
+        android:layout_alignBottom="@+id/checkRunningTracks"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:text="Utegym"
@@ -73,11 +71,11 @@
         android:textStyle="bold|italic" />
 
     <CheckBox
-        android:id="@+id/checkMotionsspår"
+        android:id="@+id/checkRunningTracks"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/checkBollplan"
-        android:layout_alignBottom="@+id/checkBollplan"
+        android:layout_alignBaseline="@+id/checkBallCourt"
+        android:layout_alignBottom="@+id/checkBallCourt"
         android:layout_centerHorizontal="true"
         android:text="Motionsspår"
         android:textColor="?attr/colorAccent"
@@ -102,7 +100,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Button"
         android:textColor="?attr/colorAccent"
         android:textSize="14sp"
-        android:layout_below="@+id/checkUtegym"
+        android:layout_below="@+id/checkOutdoorGym"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 

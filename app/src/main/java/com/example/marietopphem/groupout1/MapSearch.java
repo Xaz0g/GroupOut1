@@ -10,7 +10,8 @@ import android.support.v4.app.Fragment;
         import android.view.LayoutInflater;
         import android.view.View;
         import android.view.ViewGroup;
-        import android.widget.TextView;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -29,7 +30,13 @@ public class MapSearch extends Fragment {
         return rootView;
     }
 
+    //OBS! denna metod aktiveras inte och kan därför inte kolla om den är korrekt
+    public void searchOnMap(View v){
+        if(v.getId() == R.id.searchButton){
+            EditText s = (EditText) getView().findViewById(R.id.searchByMap);
+            String searchMap = s.getText().toString();
 
-
-
+            //Check string searchMap towards server and place on map
+        }
+    }
 }
