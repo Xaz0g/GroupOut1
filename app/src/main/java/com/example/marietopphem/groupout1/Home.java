@@ -81,7 +81,7 @@ public class Home extends AppCompatActivity{
                     startActivity(search);
                     return true;
                 case R.id.navigation_settings:
-                    Intent settings = new Intent(Home.this, Settings.class);
+                    Intent settings = new Intent(Home.this, AppSettings.class);
                     startActivity(settings);
                     return true;
             }

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Build;
+import android.provider.Settings;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -24,21 +25,44 @@ import java.util.ArrayList;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
-     GoogleMap mMap;
+
+    GoogleMap mMap;
     ArrayList<PositionObject> javaPositions = new ArrayList<>();
-    public  static  String JSON_DATA= ""; // här ska httprequestet pushas
-
-
-
 
     private LocationManager locationManager;
     private LocationListener locationListener;
+
+    public static String JSON_DATA =
+            "[ "
+                    + "    {" + "  \"GeographicalPosition\" : {" + "    \"X\" : \"59.333988302200886\","
+                    + "    \"Y\" : \"18.04795240339837\"" + "  },"
+                    + " \"Id\" : \"35eb5586-74df-447b-b2df-ca055e3e9ec5\","
+                    + " \"Name\" : \"Kungsholms strandstigs utegym\" " + "  },"
+
+                    + "{" + "  \"GeographicalPosition\" : {" + "    \"X\" : \"59.37105799218928\","
+                    + "    \"Y\" : \"18.058316113699362\"" + "  },"
+                    + " \"Id\" : \"9013d8c9-b162-42ed-b256-b9d448961853\","
+                    + " \"Name\" : \"Lappkärrsbergets utegym, Docentbacken\" " + "  },"
+
+                    + "{" + "  \"GeographicalPosition\" : {" + "    \"X\" : \"59.339124550592736\","
+                    + "    \"Y\" : \"18.040644423563727\"" + "  },"
+                    + " \"Id\" : \"fb6ad163-513b-4962-ac3c-17c484ef2bb6\"," + " \"Name\" : \"Vasaparkens utegym\" "
+                    + "  },"
+
+                    + "{" + "  \"GeographicalPosition\" : {" + "    \"X\" : \"59.340671511858346\","
+                    + "    \"Y\" : \"18.009912671835714\"" + "  },"
+                    + " \"Id\" : \"90f749ae-96ab-4d73-a6f2-22c14846e095\","
+                    + " \"Name\" : \"Hornsbergs strands utegym\" " + "  }"
+                    + " ]"
+            ;
 
 
     public boolean locationServiceBoolean(Context context) {
         int locationMode = 0;
         String locationProviders;
         boolean logCheckTest = false;
+
+        Log.v("locationServiceBoolean", "first locationServiceBoolean initiated");
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             try {
@@ -49,43 +73,50 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 return false;
             }
 
-                if (locationMode != Settings.Secure.LOCATION_MODE_OFF) {
-                    logCheckTest = true;
-                }
-                Log.v("locationServiceBoolean", "Hejhej123" + logCheckTest + " " + locationMode);
-                return locationMode != Settings.Secure.LOCATION_MODE_OFF;
-
-            } else {
-                locationProviders = Settings.Secure.getString(context.getContentResolver(), Settings.Secure.LOCATION_PROVIDERS_ALLOWED);
-                Log.v("locationServiceBoolean", "tjotjo456" + logCheckTest + " " + locationProviders + " " + locationMode);
-                return !TextUtils.isEmpty(locationProviders);
+            if (locationMode != Settings.Secure.LOCATION_MODE_OFF) {
+                logCheckTest = true;
             }
+            Log.v("locationServiceBoolean", "second locationServiceBoolean initiated");
+            Log.v("locationServiceBoolean", "Hejhej123" + logCheckTest + " " + locationMode);
+            return locationMode != Settings.Secure.LOCATION_MODE_OFF;
 
-
+        } else {
+            locationProviders = Settings.Secure.getString(context.getContentResolver(), Settings.Secure.LOCATION_PROVIDERS_ALLOWED);
+            Log.v("locationServiceBoolean", "third locationServiceBoolean initiated");
+            Log.v("locationServiceBoolean", "tjotjo456" + logCheckTest + " " + locationProviders + " " + locationMode);
+            return !TextUtils.isEmpty(locationProviders);
         }
 
 
+    }
 
 
     public void locationServiceChecker(){
-        if(locationServiceBoolean()){
-            LatLng userPosition = new LatLng(xxxx, xxxx);
+        Log.v("locationServiceChecker", "first locationServiceChecker initiated");
+        if(locationServiceBoolean(this)){
+            LatLng userPosition = new LatLng(59.911491, 10.757933);
             mMap.moveCamera(CameraUpdateFactory.newLatLng(userPosition));
         }
         else {
             LatLng stockholm = new LatLng(59.334591, 18.063240);
             mMap.moveCamera(CameraUpdateFactory.newLatLng(stockholm));
         }
+        Log.v("locationServiceChecker", "second locationServiceChecker initiated");
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.v("onCreate", "first onCreate initiated");
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_maps);
+        setContentView(R.layout.map_div);
+
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+        Log.v("onCreate", "second onCreate initiated");
+        methodTesting();
+
     }
 
 

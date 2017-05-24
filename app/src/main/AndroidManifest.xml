@@ -41,7 +41,7 @@
             android:name=".Create"
             android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
         <activity
-            android:name=".Settings"
+            android:name=".AppSettings"
             android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
         <activity
             android:name=".Search"

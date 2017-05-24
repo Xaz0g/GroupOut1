@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#e6e7ef"
-    tools:context="com.example.marietopphem.groupout1.Settings"
+    tools:context="com.example.marietopphem.groupout1.AppSettings"
     tools:layout_editor_absoluteY="25dp"
     tools:layout_editor_absoluteX="0dp">
 

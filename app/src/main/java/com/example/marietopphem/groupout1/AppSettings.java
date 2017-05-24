@@ -9,7 +9,7 @@ import android.view.View;
  * Created by Elina on 2017-05-10.
  */
 
-public class Settings extends Activity{
+public class AppSettings extends Activity{
 
     @Override
     public void onCreate(Bundle savedInstanceState){
@@ -18,7 +18,7 @@ public class Settings extends Activity{
     }
 
     public void save_settings(View v){
-        Intent i = new Intent(Settings.this, Home.class);
+        Intent i = new Intent(AppSettings.this, Home.class);
         startActivity(i);
     }
 }
