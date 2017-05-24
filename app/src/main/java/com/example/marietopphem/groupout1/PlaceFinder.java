@@ -12,7 +12,13 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.json.JSONException;
+
+import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
 import handlers.HttpHandler;
@@ -59,12 +65,19 @@ public class PlaceFinder extends AppCompatActivity {
             try {
                 String response = new HttpTask().execute("GET",httpRequest).get();
                 Log.d("PSEARCH", response);
+
+                JSONArray array = new JSONArray(response);
+
+                placeFinderAdapter.fp.setRetrievedPlaces(array, sharedPrefs);
+
             } catch (InterruptedException e)
             {
                 Log.e("PSEARCH",e.getMessage());
             }
             catch (ExecutionException e)
             {
+                Log.e("PSEARCH",e.getMessage());
+            } catch (JSONException e) {
                 Log.e("PSEARCH",e.getMessage());
             }
         }
