@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/cardview_dark_background">
@@ -8,19 +10,28 @@
         android:id="@+id/descriptionView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="229dp"
-        android:textColor="@color/Text" />
+        android:textColor="@color/Text"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toTopOf="@+id/okBtn"
+        android:layout_marginStart="7dp"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="95dp"
+        app:layout_constraintLeft_toRightOf="@+id/okBtn"
+        android:layout_marginLeft="7dp" />
 
     <Button
         android:id="@+id/okBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/descriptionView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="45dp"
         android:onClick="okButton"
-        android:text="OK" />
+        android:text="OK"
+        />
 
-</RelativeLayout>
+    <com.facebook.share.widget.ShareButton
+        android:layout_width="wrap_content"
+        android:layout_height="44dp"
+        android:background="@color/com_facebook_blue"
+        android:id="@+id/shareButton"
+        />
+
+</android.support.constraint.ConstraintLayout>

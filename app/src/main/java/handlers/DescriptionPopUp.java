@@ -30,7 +30,7 @@ public class DescriptionPopUp extends Activity {
 
         int width = dm.widthPixels;
         int height = dm.heightPixels;
-        getWindow().setLayout((int)(width*.5), (int)(height*.5));
+        getWindow().setLayout((int)(width*.87), (int)(height*.75));
 
         String description;
         Bundle extras = getIntent().getExtras();
@@ -48,4 +48,6 @@ public class DescriptionPopUp extends Activity {
         Intent i = new Intent(DescriptionPopUp.this, Home.class);
         startActivity(i);
     }
+
+
 }
