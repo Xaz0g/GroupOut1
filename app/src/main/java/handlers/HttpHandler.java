@@ -1,5 +1,6 @@
 package handlers;
 
+import android.content.SharedPreferences;
 import android.util.Log;
 
 /**
@@ -24,6 +25,8 @@ public class HttpHandler
     private static final String GET_EVENT = "getEvent/";
     private static final String FAVOIRTE = "favorite/";
     private static final String CHECK_PARTICIPATION = "checkParticipation/";
+    private static final String NEW_PARTICIPATION = "newParticipation/";
+    private static final String CANCEL_PARTICIPATION = "cancelParticipation/";
 
     private static final String GET_SALT = "getSalt/";
     private static final String GET = "get/";
@@ -83,5 +86,15 @@ public class HttpHandler
     public static String checkParticipation(String token, int id){
 
         return HOST_ADRESS + PARTICIPATION + CHECK_PARTICIPATION + token + "/" + id;
+    }
+
+    public static String newParticipation(String token, int eventId)
+    {
+        return HOST_ADRESS + PARTICIPATION + NEW_PARTICIPATION + token + "/" + eventId;
+    }
+
+    public static String cancelParticipation(String token, int eventId)
+    {
+        return HOST_ADRESS + PARTICIPATION + CANCEL_PARTICIPATION + token + "/" + eventId;
     }
 }

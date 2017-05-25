@@ -8,6 +8,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,6 +33,7 @@ public class PlaceActivity extends AppCompatActivity {
     JSONArray eventsOnPlace;
     ListView listv;
     Bundle extras;
+
 
     SharedPreferences sharedPrefs;
 
@@ -60,6 +63,21 @@ public class PlaceActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long name) {
                 String value = (String)placeEventAdapter.getItem(position);
                 Log.d("PLASEA", value);
+            }
+        });
+
+        CheckBox addFav = (CheckBox) findViewById(R.id.addFavorite);
+        addFav.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked)
+                {
+                    Log.d("AddFav", "true");
+                }
+                else
+                {
+                    Log.d("AddFav", "false");
+                }
             }
         });
 
@@ -100,13 +118,14 @@ public class PlaceActivity extends AppCompatActivity {
             String startTime = eventsOnPlace.getJSONObject(i).getString("startTime");
             String endTime = eventsOnPlace.getJSONObject(i).getString("endTime");
             Boolean visible = eventsOnPlace.getJSONObject(i).getBoolean("visible");
+            Boolean participating = eventsOnPlace.getJSONObject(i).getBoolean("participating");
             int id = eventsOnPlace.getJSONObject(i).getInt("id");
             int leaderId = eventsOnPlace.getJSONObject(i).getInt("leaderId");
             int minCapacity = eventsOnPlace.getJSONObject(i).getInt("minCapacity");
             int maxCapacity = eventsOnPlace.getJSONObject(i).getInt("maxCapacity");
             int registration = eventsOnPlace.getJSONObject(i).getInt("registration");
             int difficulty = eventsOnPlace.getJSONObject(i).getInt("difficulty");
-            eventListing.add(new EveObject(name, category, description, placeId, eventDate, startTime, endTime, visible, id, leaderId, minCapacity, maxCapacity, registration, difficulty));
+            eventListing.add(new EveObject(name, category, description, placeId, eventDate, startTime, endTime, visible, id, leaderId, minCapacity, maxCapacity, registration, difficulty, participating));
         }
 
         placeEventAdapter.notifyDataSetChanged();
