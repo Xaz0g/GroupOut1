@@ -9,8 +9,6 @@
     android:paddingBottom="5dp"
     android:paddingTop="5dp"
     android:background="#6c6a6a"
-
-
     android:weightSum="1">
 
 
@@ -105,7 +103,7 @@
         android:layout_toEndOf="@+id/date_maker" />
 
     <Button
-        android:id="@+id/delete_btn"
+        android:id="@+id/settings"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:background="@drawable/ic_settings_black_24dp"

@@ -1,59 +1,78 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center"
+        android:padding="5dp"
+        android:text="My label"/>
+
+    <ImageView
+        android:id="@+id/mapDiv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitCenter"
+        android:background="@layout/activity_maps"/>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:theme="@style/Theme.AppCompat.NoActionBar"
-    tools:context="com.example.marietopphem.groupout1.Search$PlacehodlerFragement">
+    tools:context="com.example.marietopphem.groupout1.Search$PlaceholderFragment">
 
-<TextView
+        <TextView
         android:id="@+id/section_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
     <SearchView
-        android:id="@+id/sökTxt"
+        android:id="@+id/searchByMap"
         android:layout_width="300dp"
         android:layout_height="40dp"
-        android:layout_marginTop="32dp"
         android:background="?attr/colorControlHighlight"
         android:ems="10"
         android:fontFamily="sans-serif"
         android:inputType="text"
         android:orientation="vertical"
-        android:text=" Sök"
-        android:visibility="visible"
+        android:text="Sök"
         android:textColor="#454A54"
+        android:visibility="visible"
         tools:layout_editor_absoluteX="52dp"
         tools:layout_editor_absoluteY="109dp"
-        android:layout_below="@+id/section_label"
-        android:layout_toStartOf="@+id/buttonSök" />
+        android:layout_toRightOf="@+id/section_label"
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@+id/cancelButton"
+        android:layout_toStartOf="@+id/cancelButton"
+        android:layout_alignBottom="@+id/cancelButton" />
 
     <Button
-        android:id="@+id/buttonSök"
+        android:id="@+id/cancelButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sök"
+        android:layout_alignParentEnd="true"
+        android:text="Avbryt"
         android:textAppearance="@style/TextAppearance.AppCompat.Caption"
         android:textSize="14sp"
         tools:layout_editor_absoluteX="50dp"
-        tools:layout_editor_absoluteY="100dp"
-        android:layout_alignTop="@+id/sökTxt"
-        android:layout_alignParentEnd="true"
-        android:layout_alignBottom="@+id/sökTxt" />
+        tools:layout_editor_absoluteY="100dp" />
 
-    <CheckBox
-        android:id="@+id/checkBox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/sökTxt"
-        android:layout_marginTop="18dp"
-        android:layout_toEndOf="@+id/section_label"
-        android:text="Eventplatser nära dig"
-        android:textColor="?attr/colorAccent"
-        android:textStyle="bold|italic" />
-
-</RelativeLayout>
+        <CheckBox
+            android:id="@+id/checkBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:text="Eventplatser nära dig"
+            android:textColor="?attr/colorAccent"
+            android:textStyle="bold|italic"
+            android:layout_below="@+id/mapSearchTextField"
+            android:layout_toRightOf="@+id/section_label"
+            android:layout_toEndOf="@+id/section_label" />
+    </RelativeLayout>
+</FrameLayout>

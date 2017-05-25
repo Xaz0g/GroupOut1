@@ -17,6 +17,7 @@ import handlers.HttpHandler;
 import handlers.HttpTask;
 import handlers.PassworHandler;
 import models.NewUser;
+import android.widget.EditText;
 
 /**
  * Created by marietopphem on 2017-05-05.
@@ -38,7 +39,7 @@ public class Register extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register);
-        nameField = (EditText)findViewById(R.id.firstName);
+        nameField = (EditText)findViewById(R.id.username);
         emailField = (EditText)findViewById(R.id.email);
         passwordField = (EditText)findViewById(R.id.password1);
         password2Field = (EditText)findViewById(R.id.password2);
@@ -49,7 +50,7 @@ public class Register extends Activity {
 
     public void createAccount(View view) {
 
-        if (view.getId() == R.id.create_account) {
+        if (view.getId() == R.id.createAccountSecondary) {
             if(checkValues()){
                 try {
                     String salt = new HttpTask().execute("get",HttpHandler.newUser("getSalt")).get();

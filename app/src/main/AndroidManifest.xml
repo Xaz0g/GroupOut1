@@ -3,18 +3,13 @@
     package="com.example.marietopphem.groupout1">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
-    <!--
-         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
-         Google Maps Android API v2, but you must specify either coarse or fine
-         location permissions for the 'MyLocation' functionality.
-    -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label=""
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
@@ -44,13 +39,26 @@
             android:label="@string/app_name" />
         <activity
             android:name=".Create"
-            android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
-            android:name=".Settings"
-            android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
+            android:name=".AppSettings"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".Search"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".PlaceFinder"
+            android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity
+        android:name=".MapsActivity"
+        android:label="@string/title_activity_maps"></activity>
+
+        <activity
+            android:name="handlers.DescriptionPopUp"
+            android:theme="@style/AppTheme.DescriptionTheme" />
+        <activity android:name=".PlaceActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
+
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -62,13 +70,6 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
-
-        <activity
-            android:name=".MapsActivity"
-            android:label="@string/title_activity_maps"></activity>
-        <activity
-            android:name=".PlaceFinder"
-            android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
 
 
     </application>
