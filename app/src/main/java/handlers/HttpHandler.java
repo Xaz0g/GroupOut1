@@ -24,6 +24,8 @@ public class HttpHandler
     private static final String GET_EVENT = "getEvent/";
     private static final String FAVOIRTE = "favorite/";
     private static final String CHECK_PARTICIPATION = "checkParticipation/";
+    private static final String NEW_PARTICIPATION = "newParticipation/";
+    private static final String CANCEL_PARTICIPATION = "cancelParticipation/";
     private static final String NEARBY = "nearby/";
 
     private static final String GET_SALT = "getSalt/";
@@ -89,5 +91,15 @@ public class HttpHandler
     public static String getNearbyPositions(double longi, double lati, String place, String token){
 
         return HOST_ADRESS + PLACE + NEARBY + longi + "/" +  lati + "/" + place + "/" + token;
+    }
+
+    public static String newParticipation(String token, int eventId)
+    {
+        return HOST_ADRESS + PARTICIPATION + NEW_PARTICIPATION + token + "/" + eventId;
+    }
+
+    public static String cancelParticipation(String token, int eventId)
+    {
+        return HOST_ADRESS + PARTICIPATION + CANCEL_PARTICIPATION + token + "/" + eventId;
     }
 }
