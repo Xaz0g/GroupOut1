@@ -13,6 +13,7 @@ public class HttpHandler
     private static final String USER = "user/";
     private static final String EVENT = "event/";
     private static final String PLACE = "place/";
+    private static final String PARTICIPATION = "participation/";
 
     private static final String NEW_USER = "newUser/";
     private static final String CHECK_TOKEN = "checkToken/";
@@ -21,8 +22,11 @@ public class HttpHandler
     private static final String SEARCH = "search/";
     private static final String USER_ID = "userId/";
     private static final String GET_EVENT = "getEvent/";
+    private static final String FAVOIRTE = "favorite/";
+    private static final String CHECK_PARTICIPATION = "checkParticipation/";
 
     private static final String GET_SALT = "getSalt/";
+    private static final String GET = "get/";
 
     public static String newUser(String user)
     {
@@ -64,5 +68,20 @@ public class HttpHandler
     public static String getEvent(String by, String token, String parameter){
 
         return HOST_ADRESS + EVENT + GET_EVENT + by + "/" + token + "/" + parameter;
+    }
+
+    public static String searcPlace()
+    {
+        return HOST_ADRESS + PLACE + SEARCH;
+    }
+
+    public static String getFavorite(String token)
+    {
+        return HOST_ADRESS + PLACE + FAVOIRTE + GET + token;
+    }
+
+    public static String checkParticipation(String token, int id){
+
+        return HOST_ADRESS + PARTICIPATION + CHECK_PARTICIPATION + token + "/" + id;
     }
 }
