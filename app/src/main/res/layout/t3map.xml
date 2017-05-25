@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="fitCenter"
-        android:background="@color/Purplebutton"/>
+        android:background="@layout/activity_maps"/>
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -74,5 +74,9 @@
         android:layout_below="@+id/searchByMap"
         android:layout_toRightOf="@+id/section_label"
         android:layout_toEndOf="@+id/section_label" />
+
+
+
+
     </RelativeLayout>
 </FrameLayout>
