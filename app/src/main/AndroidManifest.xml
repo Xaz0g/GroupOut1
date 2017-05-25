@@ -56,8 +56,8 @@
         <activity
             android:name="handlers.DescriptionPopUp"
             android:theme="@style/AppTheme.DescriptionTheme" />
-        <activity android:name=".PlaceActivity"></activity>
-            android:theme="@style/AppTheme.DescriptionTheme"></activity>
+        <activity android:name=".PlaceActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
 
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
