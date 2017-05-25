@@ -16,16 +16,13 @@
         android:id="@+id/pdifficulty_maker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/pevent_name_maker"
-        android:layout_alignBottom="@+id/pevent_name_maker"
-        android:layout_marginLeft="23dp"
-        android:layout_marginStart="23dp"
-        android:layout_toEndOf="@+id/pevent_name_maker"
-        android:layout_toRightOf="@+id/pevent_name_maker"
         android:text="difficulty"
         android:textColor="#f9fafa"
         android:textSize="16dp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:layout_above="@+id/pstartTime_maker"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -40,28 +37,15 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/pplace_name_maker"
-        android:text="placeName"
-        android:textStyle="bold"
-        android:textSize="18dp"
-        android:textColor="#f9fafa"
-        android:layout_below="@+id/pevent_name_maker"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="10dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/pdate_maker"
         android:text="date"
         android:textSize="16dp"
         android:textStyle="bold"
         android:textColor="#f9fafa"
-        android:layout_below="@+id/pplace_name_maker"
+        android:layout_marginTop="21dp"
+        android:layout_below="@+id/pparticipateCheck"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="13dp" />
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:id="@+id/pendTime_maker"
@@ -73,7 +57,10 @@
         android:textStyle="bold"
         android:layout_alignBaseline="@+id/pstartTime_maker"
         android:layout_alignBottom="@+id/pstartTime_maker"
-        android:layout_centerHorizontal="true" />
+        android:layout_toRightOf="@+id/pstartTime_maker"
+        android:layout_toEndOf="@+id/pstartTime_maker"
+        android:layout_marginLeft="38dp"
+        android:layout_marginStart="38dp" />
 
     <TextView
         android:id="@+id/pnumberOfParticipants_maker"
@@ -83,10 +70,9 @@
         android:textColor="#f9fafa"
         android:textSize="16dp"
         android:textStyle="bold"
-        android:layout_alignBaseline="@+id/pendTime_maker"
-        android:layout_alignBottom="@+id/pendTime_maker"
-        android:layout_alignRight="@+id/pparticipateCheck"
-        android:layout_alignEnd="@+id/pparticipateCheck" />
+        android:layout_above="@+id/pdate_maker"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:id="@+id/pstartTime_maker"
@@ -96,11 +82,12 @@
         android:textColor="#f9fafa"
         android:textSize="16dp"
         android:textStyle="bold"
-        android:layout_marginLeft="34dp"
-        android:layout_marginStart="34dp"
+        android:layout_alignBaseline="@+id/pdate_maker"
         android:layout_alignBottom="@+id/pdate_maker"
         android:layout_toRightOf="@+id/pdate_maker"
-        android:layout_toEndOf="@+id/pdate_maker" />
+        android:layout_toEndOf="@+id/pdate_maker"
+        android:layout_marginLeft="37dp"
+        android:layout_marginStart="37dp" />
 
     <CheckBox
         android:id="@+id/pparticipateCheck"
@@ -109,7 +96,6 @@
         android:button="@drawable/participationbutton_checkbox"
         android:layout_marginEnd="17dp"
         android:layout_marginRight="17dp"
-        android:layout_alignBottom="@+id/pplace_name_maker"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 

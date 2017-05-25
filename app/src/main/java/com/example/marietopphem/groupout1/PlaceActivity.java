@@ -44,6 +44,7 @@ public class PlaceActivity extends AppCompatActivity {
 
         placeEventAdapter = new PlaceEventAdapter(getApplicationContext(), eventListing);
         placeEventAdapter.setToken(sharedPrefs.getString("Token", "FAIL"));
+        placeEventAdapter.setUserId(Integer.parseInt(sharedPrefs.getString("userId", "FAIL")));
         listv.setAdapter(placeEventAdapter);
 
         extras = getIntent().getExtras();

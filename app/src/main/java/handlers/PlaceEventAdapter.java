@@ -26,6 +26,7 @@ public class PlaceEventAdapter extends BaseAdapter {
     private Context mContext;
     private List<EveObject> mEventList;
     String token;
+    private int userId;
 
     public PlaceEventAdapter (Context mContext, List<EveObject> mEventList) {
         this.mContext = mContext;
@@ -58,36 +59,29 @@ public class PlaceEventAdapter extends BaseAdapter {
         TextView date = (TextView) v.findViewById(R.id.pdate_maker);
         TextView registrations = (TextView) v.findViewById(R.id.pnumberOfParticipants_maker);
 
-        particpate.setChecked(false);
+        particpate.setChecked(checkParticipation(position));
         eventName.setText(mEventList.get(position).getName());
-        difficulty.setText(mEventList.get(position).getDifficulty());
+        difficulty.setText("Svårighetsgrad: " + mEventList.get(position).getDifficulty() + "/5");
         endTime.setText(mEventList.get(position).getEndTime());
-        startTime.setText(mEventList.get(position).getStartTime());
+        startTime.setText(mEventList.get(position).getStartTime() + " - ");
         date.setText(mEventList.get(position).getEventDate());
-        registrations.setText(mEventList.get(position).getRegistration());
+        registrations.setText("Antal anmälda: " + mEventList.get(position).getRegistration() + "/" + mEventList.get(position).getMaxCapacity());
 
         return v;
     }
 
     private boolean checkParticipation(int pos){
-
-
-        String request = HttpHandler.checkParticipation(token, mEventList.get(pos).getId());
-
-        Log.d("PLASAC", request);
-        try {
-            String response = new HttpTask().execute("get", request).get();
-            Log.d("PLASAC", response);
-            return response.equals("true".trim());
-        } catch (InterruptedException e) {
-            Log.e("PLASAC", e.getMessage());
-        } catch (ExecutionException e) {
-            Log.e("PLASAC", e.getMessage());
+        if(userId == mEventList.get(pos).getLeaderId()){
+            return true;
         }
         return false;
     }
 
     public void setToken(String token){
         this.token = token;
+    }
+
+    public void setUserId(int userId){
+        this.userId=userId;
     }
 }
