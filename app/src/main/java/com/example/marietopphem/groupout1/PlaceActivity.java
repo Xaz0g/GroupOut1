@@ -21,11 +21,13 @@ import java.util.concurrent.ExecutionException;
 import handlers.EventListAdapter;
 import handlers.HttpHandler;
 import handlers.HttpTask;
+import handlers.PlaceEventAdapter;
+import models.EveObject;
 
 public class PlaceActivity extends AppCompatActivity {
 
-    ArrayList<String> eventListing = new ArrayList<>();
-    ArrayAdapter<String> eventListAdapter;
+    ArrayList<EveObject> eventListing = new ArrayList<>();
+    PlaceEventAdapter placeEventAdapter;
     JSONArray eventsOnPlace;
     ListView listv;
     Bundle extras;
@@ -40,8 +42,9 @@ public class PlaceActivity extends AppCompatActivity {
         sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this.getBaseContext());
         listv = (ListView) findViewById(R.id.placeActivityList);
 
-        eventListAdapter = new ArrayAdapter<>(getBaseContext(), android.R.layout.simple_list_item_1, eventListing);
-        listv.setAdapter(eventListAdapter);
+        placeEventAdapter = new PlaceEventAdapter(getApplicationContext(), eventListing);
+        placeEventAdapter.setToken(sharedPrefs.getString("Token", "FAIL"));
+        listv.setAdapter(placeEventAdapter);
 
         extras = getIntent().getExtras();
         if(extras != null){
@@ -54,7 +57,7 @@ public class PlaceActivity extends AppCompatActivity {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long name) {
-                String value = (String)eventListAdapter.getItem(position);
+                String value = (String)placeEventAdapter.getItem(position);
                 Log.d("PLASEA", value);
             }
         });
@@ -88,9 +91,23 @@ public class PlaceActivity extends AppCompatActivity {
 
         for(int i = 0; i < eventsOnPlace.length(); i++)
         {
-            eventListing.add(eventsOnPlace.getJSONObject(i).getString("name"));
+            String name = eventsOnPlace.getJSONObject(i).getString("name");
+            String category = eventsOnPlace.getJSONObject(i).getString("category");
+            String description = eventsOnPlace.getJSONObject(i).getString("description");
+            String placeId = eventsOnPlace.getJSONObject(i).getString("placeId");
+            String eventDate = eventsOnPlace.getJSONObject(i).getString("eventDate");
+            String startTime = eventsOnPlace.getJSONObject(i).getString("startTime");
+            String endTime = eventsOnPlace.getJSONObject(i).getString("endTime");
+            Boolean visible = eventsOnPlace.getJSONObject(i).getBoolean("visible");
+            int id = eventsOnPlace.getJSONObject(i).getInt("id");
+            int leaderId = eventsOnPlace.getJSONObject(i).getInt("leaderId");
+            int minCapacity = eventsOnPlace.getJSONObject(i).getInt("minCapacity");
+            int maxCapacity = eventsOnPlace.getJSONObject(i).getInt("maxCapacity");
+            int registration = eventsOnPlace.getJSONObject(i).getInt("registration");
+            int difficulty = eventsOnPlace.getJSONObject(i).getInt("difficulty");
+            eventListing.add(new EveObject(name, category, description, placeId, eventDate, startTime, endTime, visible, id, leaderId, minCapacity, maxCapacity, registration, difficulty));
         }
 
-        eventListAdapter.notifyDataSetChanged();
+        placeEventAdapter.notifyDataSetChanged();
     }
 }

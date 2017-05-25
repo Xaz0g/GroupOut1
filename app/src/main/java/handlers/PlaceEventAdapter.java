@@ -1,6 +1,9 @@
 package handlers;
 
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -10,6 +13,7 @@ import android.widget.TextView;
 import com.example.marietopphem.groupout1.R;
 
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 import models.EveObject;
 
@@ -21,10 +25,12 @@ public class PlaceEventAdapter extends BaseAdapter {
 
     private Context mContext;
     private List<EveObject> mEventList;
+    String token;
 
     public PlaceEventAdapter (Context mContext, List<EveObject> mEventList) {
         this.mContext = mContext;
         this.mEventList = mEventList;
+
     }
     @Override
     public int getCount() {
@@ -63,8 +69,25 @@ public class PlaceEventAdapter extends BaseAdapter {
         return v;
     }
 
-    private boolean checkParticipation(){
+    private boolean checkParticipation(int pos){
 
+
+        String request = HttpHandler.checkParticipation(token, mEventList.get(pos).getId());
+
+        Log.d("PLASAC", request);
+        try {
+            String response = new HttpTask().execute("get", request).get();
+            Log.d("PLASAC", response);
+            return response.equals("true".trim());
+        } catch (InterruptedException e) {
+            Log.e("PLASAC", e.getMessage());
+        } catch (ExecutionException e) {
+            Log.e("PLASAC", e.getMessage());
+        }
         return false;
+    }
+
+    public void setToken(String token){
+        this.token = token;
     }
 }

@@ -80,7 +80,7 @@ public class HttpHandler
         return HOST_ADRESS + PLACE + FAVOIRTE + GET + token;
     }
 
-    public static String checkParticipation(String token, String id){
+    public static String checkParticipation(String token, int id){
 
         return HOST_ADRESS + PARTICIPATION + CHECK_PARTICIPATION + token + "/" + id;
     }
