@@ -119,7 +119,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.969" />
 
-</android.support.constraint.ConstraintLayout>
+    </android.support.constraint.ConstraintLayout>
 
     <android.support.design.widget.BottomNavigationView
     android:id="@+id/navigation"
@@ -132,7 +132,7 @@
     app:itemIconTint="@drawable/tab_marked"
     app:itemTextColor="@drawable/tab_marked">
 
-</android.support.design.widget.BottomNavigationView>
+    </android.support.design.widget.BottomNavigationView>
 
 
-    </LinearLayout>
+</LinearLayout>
