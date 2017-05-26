@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.marietopphem.groupout1">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+
 
     <application
         android:allowBackup="true"
@@ -21,8 +22,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-
+        </activity>q
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
@@ -41,7 +41,7 @@
             android:name=".Create"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
-            android:name=".AppSettings"
+            android:name=".EventSettings"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".Search"
@@ -49,16 +49,15 @@
         <activity
             android:name=".PlaceFinder"
             android:theme="@style/Theme.AppCompat.NoActionBar"/>
-        <activity
-        android:name=".MapsActivity"
-        android:label="@string/title_activity_maps"></activity>
 
         <activity
             android:name="handlers.DescriptionPopUp"
             android:theme="@style/AppTheme.DescriptionTheme" />
         <activity android:name=".PlaceActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
-
+        <activity
+            android:name=".AppSettings"
+            android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -70,8 +69,5 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
-
-
     </application>
-
 </manifest>
