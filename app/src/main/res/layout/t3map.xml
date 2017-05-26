@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="fitCenter"
-        android:background="@color/Purplebutton"/>
+        android:background="@layout/activity_maps"/>
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
@@ -64,16 +64,16 @@
         tools:layout_editor_absoluteY="100dp"
         android:layout_alignParentRight="true" />
 
-    <CheckBox
-        android:id="@+id/checkBox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
-        android:text="Eventplatser nära dig"
-        android:textColor="?attr/colorAccent"
-        android:textStyle="bold|italic"
-        android:layout_below="@+id/searchByMap"
-        android:layout_toRightOf="@+id/section_label"
-        android:layout_toEndOf="@+id/section_label" />
+        <CheckBox
+            android:id="@+id/checkBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:text="Eventplatser nära dig"
+            android:textColor="?attr/colorAccent"
+            android:textStyle="bold|italic"
+            android:layout_below="@+id/mapSearchTextField"
+            android:layout_toRightOf="@+id/section_label"
+            android:layout_toEndOf="@+id/section_label" />
     </RelativeLayout>
 </FrameLayout>

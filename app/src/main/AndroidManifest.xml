@@ -4,7 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 
     <application
         android:allowBackup="true"
@@ -41,6 +41,7 @@
             android:name=".Create"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
+            android:name=".AppSettings"
             android:name=".EventSettings"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
@@ -50,11 +51,13 @@
             android:name=".PlaceFinder"
             android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity
-            android:name="handlers.DescriptionPopUp"
-            android:theme="@style/AppTheme.DescriptionTheme"></activity>
+        android:name=".MapsActivity"
+        android:label="@string/title_activity_maps"></activity>
 
         <activity
-            android:name=".Create"
+            android:name="handlers.DescriptionPopUp"
+            android:theme="@style/AppTheme.DescriptionTheme" />
+        <activity android:name=".PlaceActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
         <activity
             android:name=".AppSettings"
@@ -74,9 +77,7 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity
-            android:name=".MapsActivity"
-            android:label="@string/title_activity_maps"></activity>
+
     </application>
 
 </manifest>
