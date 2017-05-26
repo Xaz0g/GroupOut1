@@ -1,7 +1,6 @@
 package com.example.marietopphem.groupout1;
 
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -13,7 +12,6 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -29,7 +27,6 @@ import handlers.EventListAdapter;
 import handlers.HttpHandler;
 import handlers.HttpTask;
 import models.EveObject;
-import models.Event;
 
 /**
  * Created by marietopphem on 2017-05-05.
@@ -56,6 +53,7 @@ public class Home extends AppCompatActivity{
         sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this.getBaseContext());
 
         lvEvent = (ListView) findViewById(R.id.listView);
+        eventList = new ArrayList<>();
         fillList();
 
         adapter = new EventListAdapter(getApplicationContext(), eventList);

@@ -77,7 +77,7 @@ public class EventListAdapter extends BaseAdapter{
 
         //set text for textview
         eventName.setText(mEventList.get(position).getName());
-        placeName.setText(mEventList.get(position).getPlaceId());
+        placeName.setText(mEventList.get(position).getPlaceName());
         date.setText("Datum och Tid:  " + mEventList.get(position).getEventDate());
         startTime.setText(mEventList.get(position).getStartTime() + " - ");
         //endTime.setText(mEventList.get(position).getEndTime());
@@ -150,7 +150,7 @@ public class EventListAdapter extends BaseAdapter{
                     int minCapacityToPopUp = mEventList.get(position).getMinCapacity();
                     info.putExtra("MinCapacity", minCapacityToPopUp);
 
-                    String placeToPopUp = mEventList.get(position).getPlaceId();
+                    String placeToPopUp = mEventList.get(position).getPlaceName();
                     info.putExtra("Place", placeToPopUp);
 
 
