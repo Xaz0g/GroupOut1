@@ -102,12 +102,9 @@ public class DescriptionPopUp extends Activity {
 
         ShareButton fbShareButton = (ShareButton) findViewById(R.id.fbShareButton);
         ShareLinkContent content = new ShareLinkContent.Builder()
-                .setContentUrl(Uri.parse("https://fb.me/338186309931704"))
+                .setContentUrl(Uri.parse("https://fb.me/464928887185539"))
                 .build();
         fbShareButton.setShareContent(content);
     }
-
-
-
 
 }

@@ -6,9 +6,12 @@ import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.DatePicker;
@@ -66,6 +69,10 @@ public class Create extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create);
 
+
+        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        navigation.getMenu().getItem(2).setChecked(true);
 
         nameField = (EditText) findViewById(R.id.event_name_maker);
         year_x = c.get(Calendar.YEAR);
@@ -148,7 +155,19 @@ public class Create extends AppCompatActivity {
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute){
                 st = (TextView) findViewById(R.id.choose_starttime);
-                st.setText(hourOfDay + ":" + minute);
+                if(hourOfDay<10){
+                    if(minute<10){
+                        st.setText("0" + hourOfDay + ":" + "0" + minute);
+                    }else{
+                        st.setText("0" + hourOfDay + ":" + minute);
+                    }
+                }else{
+                    if(minute<10){
+                        st.setText(hourOfDay + ":" + "0" + minute);
+                    }else{
+                        st.setText(hourOfDay + ":" + minute);
+                    }
+                }
 
             }
         }, startHour, startMinute, false);
@@ -163,7 +182,19 @@ public class Create extends AppCompatActivity {
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute){
                 ft = (TextView) findViewById(R.id.choose_end_time);
-                ft.setText(hourOfDay + ":" + minute);
+                if(hourOfDay<10){
+                    if(minute<10){
+                        ft.setText("0" + hourOfDay + ":" + "0" + minute);
+                    }else{
+                        ft.setText("0" + hourOfDay + ":" + minute);
+                    }
+                }else{
+                    if(minute<10){
+                        ft.setText(hourOfDay + ":" + "0" + minute);
+                    }else{
+                        ft.setText(hourOfDay + ":" + minute);
+                    }
+                }
 
             }
         }, finishHour, finishMinute, false);
@@ -403,7 +434,7 @@ public class Create extends AppCompatActivity {
 
     private boolean checkPlace()
     {
-        String s = sharedPrefs.getString("Id","FAIL");
+        String s = sharedPrefs.getString("finderId","FAIL");
         Log.d(TAG, s);
         return !s.equalsIgnoreCase("fail");
     }
@@ -422,4 +453,31 @@ public class Create extends AppCompatActivity {
         return timeAgain;
     }
 
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.navigation_home:
+                    Intent home = new Intent(Create.this, Home.class);
+                    startActivity(home);
+                    return true;
+                case R.id.navigation_add:
+                    Intent add = new Intent(Create.this, Create.class);
+                    startActivity(add);
+                    return true;
+                case R.id.navigation_search:
+                    Intent search = new Intent(Create.this, Search.class);
+                    startActivity(search);
+                    return true;
+                case R.id.navigation_settings:
+                    Intent settings = new Intent(Create.this, AppSettings.class);
+                    startActivity(settings);
+                    return true;
+            }
+            return false;
+        }
+
+    };
 }
