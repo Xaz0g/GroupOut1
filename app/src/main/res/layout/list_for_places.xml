@@ -29,11 +29,13 @@
         android:id="@+id/pevent_name_maker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
         android:text="eventName"
         android:textColor="#80cbc4"
         android:textSize="20dp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -70,35 +72,32 @@
         android:textStyle="bold"
         android:layout_alignBaseline="@+id/pdate_maker"
         android:layout_alignBottom="@+id/pdate_maker"
-        android:layout_toRightOf="@+id/pdate_maker"
-        android:layout_toEndOf="@+id/pdate_maker"
-        android:layout_marginLeft="37dp"
-        android:layout_marginStart="37dp" />
+        android:layout_toLeftOf="@+id/pendTime_maker"
+        android:layout_toStartOf="@+id/pendTime_maker" />
 
     <TextView
         android:id="@+id/pendTime_maker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="startTime"
+        android:text="endTime"
         android:textColor="#f9fafa"
-        android:textSize="16dp"
+        android:textSize="16sp"
         android:textStyle="bold"
-        android:layout_alignBaseline="@+id/pdate_maker"
-        android:layout_alignBottom="@+id/pdate_maker"
-        android:layout_toRightOf="@+id/pdate_maker"
-        android:layout_toEndOf="@+id/pdate_maker"
-        android:layout_marginLeft="37dp"
-        android:layout_marginStart="37dp" />
+        android:layout_alignBaseline="@+id/pstartTime_maker"
+        android:layout_alignBottom="@+id/pstartTime_maker"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <CheckBox
         android:id="@+id/pparticipateCheck"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:button="@drawable/participationbutton_checkbox"
-        android:textSize="14sp"
-        android:layout_below="@+id/info_btn"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_below="@+id/info_btn"
+        android:button="@drawable/participationbutton_checkbox"
+        android:textColor="#80cbc4"
+        android:textSize="14sp" />
 
     <Button
         android:id="@+id/info_btn"
