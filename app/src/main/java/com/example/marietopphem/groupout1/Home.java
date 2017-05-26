@@ -42,7 +42,6 @@ public class Home extends AppCompatActivity{
     private List<EveObject> eventList;
 
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +50,7 @@ public class Home extends AppCompatActivity{
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this.getBaseContext());
+        navigation.getMenu().getItem(0).setChecked(true);
 
         lvEvent = (ListView) findViewById(R.id.listView);
         eventList = new ArrayList<>();
