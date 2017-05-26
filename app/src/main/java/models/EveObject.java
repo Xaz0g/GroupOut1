@@ -22,8 +22,9 @@ public class EveObject {
     int maxCapacity;
     int registration;
     int difficulty;
+    boolean participating;
 
-    public EveObject(String name, String category, String description, String placeId, String eventDate, String startTime, String endTime, Boolean visible, int id, int leaderId, int minCapacity, int maxCapacity, int registration, int  difficulty){
+    public EveObject(String name, String category, String description, String placeId, String eventDate, String startTime, String endTime, Boolean visible, int id, int leaderId, int minCapacity, int maxCapacity, int registration, int  difficulty, boolean participating){
         this.name = name;
         this.category = category;
         this.description = description;
@@ -38,6 +39,15 @@ public class EveObject {
         this.maxCapacity = maxCapacity;
         this.registration = registration;
         this.difficulty = difficulty;
+        this.participating = participating;
+    }
+
+    public void setParticipating(boolean participating) {
+        participating = participating;
+    }
+
+    public boolean isParticipating() {
+        return participating;
     }
 
     public void setName (String name){
@@ -149,6 +159,6 @@ public class EveObject {
         return "" + difficulty;
     }
     public String toString(){
-        return name + "\n" + category + "\n" + description + "\n" + placeId + "\n" + eventDate + "\n" + startTime + "\n" + endTime + "\n" + visible + "\n" + id + "\n" + leaderId + "\n" + minCapacity + "\n" + maxCapacity + "\n" + registration + "\n" + difficulty + "\n" + "\n";
+        return name + "\n" + category + "\n" + description + "\n" + placeId + "\n" + eventDate + "\n" + startTime + "\n" + endTime + "\n" + visible + "\n" + id + "\n" + leaderId + "\n" + minCapacity + "\n" + maxCapacity + "\n" + registration + "\n" + difficulty + "\n" + participating + "\n";
     }
 }

@@ -40,6 +40,7 @@ public class PlaceSearch extends Fragment {
     JSONArray favorites;
     JSONArray latestSearch;
     CheckBox favCheck;
+    String token;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -60,6 +61,11 @@ public class PlaceSearch extends Fragment {
                 Intent i = new Intent(getActivity(), PlaceActivity.class);
                 i.putExtra("Name", value);
                 i.putExtra("Id", getPlaceId(value));
+                try {
+                    i.putExtra("favorite", isFavorite(value));
+                } catch (JSONException e) {
+                    Log.d("addFav", e.getMessage());
+                }
                 startActivity(i);
 
             }
@@ -85,6 +91,12 @@ public class PlaceSearch extends Fragment {
         });
 
         return rootView;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        getFavorites(token);
     }
 
     private void listPlaceResults(JSONArray json) throws JSONException {
@@ -195,6 +207,7 @@ public class PlaceSearch extends Fragment {
 
     public void getFavorites(String token)
     {
+        this.token = token;
         String request = HttpHandler.getFavorite(token);
         Log.d("PLASEA", request);
 
@@ -225,6 +238,15 @@ public class PlaceSearch extends Fragment {
             Log.e("PLASEA", e.getMessage());
         }
       throw new NoSuchElementException();
+    }
+
+    private boolean isFavorite(String name) throws JSONException {
+        for(int i = 0; i < favorites.length(); i++){
+            if(favorites.getJSONObject(i).getString("Name").trim().equals(name.trim())){
+                return true;
+            }
+        }
+        return false;
     }
 
     private String getIdByName(JSONArray array, String name) throws JSONException {

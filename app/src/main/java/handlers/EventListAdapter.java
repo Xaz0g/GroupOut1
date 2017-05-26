@@ -44,8 +44,7 @@ public class EventListAdapter extends BaseAdapter{
 
     @Override
     public int getCount(){
-
-     return mEventList.size();
+        return mEventList.size();
     }
 
     @Override
@@ -73,6 +72,7 @@ public class EventListAdapter extends BaseAdapter{
         TextView startTime = (TextView)v.findViewById(R.id.startTime_maker);
         TextView endTime = (TextView)v.findViewById(R.id.endTime_maker);
         TextView participants = (TextView)v.findViewById(R.id.numberOfParticipants);
+        TextView owner = (TextView)v.findViewById(R.id.owner_or_participant);
         TextView difficulty = (TextView)v.findViewById(R.id.difficulty);
 
         //set text for textview
@@ -80,12 +80,14 @@ public class EventListAdapter extends BaseAdapter{
         placeName.setText(mEventList.get(position).getPlaceId());
         date.setText("Datum och Tid:  " + mEventList.get(position).getEventDate());
         startTime.setText(mEventList.get(position).getStartTime() + " - ");
+        //endTime.setText(mEventList.get(position).getEndTime());
         endTime.setText(mEventList.get(position).getEndTime());
         participants.setText("Antal anmälda:  " + mEventList.get(position).getRegistration());
         difficulty.setText("Svårighetsgrad:  " + mEventList.get(position).getDifficulty() + "/5");
 
        if(!(mEventList.get(position).getLeaderId() !=userId)){
             settings.setVisibility(View.GONE);
+            owner.setText("Du är anmäld");
             deleteBtn.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v) {
@@ -116,14 +118,46 @@ public class EventListAdapter extends BaseAdapter{
                     notifyDataSetChanged();
                 }
             });
+            owner.setText("Du är skapare!");
             deleteBtn.setVisibility(View.GONE);
             infoBtn.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View view){
+
                     String descrip = mEventList.get(position).getDescription();
                     Intent info = new Intent(mContext, DescriptionPopUp.class);
                     info.putExtra("Description", descrip);
+
+                    String endTimeToPopUp = mEventList.get(position).getEndTime();
+                    info.putExtra("EndTime", endTimeToPopUp);
+
+                    String startTimeToPopUp = mEventList.get(position).getStartTime();
+                    info.putExtra("StartTime", startTimeToPopUp);
+
+                    String categoryToPopUp = mEventList.get(position).getCategory();
+                    info.putExtra("EndTime", categoryToPopUp);
+
+                    String dateToPopUp = mEventList.get(position).getEventDate();
+                    info.putExtra("Date", dateToPopUp);
+
+                    String eventNameToPopUp = mEventList.get(position).getName();
+                    info.putExtra("EventName", eventNameToPopUp);
+
+                    String difficultyToPopUp = mEventList.get(position).getDifficulty();
+                    info.putExtra("Difficulty", difficultyToPopUp);
+
+                    int maxCapacityToPopUp = mEventList.get(position).getMaxCapacity();
+                    info.putExtra("MaxCapacity", maxCapacityToPopUp);
+
+                    int minCapacityToPopUp = mEventList.get(position).getMinCapacity();
+                    info.putExtra("MinCapacity", minCapacityToPopUp);
+
+                    String placeToPopUp = mEventList.get(position).getPlaceId();
+                    info.putExtra("Place", placeToPopUp);
+
+
                     mContext.startActivity(info);
+
 
                 }
             } );

@@ -93,6 +93,14 @@ public class Create extends AppCompatActivity {
 
             }
         });
+
+        Bundle bundle = getIntent().getExtras();
+
+        if(bundle != null)
+        {
+            placeText.setText(bundle.getString("placeName"));
+            sharedPrefs.edit().putString("finderId", bundle.getString("placeId")).apply();
+        }
     }
 
     public void showDialogOnCalendarClick(){
@@ -175,7 +183,7 @@ public class Create extends AppCompatActivity {
     @Override
     public void onResume(){
         super.onResume();
-        String str = sharedPrefs.getString("Name", "FAIL");
+        String str = sharedPrefs.getString("finderName", "FAIL");
 
         Log.d(TAG, str);
         if(!str.equalsIgnoreCase("FAIL")){
@@ -215,7 +223,7 @@ public class Create extends AppCompatActivity {
     private NewEvent createNewEvent() {
         NewEvent e = new NewEvent();
         e.setName(nameField.getText().toString());
-        e.setPlaceId(sharedPrefs.getString("Id","FAIL"));       //temp
+        e.setPlaceId(sharedPrefs.getString("finderId","FAIL"));       //temp
         e.setEventDate(new Date(year_x - 1900, month_x, day_x));
         int[] tempStart = parseTime(st.getText().toString());
         e.setStartTime(new Time(tempStart[0],tempStart[1],0));
@@ -233,7 +241,7 @@ public class Create extends AppCompatActivity {
 
     private boolean checkValues(){
 
-        return checkNameField() && checkDate() && checkStartTime() && checkFinishTime() && checkMinAndMax() && checkDescription() && checkPlace();
+        return checkNameField() && checkDate() && checkMinAndMax() && checkDescription() && checkPlace();
     }
 
     private boolean checkNameField(){
@@ -276,6 +284,12 @@ public class Create extends AppCompatActivity {
             Log.d(TAG, "day 1 false " + dayDiff);
             return false;
         }
+
+        if(dayDiff == 0)
+        {
+            return checkStartTime() && checkFinishTime();
+        }
+
         Log.d(TAG, "day 2 true " + dayDiff);
         return true;
     }

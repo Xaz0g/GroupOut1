@@ -16,13 +16,16 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="52dp"
         android:text="Placename"
+        android:textSize="30dp"
         android:textAlignment="center"
         android:textColor="#80cbc4"
         android:textSize="30dp"
         app:layout_constraintHorizontal_bias="0.416"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
 
     <ListView
         android:id="@+id/placeActivityList"
@@ -32,12 +35,30 @@
         android:layout_marginTop="90dp"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="8dp"
+        android:layout_marginRight="-55dp"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintVertical_bias="0.878"
         android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintHorizontal_bias="0.041"
-        android:layout_marginStart="8dp" />
+        app:layout_constraintHorizontal_bias="0.041" />
+
+    <Button
+        android:id="@+id/addNewEventPlace"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignBaseline="@+id/delete_btn"
+        android:layout_alignBottom="@+id/delete_btn"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="130dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/ic_add_black_24dp"
+        android:onClick="pCreateEvent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.313" />
 
     <CheckBox
         android:id="@+id/addFavorite"

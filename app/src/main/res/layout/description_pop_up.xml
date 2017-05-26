@@ -1,26 +1,160 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/cardview_dark_background">
 
+    <com.facebook.share.widget.ShareButton
+        android:layout_width="wrap_content"
+        android:layout_height="44dp"
+        android:background="@color/com_facebook_blue"
+        android:id="@+id/fbShareButton"
+        android:layout_marginRight="85dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/descriptionPopUp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintVertical_bias="0.344" />
+
     <TextView
-        android:id="@+id/descriptionView"
+        android:id="@+id/descriptionPopUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="229dp"
-        android:textColor="@color/Text" />
+        android:text="Description"
+        android:textColor="#f9fafa"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.252"
+        android:layout_marginTop="40dp"
+        app:layout_constraintTop_toBottomOf="@+id/minCapacityPopUp" />
 
-    <Button
-        android:id="@+id/okBtn"
+    <TextView
+        android:id="@+id/startTimePopUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/descriptionView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="45dp"
-        android:onClick="okButton"
-        android:text="OK" />
+        android:text="StartTime"
+        android:textColor="#f9fafa"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/endTimePopUp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintHorizontal_bias="0.561"
+        android:layout_marginTop="32dp"
+        app:layout_constraintTop_toBottomOf="@+id/datePopUp" />
 
-</RelativeLayout>
+    <TextView
+        android:id="@+id/endTimePopUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="EndTime"
+        android:textColor="#f9fafa"
+        android:layout_marginRight="133dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="139dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/maxCapacityPopUp"
+        app:layout_constraintVertical_bias="0.054" />
+
+    <TextView
+        android:id="@+id/datePopUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Date"
+        android:textColor="#f9fafa"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.224"
+        android:layout_marginTop="24dp"
+        app:layout_constraintTop_toBottomOf="@+id/eventPlacePopUp" />
+
+    <TextView
+        android:id="@+id/eventNamePopUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="EventName"
+        android:textColor="#f9fafa"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.253"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="16dp" />
+
+    <TextView
+        android:id="@+id/eventPlacePopUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="EventPlace"
+        android:textColor="#f9fafa"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.252"
+        android:layout_marginTop="23dp"
+        app:layout_constraintTop_toBottomOf="@+id/eventNamePopUp" />
+
+    <TextView
+        android:id="@+id/difficultyPopUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Difficulty"
+        android:textColor="#f9fafa"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.241"
+        android:layout_marginTop="35dp"
+        app:layout_constraintTop_toBottomOf="@+id/categoryPopUp" />
+
+    <TextView
+        android:id="@+id/minCapacityPopUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="MinCapacity"
+        android:textColor="#f9fafa"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/maxCapacityPopUp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="28dp"
+        app:layout_constraintTop_toBottomOf="@+id/difficultyPopUp"
+        app:layout_constraintHorizontal_bias="0.683" />
+
+    <TextView
+        android:id="@+id/maxCapacityPopUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="MaxCapacity"
+        android:textColor="#f9fafa"
+        android:layout_marginRight="117dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginBottom="150dp"
+        app:layout_constraintBottom_toTopOf="@+id/shareButton" />
+
+    <TextView
+        android:id="@+id/categoryPopUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Category"
+        android:textColor="#f9fafa"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.244"
+        android:layout_marginTop="23dp"
+        app:layout_constraintTop_toBottomOf="@+id/startTimePopUp" />
+
+
+</android.support.constraint.ConstraintLayout>

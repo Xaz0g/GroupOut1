@@ -75,8 +75,8 @@ public class FinderPlace extends Fragment {
                 if(placeName.equalsIgnoreCase(retrievedPlaces.getJSONObject(i).getString("Name"))) {
                     JSONObject thePlace = retrievedPlaces.getJSONObject(i);
 
-                    sharedPrefs.edit().putString("Name", placeName).apply();
-                    sharedPrefs.edit().putString("Id", thePlace.getString("Id")).apply();
+                    sharedPrefs.edit().putString("finderName", placeName).apply();
+                    sharedPrefs.edit().putString("finderId", thePlace.getString("Id")).apply();
 
                 }
             }

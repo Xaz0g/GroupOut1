@@ -88,7 +88,7 @@ public class EventActivity {
             Boolean visible = event.getBoolean("visible");
 
 
-            EveObject eve = new EveObject(name, category, description, placeId, eventDate, startTime, endTime, visible, id, leaderId, minCapacity, maxCapacity, registration, difficulty);
+            EveObject eve = new EveObject(name, category, description, placeId, eventDate, startTime, endTime, visible, id, leaderId, minCapacity, maxCapacity, registration, difficulty, false);
             eveList.add(eve);
 
         }
