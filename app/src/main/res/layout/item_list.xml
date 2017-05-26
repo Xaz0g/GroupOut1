@@ -11,21 +11,18 @@
     android:background="#4b4a4a"
     android:weightSum="1">
 
-
     <TextView
         android:id="@+id/difficulty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="13dp"
-        android:layout_marginStart="13dp"
         android:text="difficulty"
         android:textColor="#f9fafa"
         android:textSize="16dp"
         android:textStyle="bold"
-        android:layout_alignBaseline="@+id/event_name_maker"
-        android:layout_alignBottom="@+id/event_name_maker"
-        android:layout_toRightOf="@+id/event_name_maker"
-        android:layout_toEndOf="@+id/event_name_maker" />
+        android:layout_below="@+id/event_name_maker"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="16dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -44,10 +41,10 @@
         android:text="placeName"
         android:textSize="18dp"
         android:textColor="#f9fafa"
-        android:layout_below="@+id/event_name_maker"
+        android:layout_marginTop="18dp"
+        android:layout_below="@+id/difficulty"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="10dp" />
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -56,7 +53,7 @@
         android:text="date"
         android:textSize="16dp"
         android:textColor="#f9fafa"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="18dp"
         android:layout_below="@+id/numberOfParticipants"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
@@ -69,8 +66,10 @@
         android:text="participants"
         android:textColor="#f9fafa"
         android:textSize="16dp"
-        android:layout_marginTop="14dp"
-        android:layout_below="@+id/place_name_maker"/>
+        android:layout_marginTop="22dp"
+        android:layout_below="@+id/place_name_maker"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:id="@+id/startTime_maker"
@@ -100,8 +99,10 @@
         android:id="@+id/delete_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="#80cbc4"
         android:text="Ta bort"
-        android:layout_alignBottom="@+id/numberOfParticipants"
+        android:textColor="@android:color/white"
+        android:layout_below="@+id/difficulty"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
@@ -111,6 +112,7 @@
         android:layout_height="40dp"
         android:background="@drawable/ic_settings_black_24dp"
         android:layout_below="@+id/info_btn"
+        android:layout_alignTop="@+id/delete_btn"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
@@ -122,18 +124,4 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
-
-    <TextView
-        android:id="@+id/owner_or_participant"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Own/Participant"
-        android:textColor="@color/Text"
-        android:textSize="16sp"
-        android:layout_below="@+id/date_maker"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="18dp" />
-
-
 </RelativeLayout>
