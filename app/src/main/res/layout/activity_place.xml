@@ -35,10 +35,10 @@
         android:layout_marginBottom="8dp"
         android:layout_marginRight="-55dp"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintVertical_bias="0.878"
+        app:layout_constraintVertical_bias="1.0"
         android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintHorizontal_bias="0.041" />
+        app:layout_constraintHorizontal_bias="0.0" />
 
     <Button
         android:id="@+id/addNewEventPlace"
@@ -49,14 +49,14 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_marginBottom="8dp"
-        android:layout_marginLeft="130dp"
+        android:layout_marginLeft="172dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/ic_add_black_24dp"
         android:onClick="pCreateEvent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.313" />
+        app:layout_constraintVertical_bias="0.277" />
 
     <CheckBox
         android:id="@+id/addFavorite"
@@ -72,7 +72,7 @@
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginTop="8dp"
         app:layout_constraintTop_toBottomOf="@+id/placeActivityNameField"
-        app:layout_constraintVertical_bias="0.05"
+        app:layout_constraintVertical_bias="0.007"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp" />
 
