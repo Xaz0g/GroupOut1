@@ -63,11 +63,11 @@ public class PlaceEventAdapter extends BaseAdapter {
 
         particpate.setChecked(checkParticipating(position));
         eventName.setText(mEventList.get(position).getName());
-        difficulty.setText("Svårighetsgrad: " + mEventList.get(position).getDifficulty() + "/5");
+        difficulty.setText("Svårighetsgrad:  " + mEventList.get(position).getDifficulty() + "/5");
         endTime.setText(mEventList.get(position).getEndTime());
         startTime.setText(mEventList.get(position).getStartTime() + " - ");
-        date.setText(mEventList.get(position).getEventDate());
-        registrations.setText("Antal anmälda: " + mEventList.get(position).getRegistration() + "/" + mEventList.get(position).getMaxCapacity());
+        date.setText("Datum och Tid:  " + mEventList.get(position).getEventDate());
+        registrations.setText("Antal anmälda:  " + mEventList.get(position).getRegistration() + "/" + mEventList.get(position).getMaxCapacity());
 
         final CheckBox participate = (CheckBox) v.findViewById(R.id.pparticipateCheck);
 

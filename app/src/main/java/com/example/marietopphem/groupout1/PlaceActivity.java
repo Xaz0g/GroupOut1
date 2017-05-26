@@ -170,7 +170,7 @@ public class PlaceActivity extends AppCompatActivity {
             int maxCapacity = eventsOnPlace.getJSONObject(i).getInt("maxCapacity");
             int registration = eventsOnPlace.getJSONObject(i).getInt("registration");
             int difficulty = eventsOnPlace.getJSONObject(i).getInt("difficulty");
-            eventListing.add(new EveObject(name, category, description, placeId, eventDate, startTime, endTime, visible, id, leaderId, minCapacity, maxCapacity, registration, difficulty, participating));
+            eventListing.add(new EveObject(name, category, description, placeId, eventDate, startTime, endTime, visible, id, leaderId, minCapacity, maxCapacity, registration, difficulty, participating, "NA"));
         }
 
         placeEventAdapter.notifyDataSetChanged();
