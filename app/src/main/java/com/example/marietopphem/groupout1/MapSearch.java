@@ -150,4 +150,6 @@ public class MapSearch extends Fragment implements OnMapReadyCallback{
             mGoogleMap.addMarker(new MarkerOptions().position(newMark).title(name));
         }
     }
+
+
 }

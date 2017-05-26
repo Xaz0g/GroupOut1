@@ -100,9 +100,37 @@ public class EventListAdapter extends BaseAdapter{
             infoBtn.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View view){
-                    String descrip = mEventList.get(position).getDescription();
                     Intent info = new Intent(mContext, DescriptionPopUp.class);
-                    info.putExtra("Description", descrip);
+
+                    String descriptionToPopUp = mEventList.get(position).getDescription();
+                    info.putExtra("Description", descriptionToPopUp);
+
+                    String endTimeToPopUp = mEventList.get(position).getEndTime();
+                    info.putExtra("EndTime", endTimeToPopUp);
+
+                    String startTimeToPopUp = mEventList.get(position).getStartTime();
+                    info.putExtra("StartTime", startTimeToPopUp);
+
+                    String categoryToPopUp = mEventList.get(position).getCategory();
+                    info.putExtra("Category", categoryToPopUp);
+
+                    String dateToPopUp = mEventList.get(position).getEventDate();
+                    info.putExtra("Date", dateToPopUp);
+
+                    String eventNameToPopUp = mEventList.get(position).getName();
+                    info.putExtra("EventName", eventNameToPopUp);
+
+                    String difficultyToPopUp = mEventList.get(position).getDifficulty();
+                    info.putExtra("Difficulty", difficultyToPopUp);
+
+                    int maxCapacityToPopUp = mEventList.get(position).getMaxCapacity();
+                    info.putExtra("MaxCapacity", maxCapacityToPopUp);
+
+                    int minCapacityToPopUp = mEventList.get(position).getMinCapacity();
+                    info.putExtra("MinCapacity", minCapacityToPopUp);
+
+                    String placeToPopUp = mEventList.get(position).getPlaceId();
+                    info.putExtra("Place", placeToPopUp);
                     mContext.startActivity(info);
 
                 }
@@ -121,10 +149,10 @@ public class EventListAdapter extends BaseAdapter{
             infoBtn.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View view){
-
-                    String descrip = mEventList.get(position).getDescription();
                     Intent info = new Intent(mContext, DescriptionPopUp.class);
-                    info.putExtra("Description", descrip);
+
+                    String descriptionToPopUp = mEventList.get(position).getDescription();
+                    info.putExtra("Description", descriptionToPopUp);
 
                     String endTimeToPopUp = mEventList.get(position).getEndTime();
                     info.putExtra("EndTime", endTimeToPopUp);
@@ -133,7 +161,7 @@ public class EventListAdapter extends BaseAdapter{
                     info.putExtra("StartTime", startTimeToPopUp);
 
                     String categoryToPopUp = mEventList.get(position).getCategory();
-                    info.putExtra("EndTime", categoryToPopUp);
+                    info.putExtra("Category", categoryToPopUp);
 
                     String dateToPopUp = mEventList.get(position).getEventDate();
                     info.putExtra("Date", dateToPopUp);
@@ -152,7 +180,6 @@ public class EventListAdapter extends BaseAdapter{
 
                     String placeToPopUp = mEventList.get(position).getPlaceName();
                     info.putExtra("Place", placeToPopUp);
-
 
                     mContext.startActivity(info);
 
