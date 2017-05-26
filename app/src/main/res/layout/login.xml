@@ -33,7 +33,7 @@
         android:id="@+id/createAccountPrimary"
         android:layout_width="292dp"
         android:layout_height="48dp"
-        android:layout_marginBottom="202dp"
+        android:layout_marginBottom="188dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:background="#64bdb5"
