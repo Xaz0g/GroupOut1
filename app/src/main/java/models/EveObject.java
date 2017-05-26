@@ -8,23 +8,24 @@ import java.text.SimpleDateFormat;
  */
 
 public class EveObject {
-    String name;
-    String category;
-    String description;
-    String placeId;
-    String eventDate;
-    String startTime;
-    String endTime;
-    Boolean visible;
-    int id;
-    int leaderId;
-    int minCapacity;
-    int maxCapacity;
-    int registration;
-    int difficulty;
-    boolean participating;
+    private String name;
+    private String category;
+    private String description;
+    private String placeId;
+    private String eventDate;
+    private String startTime;
+    private String endTime;
+    private Boolean visible;
+    private int id;
+    private int leaderId;
+    private int minCapacity;
+    private int maxCapacity;
+    private int registration;
+    private int difficulty;
+    private boolean participating;
+    private String placeName;
 
-    public EveObject(String name, String category, String description, String placeId, String eventDate, String startTime, String endTime, Boolean visible, int id, int leaderId, int minCapacity, int maxCapacity, int registration, int  difficulty, boolean participating){
+    public EveObject(String name, String category, String description, String placeId, String eventDate, String startTime, String endTime, Boolean visible, int id, int leaderId, int minCapacity, int maxCapacity, int registration, int  difficulty, boolean participating, String placeName){
         this.name = name;
         this.category = category;
         this.description = description;
@@ -40,6 +41,15 @@ public class EveObject {
         this.registration = registration;
         this.difficulty = difficulty;
         this.participating = participating;
+        this.placeName = placeName;
+    }
+
+    public String getPlaceName() {
+        return placeName;
+    }
+
+    public void setPlaceName(String placeName) {
+        this.placeName = placeName;
     }
 
     public void setParticipating(boolean participating) {

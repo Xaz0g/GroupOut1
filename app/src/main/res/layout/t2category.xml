@@ -15,14 +15,14 @@
         android:id="@+id/categorySearchTextField"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_toLeftOf="@+id/searchButton"
-        android:layout_toStartOf="@+id/searchButton"
-        android:ems="13"
+        android:ems="14"
         android:hint="Sök på ett event"
         android:inputType="textPersonName"
         android:textSize="15dp"
-        android:textStyle="italic" />
+        android:textStyle="italic"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/searchIcon"
+        android:layout_toEndOf="@+id/searchIcon" />
 
     <ImageView
         android:id="@+id/searchIcon"
