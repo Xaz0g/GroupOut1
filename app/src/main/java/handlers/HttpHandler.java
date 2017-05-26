@@ -28,6 +28,7 @@ public class HttpHandler
     private static final String NEW_PARTICIPATION = "newParticipation/";
     private static final String CANCEL_PARTICIPATION = "cancelParticipation/";
     private static final String NEARBY = "nearby/";
+    private static final String EVENT_COUNT = "eventCount/";
 
     private static final String GET_SALT = "getSalt/";
     private static final String GET = "get/";
@@ -114,5 +115,9 @@ public class HttpHandler
     public static String removeFavorite(String token, String placeId)
     {
         return HOST_ADRESS + PLACE + FAVOIRTE + REMOVE + token + "/" + placeId;
+    }
+
+    public static String eventCounter(String placeID){
+        return HOST_ADRESS + PLACE + EVENT_COUNT + placeID;
     }
 }
