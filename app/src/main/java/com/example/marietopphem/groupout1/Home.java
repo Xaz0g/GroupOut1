@@ -1,21 +1,34 @@
 package com.example.marietopphem.groupout1;
 
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import org.json.JSONException;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
+import java.util.logging.Logger;
 
+import handlers.EventActivity;
 import handlers.EventListAdapter;
+import handlers.HttpHandler;
+import handlers.HttpTask;
+import models.EveObject;
 import models.Event;
 
 /**
@@ -24,9 +37,14 @@ import models.Event;
 
 public class Home extends AppCompatActivity{
 
+    SharedPreferences sharedPrefs;
+
+
     private ListView lvEvent;
     private EventListAdapter adapter;
-    private List<Event> eventList;
+    private List<EveObject> eventList;
+
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -35,19 +53,13 @@ public class Home extends AppCompatActivity{
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this.getBaseContext());
 
         lvEvent = (ListView) findViewById(R.id.listView);
-
-        eventList = new ArrayList<>();
-        //add data
-        eventList.add(new Event("Hoppning", "Hagaparken", "20170501", "10:00", "12:00", "6", "4", true));
-        eventList.add(new Event("Springa", "Utegym", "20170501", "10:00", "12:00", "6", "4", false));
-        eventList.add(new Event("Simma", "Farsta", "20170501",  "10:00", "12:00", "6", "4", true));
-        eventList.add(new Event("Pilla", "Hagaparken", "20170501","10:00", "12:00", "6", "4", false));
+        fillList();
 
         adapter = new EventListAdapter(getApplicationContext(), eventList);
         lvEvent.setAdapter(adapter);
-
 
         lvEvent.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
@@ -57,7 +69,6 @@ public class Home extends AppCompatActivity{
                 Toast.makeText(getApplicationContext(), "Event klickat id" + view.getTag(), Toast.LENGTH_SHORT).show();
             }
         });
-
 
 
     }
@@ -81,7 +92,7 @@ public class Home extends AppCompatActivity{
                     startActivity(search);
                     return true;
                 case R.id.navigation_settings:
-                    Intent settings = new Intent(Home.this, Settings.class);
+                    Intent settings = new Intent(Home.this, AppSettings.class);
                     startActivity(settings);
                     return true;
             }
@@ -89,5 +100,59 @@ public class Home extends AppCompatActivity{
         }
 
     };
+
+    private ArrayList<EveObject> getEventParticipation()
+    {
+        try {
+
+            String eventJson = getEventJson();
+
+            ArrayList<EveObject> eventsPart = EventActivity.parseJSON(eventJson);
+            Log.d("HOME!", "" + eventsPart.size());
+
+
+            return eventsPart;
+
+        } catch (ExecutionException e) {
+            Log.d("HOME!", e.getMessage());
+        } catch (InterruptedException e) {
+            Log.d("HOME!", e.getMessage());
+        } catch (JSONException e) {
+            Log.d("HOME!", e.getMessage());
+        }
+        return null;
+    }
+
+    private void getId() throws ExecutionException, InterruptedException {
+        String token = sharedPrefs.getString("Token","FAIL");
+        Log.d("HOME!", "Token : " + token);
+
+        if(token.equalsIgnoreCase("FAIL"))
+        {
+            throw new NullPointerException();
+        }
+
+        String idRequest = HttpHandler.userId(token);
+        Log.d("HOME!", "HttpRequest : " + idRequest);
+
+        String response = new HttpTask().execute("get", idRequest).get();
+        Log.d("HOME!", response);
+
+        adapter.setUserId(Integer.parseInt(response.trim()));
+
+    }
+
+    private void fillList(){
+        eventList = getEventParticipation();
+    }
+
+    private String getEventJson () throws ExecutionException, InterruptedException {
+        String httpRequest = HttpHandler.getEvent("participant", sharedPrefs.getString("Token", "FAIL"), "All");
+        Log.d("HOME!", httpRequest);
+
+        String response = new HttpTask().execute("get", httpRequest).get();
+        Log.d("HOME!", response);
+        return response;
+    }
 
 }

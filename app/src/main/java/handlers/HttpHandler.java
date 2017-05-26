@@ -1,5 +1,6 @@
 package handlers;
 
+import android.content.SharedPreferences;
 import android.util.Log;
 
 /**
@@ -13,14 +14,25 @@ public class HttpHandler
     private static final String USER = "user/";
     private static final String EVENT = "event/";
     private static final String PLACE = "place/";
+    private static final String PARTICIPATION = "participation/";
 
     private static final String NEW_USER = "newUser/";
     private static final String CHECK_TOKEN = "checkToken/";
     private static final String LOGIN = "login/";
     private static final String NEW_EVENT = "newEvent/";
     private static final String SEARCH = "search/";
+    private static final String USER_ID = "userId/";
+    private static final String GET_EVENT = "getEvent/";
+    private static final String FAVOIRTE = "favorite/";
+    private static final String CHECK_PARTICIPATION = "checkParticipation/";
+    private static final String NEW_PARTICIPATION = "newParticipation/";
+    private static final String CANCEL_PARTICIPATION = "cancelParticipation/";
+    private static final String NEARBY = "nearby/";
 
     private static final String GET_SALT = "getSalt/";
+    private static final String GET = "get/";
+    private static final String SET = "set/";
+    private static final String REMOVE = "remove/";
 
     public static String newUser(String user)
     {
@@ -52,5 +64,55 @@ public class HttpHandler
     public static String searchForPlace(String category, String searchTerm)
     {
         return  HOST_ADRESS + PLACE + SEARCH + category + "/" + searchTerm;
+    }
+
+    public static String userId(String token)
+    {
+        return HOST_ADRESS + USER + USER_ID + token;
+    }
+
+    public static String getEvent(String by, String token, String parameter){
+
+        return HOST_ADRESS + EVENT + GET_EVENT + by + "/" + token + "/" + parameter;
+    }
+
+    public static String searcPlace()
+    {
+        return HOST_ADRESS + PLACE + SEARCH;
+    }
+
+    public static String getFavorite(String token)
+    {
+        return HOST_ADRESS + PLACE + FAVOIRTE + GET + token;
+    }
+
+    public static String checkParticipation(String token, int id){
+
+        return HOST_ADRESS + PARTICIPATION + CHECK_PARTICIPATION + token + "/" + id;
+    }
+
+    public static String getNearbyPositions(double longi, double lati, String place, String token){
+
+        return HOST_ADRESS + PLACE + NEARBY + longi + "/" +  lati + "/" + place + "/" + token;
+    }
+
+    public static String newParticipation(String token, int eventId)
+    {
+        return HOST_ADRESS + PARTICIPATION + NEW_PARTICIPATION + token + "/" + eventId;
+    }
+
+    public static String cancelParticipation(String token, int eventId)
+    {
+        return HOST_ADRESS + PARTICIPATION + CANCEL_PARTICIPATION + token + "/" + eventId;
+    }
+
+    public static String addFavorite(String token, String placeId)
+    {
+        return HOST_ADRESS + PLACE + FAVOIRTE + SET + token + "/" + placeId;
+    }
+
+    public static String removeFavorite(String token, String placeId)
+    {
+        return HOST_ADRESS + PLACE + FAVOIRTE + REMOVE + token + "/" + placeId;
     }
 }

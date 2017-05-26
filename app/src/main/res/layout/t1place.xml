@@ -15,57 +15,60 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-    <SearchView
-        android:id="@+id/searchByPlace"
-        android:layout_width="300dp"
-        android:layout_height="40dp"
-        android:background="?attr/colorControlHighlight"
-        android:ems="10"
-        android:fontFamily="sans-serif"
-        android:inputType="text"
-        android:orientation="vertical"
-        android:text=" Sök"
-        android:textColor="#454A54"
-        android:visibility="visible"
-        tools:layout_editor_absoluteX="52dp"
-        tools:layout_editor_absoluteY="109dp"
-        android:layout_above="@+id/checkBollplan"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_toLeftOf="@+id/cancelButton"
-        android:layout_toStartOf="@+id/cancelButton"
-        android:layout_alignParentTop="true" />
 
-    <Button
-        android:id="@+id/cancelButton"
+    <EditText
+        android:id="@+id/placeSearchTextField"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Avbryt"
+        android:ems="13"
+        android:hint="Sök på en plats"
+        android:inputType="textPersonName"
+        android:textSize="15dp"
+        android:textStyle="italic"
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@+id/cancelButton"
+        android:layout_toStartOf="@+id/cancelButton" />
+
+    <ImageView
+        android:id="@+id/searchIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@android:drawable/ic_menu_search"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/section_label"
+        android:layout_toEndOf="@+id/section_label" />
+
+    <Button
+        android:id="@+id/searhPlaceBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:onClick="searchForPlace"
+        android:text="Sök"
         android:textAppearance="@style/TextAppearance.AppCompat.Caption"
         android:textSize="14sp"
         tools:layout_editor_absoluteX="50dp"
-        tools:layout_editor_absoluteY="100dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        tools:layout_editor_absoluteY="100dp" />
 
     <CheckBox
-        android:id="@+id/checkBollplan"
+        android:id="@+id/checkBallCourt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/cancelButton"
+        android:layout_below="@+id/searhPlaceBtn"
         android:layout_marginTop="14dp"
         android:text="Bollplan"
         android:textColor="?attr/colorAccent"
         android:textStyle="bold|italic" />
 
     <CheckBox
-        android:id="@+id/checkUtegym"
+        android:id="@+id/checkOutdoorGym"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/checkMotionsspår"
-        android:layout_alignBottom="@+id/checkMotionsspår"
+        android:layout_alignBaseline="@+id/checkRunningTracks"
+        android:layout_alignBottom="@+id/checkRunningTracks"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:text="Utegym"
@@ -73,11 +76,11 @@
         android:textStyle="bold|italic" />
 
     <CheckBox
-        android:id="@+id/checkMotionsspår"
+        android:id="@+id/checkRunningTracks"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/checkBollplan"
-        android:layout_alignBottom="@+id/checkBollplan"
+        android:layout_alignBaseline="@+id/checkBallCourt"
+        android:layout_alignBottom="@+id/checkBallCourt"
         android:layout_centerHorizontal="true"
         android:text="Motionsspår"
         android:textColor="?attr/colorAccent"
@@ -102,15 +105,14 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Button"
         android:textColor="?attr/colorAccent"
         android:textSize="14sp"
-        android:layout_below="@+id/checkUtegym"
+        android:layout_below="@+id/checkOutdoorGym"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
     <ListView
-        android:id="@+id/listView"
+        android:id="@+id/searchPlaceListView"
         android:layout_width="391dp"
         android:layout_height="389dp"
-        android:layout_below="@+id/Favoriter"
         android:divider="@null"
         android:dividerHeight="@null"
         android:splitMotionEvents="false"
@@ -121,6 +123,9 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
-        tools:layout_editor_absoluteY="80dp" />
+        tools:layout_editor_absoluteY="80dp"
+        android:layout_below="@+id/Favoriter"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>

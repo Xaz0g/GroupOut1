@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity
 
         FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.login);
-        loginButton = (LoginButton)findViewById(R.id.fb_login_button);
+        loginButton = (LoginButton)findViewById(R.id.fbLoginButton);
         callbackManager = CallbackManager.Factory.create();
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
 
@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity
         });
 
         emailField = (EditText) findViewById(R.id.emailField);
-        passwordField = (EditText) findViewById(R.id.editText6);
+        passwordField = (EditText) findViewById(R.id.passwordField);
 
     }
     @Override
@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void logIn(View v) {
-        if(v.getId()==R.id.login_button){
+        if(v.getId()==R.id.loginButton){
 
             if(checkEmailField() && checkPasswordField())
             {
@@ -87,6 +87,8 @@ public class MainActivity extends AppCompatActivity
                     if(tokenValidation.trim().equals("Ok"))
                     {
                         sharedPrefs.edit().putString("Token",httpResponse).apply();
+                        String userId = new HttpTask().execute("get", HttpHandler.userId(httpResponse)).get().trim();
+                        sharedPrefs.edit().putString("userId", userId).apply();
                         Intent i = new Intent(MainActivity.this, Home.class);
                         startActivity(i);
                     }
@@ -109,21 +111,21 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void newAccount(View v){
-        if (v.getId()==R.id.create_account){
+        if (v.getId()==R.id.createAccountPrimary){
             Intent i = new Intent(MainActivity.this, Register.class);
             startActivity(i);
         }
     }
 
     public void forgotPassword(View v){
-        if (v.getId()==R.id.glömtLösen){
+        if (v.getId()==R.id.passwordForgotten){
             Intent i = new Intent(MainActivity.this, Home.class);
             startActivity(i);
         }
     }
 
     public void fbLogIn(View v){
-        if (v.getId()==R.id.fb_login_button){
+        if (v.getId()==R.id.fbLoginButton){
             Intent i = new Intent(MainActivity.this, Home.class);
             startActivity(i);
         }

@@ -35,4 +35,20 @@
         android:layout_toLeftOf="@+id/FinderSearchBtn"
         android:layout_toStartOf="@+id/FinderSearchBtn" />
 
+    <ListView
+        android:id="@+id/placelistView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/finderPlaceField"
+        android:layout_marginLeft="11dp"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="42dp"
+        android:backgroundTint="?attr/colorAccent"
+        android:divider="?attr/colorAccent"
+        android:dividerHeight="@dimen/cardview_compat_inset_shadow"
+        android:layout_alignRight="@+id/FinderSearchBtn"
+        android:layout_alignEnd="@+id/FinderSearchBtn" />
+
 </RelativeLayout>
