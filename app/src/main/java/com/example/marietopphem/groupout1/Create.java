@@ -54,6 +54,9 @@ public class Create extends AppCompatActivity {
     EditText max;
     EditText descField;
     TextView placeText;
+    Bundle bundle;
+
+    boolean findPlace;
 
     RadioGroup diff;
 
@@ -94,7 +97,7 @@ public class Create extends AppCompatActivity {
             }
         });
 
-        Bundle bundle = getIntent().getExtras();
+        bundle = getIntent().getExtras();
 
         if(bundle != null)
         {
@@ -102,6 +105,7 @@ public class Create extends AppCompatActivity {
             sharedPrefs.edit().putString("finderId", bundle.getString("placeId")).apply();
         }
     }
+
 
     public void showDialogOnCalendarClick(){
         calendar = (ImageButton) findViewById(R.id.calendar);
@@ -175,6 +179,7 @@ public class Create extends AppCompatActivity {
 
     public void pickPlace(View view){
         if (view.getId()== R.id.findPlaceButton){
+            findPlace = true;
             Intent i = new Intent(Create.this, PlaceFinder.class);
             startActivity(i);
         }
@@ -183,11 +188,26 @@ public class Create extends AppCompatActivity {
     @Override
     public void onResume(){
         super.onResume();
-        String str = sharedPrefs.getString("finderName", "FAIL");
 
-        Log.d(TAG, str);
-        if(!str.equalsIgnoreCase("FAIL")){
-            placeText.setText(str);
+        if(findPlace)
+        {
+            String str = sharedPrefs.getString("finderName", "FAIL");
+
+            Log.d(TAG, str);
+            if(!str.equalsIgnoreCase("FAIL")){
+                placeText.setText(str);
+            }
+
+            findPlace = false;
+        }
+        else
+        {
+            bundle = getIntent().getExtras();
+            if(bundle != null)
+            {
+                placeText.setText(bundle.getString("placeName"));
+                sharedPrefs.edit().putString("finderId", bundle.getString("placeId")).apply();
+            }
         }
 
     }
