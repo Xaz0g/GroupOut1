@@ -50,8 +50,6 @@ public class PlaceFinder extends AppCompatActivity {
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.finder_tabs);
         tabLayout.setupWithViewPager(viewPager);
-
-
     }
 
     public void searchPlace(View view){

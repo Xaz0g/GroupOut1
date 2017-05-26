@@ -87,6 +87,8 @@ public class MainActivity extends AppCompatActivity
                     if(tokenValidation.trim().equals("Ok"))
                     {
                         sharedPrefs.edit().putString("Token",httpResponse).apply();
+                        String userId = new HttpTask().execute("get", HttpHandler.userId(httpResponse)).get().trim();
+                        sharedPrefs.edit().putString("userId", userId).apply();
                         Intent i = new Intent(MainActivity.this, Home.class);
                         startActivity(i);
                     }
