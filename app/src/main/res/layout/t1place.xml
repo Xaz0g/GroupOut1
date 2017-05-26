@@ -20,14 +20,14 @@
         android:id="@+id/placeSearchTextField"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="13"
+        android:ems="14"
         android:hint="Sök på en plats"
         android:inputType="textPersonName"
         android:textSize="15dp"
         android:textStyle="italic"
-        android:layout_alignParentTop="true"
-        android:layout_toLeftOf="@+id/searhPlaceBtn"
-        android:layout_toStartOf="@+id/searhPlaceBtn" />
+        android:layout_alignBottom="@+id/searhPlaceBtn"
+        android:layout_toRightOf="@+id/searchIcon"
+        android:layout_toEndOf="@+id/searchIcon" />
 
     <ImageView
         android:id="@+id/searchIcon"

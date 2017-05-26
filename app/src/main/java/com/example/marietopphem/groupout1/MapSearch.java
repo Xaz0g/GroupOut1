@@ -19,6 +19,7 @@ import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import org.json.JSONArray;
@@ -33,7 +34,7 @@ import handlers.HttpTask;
 
 import static com.example.marietopphem.groupout1.R.layout.activity_maps;
 
-public class MapSearch extends Fragment implements OnMapReadyCallback{
+public class MapSearch extends Fragment implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener{
 
     private String TAG = "Debug ";
 
@@ -146,8 +147,35 @@ public class MapSearch extends Fragment implements OnMapReadyCallback{
             double y = pos.getLongitude();
             String name = pos.getName();
 
-            LatLng newMark = new LatLng(x,y);
-            mGoogleMap.addMarker(new MarkerOptions().position(newMark).title(name));
+            // Get amount of events at objects location
+            int numberOfEvents = -1;
+
+            if(numberOfEvents == -1){
+                LatLng newMark = new LatLng(x,y);
+                mGoogleMap.addMarker(new MarkerOptions().position(newMark).title(name).snippet("This location has no events"));
+
+            }
+            else {
+                LatLng newMark = new LatLng(x,y);
+                mGoogleMap.addMarker(new MarkerOptions().position(newMark).title(name).snippet("This location has "+ numberOfEvents +" events"));
+
+            }
         }
     }
+
+
+    @Override
+    public boolean onMarkerClick(Marker marker) {
+        String name = marker.getTitle();
+
+
+
+
+        return false;
+    }
+
+
+
+
+
 }
