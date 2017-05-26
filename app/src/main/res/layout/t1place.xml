@@ -20,17 +20,17 @@
         android:id="@+id/placeSearchTextField"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/searchButton"
         android:ems="13"
-        android:textSize="15dp"
-        android:textStyle="italic"
         android:hint="Sök på en plats"
         android:inputType="textPersonName"
-        android:layout_toRightOf="@+id/imageView4"
-        android:layout_toEndOf="@+id/imageView4" />
+        android:textSize="15dp"
+        android:textStyle="italic"
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@+id/cancelButton"
+        android:layout_toStartOf="@+id/cancelButton" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/searchIcon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@android:drawable/ic_menu_search"

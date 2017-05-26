@@ -18,14 +18,14 @@
         android:background="@color/Purplebutton"/>
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.marietopphem.groupout1.Search$PlaceholderFragment">
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        tools:context="com.example.marietopphem.groupout1.Search$PlaceholderFragment">
 
         <TextView
         android:id="@+id/section_label"
@@ -61,7 +61,8 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Caption"
         android:textSize="14sp"
         tools:layout_editor_absoluteX="50dp"
-        tools:layout_editor_absoluteY="100dp" />
+        tools:layout_editor_absoluteY="100dp"
+        android:layout_alignParentRight="true" />
 
     <CheckBox
         android:id="@+id/checkBox"

@@ -16,17 +16,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="13"
-        android:textSize="15dp"
-        android:hint="Sök"
-        android:textStyle="italic"
+        android:hint="Sök på en plats"
         android:inputType="textPersonName"
+        android:textSize="15dp"
+        android:textStyle="italic"
         android:layout_alignParentTop="true"
         android:layout_toLeftOf="@+id/searchButton"
-        android:layout_toRightOf="@+id/imageView4"
-        android:layout_toEndOf="@+id/imageView4" />
+        android:layout_toStartOf="@+id/searchButton" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/searchIcon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@android:drawable/ic_menu_search"

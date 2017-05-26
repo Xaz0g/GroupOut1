@@ -34,7 +34,6 @@ public class Create extends AppCompatActivity {
     private static final String TAG = Create.class.getSimpleName();
 
     SharedPreferences sharedPrefs;
-
     EditText nameField;
     ImageButton calendar;
     TextView df;
@@ -58,10 +57,12 @@ public class Create extends AppCompatActivity {
 
     RadioGroup diff;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create);
+
 
         nameField = (EditText) findViewById(R.id.event_name_maker);
         year_x = c.get(Calendar.YEAR);
@@ -138,7 +139,7 @@ public class Create extends AppCompatActivity {
                 st.setText(hourOfDay + ":" + minute);
 
             }
-        }, startHour, startMinute, true);
+        }, startHour, startMinute, false);
         startTimePickerDialog.show();
     }
 
@@ -153,7 +154,7 @@ public class Create extends AppCompatActivity {
                 ft.setText(hourOfDay + ":" + minute);
 
             }
-        }, finishHour, finishMinute, true);
+        }, finishHour, finishMinute, false);
         finishTimePickerDialog.show();
     }
 
