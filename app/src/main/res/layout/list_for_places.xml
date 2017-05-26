@@ -20,19 +20,19 @@
         android:textColor="#f9fafa"
         android:textSize="16dp"
         android:textStyle="bold"
-        android:layout_above="@+id/pstartTime_maker"
+        android:layout_below="@+id/info_btn"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
     <TextView
+        android:id="@+id/pevent_name_maker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/pevent_name_maker"
+        android:layout_alignParentTop="true"
         android:text="eventName"
-        android:textStyle="bold"
+        android:textColor="#80cbc4"
         android:textSize="20dp"
-        android:textColor="#fbfdfe"
-        android:layout_alignParentTop="true" />
+        android:textStyle="bold" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -42,10 +42,10 @@
         android:textSize="16dp"
         android:textStyle="bold"
         android:textColor="#f9fafa"
-        android:layout_marginTop="21dp"
-        android:layout_below="@+id/pparticipateCheck"
+        android:layout_below="@+id/pnumberOfParticipants_maker"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="25dp" />
 
     <TextView
         android:id="@+id/pendTime_maker"
@@ -55,12 +55,12 @@
         android:textColor="#f9fafa"
         android:textSize="16dp"
         android:textStyle="bold"
+        android:layout_marginRight="11dp"
+        android:layout_marginEnd="11dp"
         android:layout_alignBaseline="@+id/pstartTime_maker"
         android:layout_alignBottom="@+id/pstartTime_maker"
-        android:layout_toRightOf="@+id/pstartTime_maker"
-        android:layout_toEndOf="@+id/pstartTime_maker"
-        android:layout_marginLeft="38dp"
-        android:layout_marginStart="38dp" />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <TextView
         android:id="@+id/pnumberOfParticipants_maker"
@@ -70,7 +70,7 @@
         android:textColor="#f9fafa"
         android:textSize="16dp"
         android:textStyle="bold"
-        android:layout_above="@+id/pdate_maker"
+        android:layout_below="@+id/pparticipateCheck"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -84,18 +84,26 @@
         android:textStyle="bold"
         android:layout_alignBaseline="@+id/pdate_maker"
         android:layout_alignBottom="@+id/pdate_maker"
-        android:layout_toRightOf="@+id/pdate_maker"
-        android:layout_toEndOf="@+id/pdate_maker"
-        android:layout_marginLeft="37dp"
-        android:layout_marginStart="37dp" />
+        android:layout_toLeftOf="@+id/pendTime_maker"
+        android:layout_toStartOf="@+id/pendTime_maker" />
 
     <CheckBox
         android:id="@+id/pparticipateCheck"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:button="@drawable/participationbutton_checkbox"
-        android:layout_marginEnd="17dp"
-        android:layout_marginRight="17dp"
+        android:textSize="14sp"
+        android:layout_below="@+id/info_btn"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:id="@+id/info_btn"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/info"
+        android:textSize="14sp"
+        android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 

@@ -44,8 +44,8 @@ public class EventListAdapter extends BaseAdapter{
 
     @Override
     public int getCount(){
-        return 0;
-//        return mEventList.size();
+
+     return mEventList.size();
     }
 
     @Override
@@ -73,7 +73,6 @@ public class EventListAdapter extends BaseAdapter{
         TextView startTime = (TextView)v.findViewById(R.id.startTime_maker);
         TextView endTime = (TextView)v.findViewById(R.id.endTime_maker);
         TextView participants = (TextView)v.findViewById(R.id.numberOfParticipants);
-        TextView owner = (TextView)v.findViewById(R.id.owner_or_participant);
         TextView difficulty = (TextView)v.findViewById(R.id.difficulty);
 
         //set text for textview
@@ -81,14 +80,12 @@ public class EventListAdapter extends BaseAdapter{
         placeName.setText(mEventList.get(position).getPlaceId());
         date.setText("Datum och Tid:  " + mEventList.get(position).getEventDate());
         startTime.setText(mEventList.get(position).getStartTime() + " - ");
-        //endTime.setText(mEventList.get(position).getEndTime());
         endTime.setText(mEventList.get(position).getEndTime());
         participants.setText("Antal anmälda:  " + mEventList.get(position).getRegistration());
         difficulty.setText("Svårighetsgrad:  " + mEventList.get(position).getDifficulty() + "/5");
 
        if(!(mEventList.get(position).getLeaderId() !=userId)){
             settings.setVisibility(View.GONE);
-            owner.setText("Du är anmäld");
             deleteBtn.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v) {
@@ -119,7 +116,6 @@ public class EventListAdapter extends BaseAdapter{
                     notifyDataSetChanged();
                 }
             });
-            owner.setText("Du är skapare!");
             deleteBtn.setVisibility(View.GONE);
             infoBtn.setOnClickListener(new View.OnClickListener(){
                 @Override

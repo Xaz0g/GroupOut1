@@ -26,8 +26,8 @@
         android:textSize="15dp"
         android:textStyle="italic"
         android:layout_alignParentTop="true"
-        android:layout_toLeftOf="@+id/cancelButton"
-        android:layout_toStartOf="@+id/cancelButton" />
+        android:layout_toLeftOf="@+id/searhPlaceBtn"
+        android:layout_toStartOf="@+id/searhPlaceBtn" />
 
     <ImageView
         android:id="@+id/searchIcon"
