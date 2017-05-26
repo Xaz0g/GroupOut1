@@ -472,7 +472,7 @@ public class Create extends AppCompatActivity {
                     startActivity(search);
                     return true;
                 case R.id.navigation_settings:
-                    Intent settings = new Intent(Create.this, Settings.class);
+                    Intent settings = new Intent(Create.this, AppSettings.class);
                     startActivity(settings);
                     return true;
             }

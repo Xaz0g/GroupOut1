@@ -147,7 +147,7 @@ public class Search extends AppCompatActivity {
                     startActivity(search);
                     return true;
                 case R.id.navigation_settings:
-                    Intent settings = new Intent(Search.this, Settings.class);
+                    Intent settings = new Intent(Search.this, AppSettings.class);
                     startActivity(settings);
                     return true;
             }
