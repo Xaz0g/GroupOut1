@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import com.example.marietopphem.groupout1.R;
@@ -49,8 +50,9 @@ public class PlaceEventAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         View v = View.inflate(mContext, R.layout.list_for_places, null);
+
         CheckBox particpate = (CheckBox) v.findViewById(R.id.pparticipateCheck);
         TextView eventName = (TextView) v.findViewById(R.id.pevent_name_maker);
         TextView difficulty = (TextView) v.findViewById(R.id.pdifficulty_maker);
@@ -59,7 +61,7 @@ public class PlaceEventAdapter extends BaseAdapter {
         TextView date = (TextView) v.findViewById(R.id.pdate_maker);
         TextView registrations = (TextView) v.findViewById(R.id.pnumberOfParticipants_maker);
 
-        particpate.setChecked(checkParticipation(position));
+        particpate.setChecked(checkParticipating(position));
         eventName.setText(mEventList.get(position).getName());
         difficulty.setText("Svårighetsgrad: " + mEventList.get(position).getDifficulty() + "/5");
         endTime.setText(mEventList.get(position).getEndTime());
@@ -67,14 +69,66 @@ public class PlaceEventAdapter extends BaseAdapter {
         date.setText(mEventList.get(position).getEventDate());
         registrations.setText("Antal anmälda: " + mEventList.get(position).getRegistration() + "/" + mEventList.get(position).getMaxCapacity());
 
+        final CheckBox participate = (CheckBox) v.findViewById(R.id.pparticipateCheck);
+
+        participate.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                String response = "";
+                if(isChecked)
+                {
+                    Log.d("CheckBox", "True");
+                    String request = HttpHandler.newParticipation(token, mEventList.get(position).getId());
+                    Log.d("CheckBox", request);
+                    try {
+                        response = new HttpTask().execute("PUT", request).get().trim();
+                    } catch (InterruptedException e) {
+                        Log.e("CheckBox", e.getMessage());
+                    } catch (ExecutionException e) {
+                        Log.e("CheckBox", e.getMessage());
+                    }
+
+                    if(!response.equals("true")){
+                        participate.setChecked(false);
+                        Log.d("CheckBox", "ERROR : " + response);
+                    }
+                }
+                else
+                {
+                    Log.d("CheckBox", "False");
+                    String request = HttpHandler.cancelParticipation(token, mEventList.get(position).getId());
+                    Log.d("CheckBox", request);
+                    try {
+                        response = new HttpTask().execute("PUT", request).get().trim();
+                    } catch (InterruptedException e) {
+                        Log.e("CheckBox", e.getMessage());
+                    } catch (ExecutionException e) {
+                        Log.e("CheckBox", e.getMessage());
+                    }
+
+                    if(!response.equals("true")){
+                        participate.setChecked(true);
+                        Log.d("CheckBox", "ERROR : " + response);
+                    }
+                }
+            }
+        });
+
         return v;
     }
 
-    private boolean checkParticipation(int pos){
-        if(userId == mEventList.get(pos).getLeaderId()){
+    private boolean checkParticipating(int pos)
+    {
+        if(mEventList.get(pos).isParticipating())
+        {
+            Log.d("Boolis", "true");
             return true;
         }
-        return false;
+        else
+        {
+            Log.d("Boolis", "false");
+            return false;
+        }
     }
 
     public void setToken(String token){

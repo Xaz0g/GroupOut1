@@ -1,5 +1,6 @@
 package com.example.marietopphem.groupout1;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +9,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,6 +34,7 @@ public class PlaceActivity extends AppCompatActivity {
     JSONArray eventsOnPlace;
     ListView listv;
     Bundle extras;
+
 
     SharedPreferences sharedPrefs;
 
@@ -63,6 +67,65 @@ public class PlaceActivity extends AppCompatActivity {
             }
         });
 
+        final CheckBox addFav = (CheckBox) findViewById(R.id.addFavorite);
+        addFav.setChecked(extras.getBoolean("favorite"));
+        addFav.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                String request = "";
+                String response = "";
+                String token = sharedPrefs.getString("Token", "FAIL");
+                String placeId = extras.getString("Id");
+
+                if(isChecked)
+                {
+                    Log.d("AddFav", "true");
+                    request = HttpHandler.addFavorite(token, placeId);
+                    Log.d("AddFav", request);
+                    try {
+                        response = new HttpTask().execute("PUT", request).get().trim();
+                        Log.d("AddFav", response);
+                    } catch (InterruptedException e) {
+                        Log.d("AddFav",e.getMessage());
+                    } catch (ExecutionException e) {
+                        Log.d("AddFav",e.getMessage());
+                    }
+
+                    if(!response.equals("true")){
+                        Log.d("AddFav", "ERROR: " + response);
+                        addFav.setChecked(false);
+                    }
+
+                }
+                else
+                {
+                    Log.d("AddFav", "false");
+                    request = HttpHandler.removeFavorite(token, placeId);
+                    Log.d("AddFav", request);
+                    try {
+                        response = new HttpTask().execute("PUT", request).get().trim();
+                        Log.d("AddFav", response);
+                    } catch (InterruptedException e) {
+                        Log.d("AddFav",e.getMessage());
+                    } catch (ExecutionException e) {
+                        Log.d("AddFav",e.getMessage());
+                    }
+
+                    if(!response.equals("true")){
+                        Log.d("AddFav", "ERROR: " + response);
+                        addFav.setChecked(true);
+                    }
+
+                }
+            }
+        });
+
+        getEventsForPlace();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         getEventsForPlace();
     }
 
@@ -100,15 +163,27 @@ public class PlaceActivity extends AppCompatActivity {
             String startTime = eventsOnPlace.getJSONObject(i).getString("startTime");
             String endTime = eventsOnPlace.getJSONObject(i).getString("endTime");
             Boolean visible = eventsOnPlace.getJSONObject(i).getBoolean("visible");
+            Boolean participating = eventsOnPlace.getJSONObject(i).getBoolean("participating");
             int id = eventsOnPlace.getJSONObject(i).getInt("id");
             int leaderId = eventsOnPlace.getJSONObject(i).getInt("leaderId");
             int minCapacity = eventsOnPlace.getJSONObject(i).getInt("minCapacity");
             int maxCapacity = eventsOnPlace.getJSONObject(i).getInt("maxCapacity");
             int registration = eventsOnPlace.getJSONObject(i).getInt("registration");
             int difficulty = eventsOnPlace.getJSONObject(i).getInt("difficulty");
-            eventListing.add(new EveObject(name, category, description, placeId, eventDate, startTime, endTime, visible, id, leaderId, minCapacity, maxCapacity, registration, difficulty));
+            eventListing.add(new EveObject(name, category, description, placeId, eventDate, startTime, endTime, visible, id, leaderId, minCapacity, maxCapacity, registration, difficulty, participating));
         }
 
         placeEventAdapter.notifyDataSetChanged();
+    }
+
+    public void pCreateEvent(View view)
+    {
+        if(view.getId() == R.id.addNewEventPlace)
+        {
+            Intent i = new Intent(PlaceActivity.this, Create.class);
+            i.putExtra("placeName",extras.getString("Name"));
+            i.putExtra("placeId", extras.getString("Id"));
+            startActivity(i);
+        }
     }
 }

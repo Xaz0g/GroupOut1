@@ -1,5 +1,6 @@
 package handlers;
 
+import android.content.SharedPreferences;
 import android.util.Log;
 
 /**
@@ -30,6 +31,8 @@ public class HttpHandler
 
     private static final String GET_SALT = "getSalt/";
     private static final String GET = "get/";
+    private static final String SET = "set/";
+    private static final String REMOVE = "remove/";
 
     public static String newUser(String user)
     {
@@ -101,5 +104,15 @@ public class HttpHandler
     public static String cancelParticipation(String token, int eventId)
     {
         return HOST_ADRESS + PARTICIPATION + CANCEL_PARTICIPATION + token + "/" + eventId;
+    }
+
+    public static String addFavorite(String token, String placeId)
+    {
+        return HOST_ADRESS + PLACE + FAVOIRTE + SET + token + "/" + placeId;
+    }
+
+    public static String removeFavorite(String token, String placeId)
+    {
+        return HOST_ADRESS + PLACE + FAVOIRTE + REMOVE + token + "/" + placeId;
     }
 }

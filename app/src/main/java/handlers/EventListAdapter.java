@@ -104,8 +104,6 @@ public class EventListAdapter extends BaseAdapter{
 
                 }
             } );
-
-
         }else{
 
             settings.setOnClickListener(new View.OnClickListener(){
