@@ -434,7 +434,7 @@ public class Create extends AppCompatActivity {
 
     private boolean checkPlace()
     {
-        String s = sharedPrefs.getString("Id","FAIL");
+        String s = sharedPrefs.getString("finderId","FAIL");
         Log.d(TAG, s);
         return !s.equalsIgnoreCase("fail");
     }
