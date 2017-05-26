@@ -1,6 +1,7 @@
 package handlers;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.util.Log;
@@ -10,6 +11,7 @@ import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
+import android.widget.Button;
 
 import com.example.marietopphem.groupout1.R;
 
@@ -60,6 +62,7 @@ public class PlaceEventAdapter extends BaseAdapter {
         TextView startTime = (TextView) v.findViewById(R.id.pstartTime_maker);
         TextView date = (TextView) v.findViewById(R.id.pdate_maker);
         TextView registrations = (TextView) v.findViewById(R.id.pnumberOfParticipants_maker);
+        final Button infoBtn = (Button)v.findViewById(R.id.info_btn);
 
         particpate.setChecked(checkParticipating(position));
         eventName.setText(mEventList.get(position).getName());
@@ -111,9 +114,46 @@ public class PlaceEventAdapter extends BaseAdapter {
                         Log.d("CheckBox", "ERROR : " + response);
                     }
                 }
+
             }
         });
+        infoBtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Intent info = new Intent(mContext, DescriptionPopUp.class);
 
+                String descriptionToPopUp = mEventList.get(position).getDescription();
+                info.putExtra("Description", descriptionToPopUp);
+
+                String endTimeToPopUp = mEventList.get(position).getEndTime();
+                info.putExtra("EndTime", endTimeToPopUp);
+
+                String startTimeToPopUp = mEventList.get(position).getStartTime();
+                info.putExtra("StartTime", startTimeToPopUp);
+
+                String categoryToPopUp = mEventList.get(position).getCategory();
+                info.putExtra("Category", categoryToPopUp);
+
+                String dateToPopUp = mEventList.get(position).getEventDate();
+                info.putExtra("Date", dateToPopUp);
+
+                String eventNameToPopUp = mEventList.get(position).getName();
+                info.putExtra("EventName", eventNameToPopUp);
+
+                String difficultyToPopUp = mEventList.get(position).getDifficulty();
+                info.putExtra("Difficulty", difficultyToPopUp);
+
+                int maxCapacityToPopUp = mEventList.get(position).getMaxCapacity();
+                info.putExtra("MaxCapacity", maxCapacityToPopUp);
+
+                int minCapacityToPopUp = mEventList.get(position).getMinCapacity();
+                info.putExtra("MinCapacity", minCapacityToPopUp);
+
+                info.putExtra("Place", "");
+                mContext.startActivity(info);
+
+            }
+        } );
         return v;
     }
 
