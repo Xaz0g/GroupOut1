@@ -33,7 +33,7 @@
         android:id="@+id/createAccountPrimary"
         android:layout_width="292dp"
         android:layout_height="48dp"
-        android:layout_marginBottom="202dp"
+        android:layout_marginBottom="200dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:background="#64bdb5"
@@ -50,10 +50,10 @@
 
     <Button
         android:id="@+id/loginButton"
-        android:layout_width="130dp"
-        android:layout_height="48dp"
-        android:layout_marginBottom="11dp"
-        android:layout_marginRight="60dp"
+        android:layout_width="128dp"
+        android:layout_height="47dp"
+        android:layout_marginBottom="6dp"
+        android:layout_marginRight="59dp"
         android:backgroundTint="#1e96fe"
         android:onClick="logIn"
         android:text="Logga In"
@@ -80,10 +80,11 @@
 
     <Button
         android:id="@+id/passwordForgotten"
-        android:layout_width="127dp"
-        android:layout_height="48dp"
-        android:layout_marginBottom="13dp"
+        android:layout_width="128dp"
+        android:layout_height="47dp"
+        android:layout_marginBottom="6dp"
         android:layout_marginLeft="60dp"
+        android:layout_marginStart="60dp"
         android:background="@color/colorPrimary"
         android:backgroundTint="@android:color/transparent"
         android:onClick="forgotPassword"
@@ -91,8 +92,7 @@
         android:textColor="#1e96fe"
         android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@+id/fbLoginButton"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginStart="60dp" />
+        app:layout_constraintLeft_toLeftOf="parent" />
 
     <TextView
         android:id="@+id/noAccount"
@@ -102,15 +102,14 @@
         android:textColor="#ffff"
         android:textSize="15sp"
         android:textStyle="bold"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/createAccountPrimary"
         android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintHorizontal_bias="0.503"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp" />
+        android:layout_marginEnd="8dp"
+        tools:layout_editor_absoluteY="376dp" />
 
     <ImageView
         android:id="@+id/imageView2"
