@@ -1,5 +1,8 @@
 package models;
 
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+
 /**
  * Created by Elina on 2017-05-23.
  */
@@ -122,9 +125,7 @@ public class EveObject {
         return eventDate;
     }
 
-    public String getStartTime (){
-        return startTime;
-    }
+    public String getStartTime (){ return startTime; }
 
     public String getEndTime (){
         return endTime;

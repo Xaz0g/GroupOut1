@@ -14,7 +14,9 @@ import android.widget.TextView;
 import com.example.marietopphem.groupout1.Home;
 import com.example.marietopphem.groupout1.R;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.SimpleTimeZone;
 
 import models.EveObject;
 import models.Event;
@@ -76,11 +78,12 @@ public class EventListAdapter extends BaseAdapter{
         //set text for textview
         eventName.setText(mEventList.get(position).getName());
         placeName.setText(mEventList.get(position).getPlaceId());
-        date.setText(mEventList.get(position).getEventDate());
-        startTime.setText(mEventList.get(position).getStartTime());
+        date.setText("Datum och Tid:  " + mEventList.get(position).getEventDate());
+        startTime.setText(mEventList.get(position).getStartTime() + " - ");
+        //endTime.setText(mEventList.get(position).getEndTime());
         endTime.setText(mEventList.get(position).getEndTime());
-        participants.setText(mEventList.get(position).getRegistration());
-        difficulty.setText(mEventList.get(position).getDifficulty());
+        participants.setText("Antal anmälda:  " + mEventList.get(position).getRegistration());
+        difficulty.setText("Svårighetsgrad:  " + mEventList.get(position).getDifficulty() + "/5");
 
        if(!(mEventList.get(position).getLeaderId() !=userId)){
             settings.setVisibility(View.GONE);
@@ -113,7 +116,7 @@ public class EventListAdapter extends BaseAdapter{
                     notifyDataSetChanged();
                 }
             });
-            owner.setText("Du är skapare");
+            owner.setText("Du är skapare!");
             deleteBtn.setVisibility(View.GONE);
             infoBtn.setOnClickListener(new View.OnClickListener(){
                 @Override
