@@ -39,8 +39,8 @@ public class DescriptionPopUp extends Activity {
         } else {
             description = extras.getString("Description");
         }
-        TextView descriptionView = (TextView) findViewById(R.id.descriptionView);
-        descriptionView.setText(description);
+       // TextView descriptionView = (TextView) findViewById(R.id.);
+       // descriptionView.setText(description);
 
 
     }

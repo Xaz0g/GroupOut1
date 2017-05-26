@@ -1,5 +1,6 @@
 package com.example.marietopphem.groupout1;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
@@ -66,21 +67,65 @@ public class PlaceActivity extends AppCompatActivity {
             }
         });
 
-        CheckBox addFav = (CheckBox) findViewById(R.id.addFavorite);
+        final CheckBox addFav = (CheckBox) findViewById(R.id.addFavorite);
+        addFav.setChecked(extras.getBoolean("favorite"));
         addFav.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                String request = "";
+                String response = "";
+                String token = sharedPrefs.getString("Token", "FAIL");
+                String placeId = extras.getString("Id");
+
                 if(isChecked)
                 {
                     Log.d("AddFav", "true");
+                    request = HttpHandler.addFavorite(token, placeId);
+                    Log.d("AddFav", request);
+                    try {
+                        response = new HttpTask().execute("PUT", request).get().trim();
+                        Log.d("AddFav", response);
+                    } catch (InterruptedException e) {
+                        Log.d("AddFav",e.getMessage());
+                    } catch (ExecutionException e) {
+                        Log.d("AddFav",e.getMessage());
+                    }
+
+                    if(!response.equals("true")){
+                        Log.d("AddFav", "ERROR: " + response);
+                        addFav.setChecked(false);
+                    }
+
                 }
                 else
                 {
                     Log.d("AddFav", "false");
+                    request = HttpHandler.removeFavorite(token, placeId);
+                    Log.d("AddFav", request);
+                    try {
+                        response = new HttpTask().execute("PUT", request).get().trim();
+                        Log.d("AddFav", response);
+                    } catch (InterruptedException e) {
+                        Log.d("AddFav",e.getMessage());
+                    } catch (ExecutionException e) {
+                        Log.d("AddFav",e.getMessage());
+                    }
+
+                    if(!response.equals("true")){
+                        Log.d("AddFav", "ERROR: " + response);
+                        addFav.setChecked(true);
+                    }
+
                 }
             }
         });
 
+        getEventsForPlace();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         getEventsForPlace();
     }
 
@@ -129,5 +174,16 @@ public class PlaceActivity extends AppCompatActivity {
         }
 
         placeEventAdapter.notifyDataSetChanged();
+    }
+
+    public void pCreateEvent(View view)
+    {
+        if(view.getId() == R.id.addNewEventPlace)
+        {
+            Intent i = new Intent(PlaceActivity.this, Create.class);
+            i.putExtra("placeName",extras.getString("Name"));
+            i.putExtra("placeId", extras.getString("Id"));
+            startActivity(i);
+        }
     }
 }
