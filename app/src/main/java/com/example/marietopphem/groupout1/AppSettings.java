@@ -65,6 +65,7 @@ public class AppSettings extends Activity{
                     return true;
                 case R.id.navigation_search:
                     Intent search = new Intent(AppSettings.this, Search.class);
+                    search.putExtra("inputCondition", "1");
                     startActivity(search);
                     return true;
                 case R.id.navigation_settings:

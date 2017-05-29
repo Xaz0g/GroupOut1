@@ -102,6 +102,7 @@ public class Home extends AppCompatActivity{
                     return true;
                 case R.id.navigation_search:
                     Intent search = new Intent(Home.this, Search.class);
+                    search.putExtra("inputCondition", "1");
                     startActivity(search);
                     return true;
                 case R.id.navigation_settings:
