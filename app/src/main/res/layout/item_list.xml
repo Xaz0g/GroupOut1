@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="10dp"
-    android:paddingRight="10dp"
-    android:paddingBottom="5dp"
-    android:paddingTop="5dp"
     android:background="#4b4a4a"
     android:weightSum="1">
 
@@ -19,10 +16,16 @@
         android:textColor="#f9fafa"
         android:textSize="16dp"
         android:textStyle="bold"
-        android:layout_below="@+id/event_name_maker"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="16dp" />
+        tools:layout_constraintTop_creator="1"
+        android:layout_marginStart="10dp"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintHorizontal_bias="0.03"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/event_name_maker" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -32,7 +35,16 @@
         android:textStyle="bold"
         android:textSize="20dp"
         android:textColor="#80cbc4"
-        android:layout_alignParentTop="true" />
+        tools:layout_constraintTop_creator="1"
+        android:layout_marginStart="10dp"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginRight="0dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="16dp"
+        app:layout_constraintHorizontal_bias="0.026" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -41,10 +53,16 @@
         android:text="placeName"
         android:textSize="18dp"
         android:textColor="#f9fafa"
-        android:layout_marginTop="18dp"
-        android:layout_below="@+id/difficulty"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        tools:layout_constraintTop_creator="1"
+        android:layout_marginStart="10dp"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintHorizontal_bias="0.032"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/difficulty" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -53,10 +71,16 @@
         android:text="date"
         android:textSize="16dp"
         android:textColor="#f9fafa"
-        android:layout_marginTop="18dp"
-        android:layout_below="@+id/numberOfParticipants"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        tools:layout_constraintTop_creator="1"
+        android:layout_marginStart="10dp"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.027"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="138dp" />
 
 
     <TextView
@@ -66,10 +90,16 @@
         android:text="participants"
         android:textColor="#f9fafa"
         android:textSize="16dp"
-        android:layout_marginTop="22dp"
-        android:layout_below="@+id/place_name_maker"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        tools:layout_constraintTop_creator="1"
+        android:layout_marginStart="10dp"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintHorizontal_bias="0.032"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/place_name_maker" />
 
     <TextView
         android:id="@+id/startTime_maker"
@@ -78,10 +108,16 @@
         android:text="startTime"
         android:textColor="#f9fafa"
         android:textSize="16sp"
-        android:layout_alignBaseline="@+id/date_maker"
-        android:layout_alignBottom="@+id/date_maker"
-        android:layout_toLeftOf="@+id/endTime_maker"
-        android:layout_toStartOf="@+id/endTime_maker" />
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="138dp"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.785" />
 
     <TextView
         android:id="@+id/endTime_maker"
@@ -90,38 +126,66 @@
         android:text="endTime"
         android:textColor="#f9fafa"
         android:textSize="16sp"
-        android:layout_alignBaseline="@+id/startTime_maker"
-        android:layout_alignBottom="@+id/startTime_maker"
-        android:layout_toLeftOf="@+id/settings"
-        android:layout_toStartOf="@+id/settings" />
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBaseline_creator="1"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="138dp"
+        app:layout_constraintHorizontal_bias="0.978" />
 
     <Button
         android:id="@+id/delete_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#80cbc4"
-        android:text="Ta bort"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="74dp"
+        android:background="@drawable/ic_remove_circle_black_24dp"
         android:textColor="@android:color/white"
-        android:layout_below="@+id/difficulty"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        app:layout_constraintHorizontal_bias="0.94"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/endTime_maker" />
 
     <Button
         android:id="@+id/settings"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="67dp"
         android:background="@drawable/ic_settings_black_24dp"
-        android:layout_below="@+id/info_btn"
-        android:layout_alignTop="@+id/delete_btn"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        app:layout_constraintHorizontal_bias="0.94"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1" />
 
     <Button
         android:id="@+id/info_btn"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/info"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-</RelativeLayout>
+        app:layout_constraintHorizontal_bias="0.919"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintTop_creator="1"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/settings"
+        app:layout_constraintVertical_bias="0.529" />
+</android.support.constraint.ConstraintLayout>

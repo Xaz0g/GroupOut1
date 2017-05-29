@@ -53,7 +53,7 @@ public class EveObject {
     }
 
     public void setParticipating(boolean participating) {
-        participating = participating;
+        this.participating = participating;
     }
 
     public boolean isParticipating() {

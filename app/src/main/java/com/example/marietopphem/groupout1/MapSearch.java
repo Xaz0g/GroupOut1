@@ -145,10 +145,11 @@ public class MapSearch extends Fragment implements OnMapReadyCallback, GoogleMap
         for(PositionObject pos: javaPositions){
             double x = pos.getLatitude();
             double y = pos.getLongitude();
+            String id = pos.getId();
             String name = pos.getName();
 
             // Get amount of events at objects location
-            int numberOfEvents = -1;
+            int numberOfEvents = countEventsAtLocation(id);
 
             if(numberOfEvents == -1){
                 LatLng newMark = new LatLng(x,y);
@@ -163,13 +164,36 @@ public class MapSearch extends Fragment implements OnMapReadyCallback, GoogleMap
         }
     }
 
+    public int countEventsAtLocation(String id){
+        int counter = -1;
+        // Make statement to get all events at this location
+
+        String request = HttpHandler.eventCounter(id);
+
+        try {
+            counter = Integer.parseInt(new HttpTask().execute("GET", request).get().trim());
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+
+
+        return counter;
+    }
 
     @Override
     public boolean onMarkerClick(Marker marker) {
         String name = marker.getTitle();
+        String id;
 
+        for (PositionObject pos : javaPositions){
+            if(name == pos.getName()){
+                id = pos.getId();
+            }
+        }
 
-
+        // Switch view to id's location, activity_place
 
         return false;
     }
