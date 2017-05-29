@@ -18,6 +18,7 @@ import com.example.marietopphem.groupout1.R;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.SimpleTimeZone;
+import java.util.concurrent.ExecutionException;
 
 import models.EveObject;
 import models.Event;
@@ -31,6 +32,7 @@ public class EventListAdapter extends BaseAdapter {
     private Context mContext;
     private List<EveObject> mEventList;
     private int userId;
+    private String token;
     DescriptionPopUp dpu;
 
     public EventListAdapter(Context mContext, List<EveObject> mEventList) {
@@ -66,7 +68,6 @@ public class EventListAdapter extends BaseAdapter {
         Button infoBtn = (Button) v.findViewById(R.id.info_btn);
         Button settings = (Button) v.findViewById(R.id.settings);
 
-
         TextView eventName = (TextView) v.findViewById(R.id.event_name_maker);
         TextView placeName = (TextView) v.findViewById(R.id.place_name_maker);
         TextView date = (TextView) v.findViewById(R.id.date_maker);
@@ -92,9 +93,23 @@ public class EventListAdapter extends BaseAdapter {
             deleteBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //do something
-                    mEventList.remove(position); //or some other task (tar för tillfället bort)
-                    notifyDataSetChanged();
+                    String request = HttpHandler.cancelParticipation(token,mEventList.get(position).getId());
+                    Log.d("BLAO",request);
+                    try {
+                        String response = new HttpTask().execute("PUT", request).get().trim();
+                        Log.d("BLAO",response);
+
+                        if(response.equals("true"))
+                        {
+                            mEventList.remove(position);
+                            notifyDataSetChanged();
+                        }
+
+                    } catch (InterruptedException e) {
+                        Log.e("BLAO",e.getMessage());
+                    } catch (ExecutionException e) {
+                        Log.e("BLAO",e.getMessage());
+                    }
                 }
             });
         } else {
@@ -152,5 +167,8 @@ public class EventListAdapter extends BaseAdapter {
         return v;
     }
 
-
+    public void setToken(String token)
+    {
+        this.token = token;
+    }
 }

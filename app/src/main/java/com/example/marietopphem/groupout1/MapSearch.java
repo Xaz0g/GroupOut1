@@ -171,7 +171,7 @@ public class MapSearch extends Fragment implements OnMapReadyCallback, GoogleMap
         String request = HttpHandler.eventCounter(id);
 
         try {
-            counter = Integer.parseInt(new HttpTask().execute("GET", request).get() );
+            counter = Integer.parseInt(new HttpTask().execute("GET", request).get().trim());
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {

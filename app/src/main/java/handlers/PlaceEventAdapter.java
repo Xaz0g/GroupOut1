@@ -92,6 +92,11 @@ public class PlaceEventAdapter extends BaseAdapter {
                         participate.setChecked(false);
                         Log.d("CheckBox", "ERROR : " + response);
                     }
+                    else
+                    {
+                        Log.d("CheckBox", "YAY : " + response);
+                        mEventList.get(position).setParticipating(!mEventList.get(position).isParticipating());
+                    }
                 }
                 else
                 {
@@ -109,6 +114,11 @@ public class PlaceEventAdapter extends BaseAdapter {
                     if(!response.equals("true")){
                         participate.setChecked(true);
                         Log.d("CheckBox", "ERROR : " + response);
+                    }
+                    else
+                    {
+                        Log.d("CheckBox", "YAY : " + response);
+                        mEventList.get(position).setParticipating(!mEventList.get(position).isParticipating());
                     }
                 }
             }

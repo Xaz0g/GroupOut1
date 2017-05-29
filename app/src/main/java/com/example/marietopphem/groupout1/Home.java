@@ -57,6 +57,7 @@ public class Home extends AppCompatActivity{
         fillList();
 
         adapter = new EventListAdapter(getApplicationContext(), eventList);
+        adapter.setToken(sharedPrefs.getString("Token", "FAIL"));
         try {
             getId();
         } catch (ExecutionException e) {
@@ -78,6 +79,13 @@ public class Home extends AppCompatActivity{
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        fillList();
+        adapter.notifyDataSetChanged();
+    }
+
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -94,6 +102,7 @@ public class Home extends AppCompatActivity{
                     return true;
                 case R.id.navigation_search:
                     Intent search = new Intent(Home.this, Search.class);
+                    search.putExtra("inputCondition", "1");
                     startActivity(search);
                     return true;
                 case R.id.navigation_settings:

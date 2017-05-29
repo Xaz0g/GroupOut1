@@ -19,6 +19,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -32,12 +33,20 @@ public class Search extends AppCompatActivity {
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
     SharedPreferences sharedPrefs;
-
     LocationManager locationManager;
+
+    String inputCondition;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Bundle extras = getIntent().getExtras();
+        inputCondition = extras.getString("inputCondition");
+
+        Log.v("ZLATANÄRVÅRGUD", inputCondition);
+
+
         setContentView(R.layout.search);
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
@@ -52,6 +61,7 @@ public class Search extends AppCompatActivity {
 
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
+        mSectionsPagerAdapter.getItem(2);
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
@@ -86,6 +96,8 @@ public class Search extends AppCompatActivity {
             public SectionsPagerAdapter(FragmentManager fm) {
                 super(fm);
             }
+
+
 
             @Override
             public Fragment getItem(int position) {
@@ -144,6 +156,7 @@ public class Search extends AppCompatActivity {
                     return true;
                 case R.id.navigation_search:
                     Intent search = new Intent(Search.this, Search.class);
+                    search.putExtra("inputCondition", "1");
                     startActivity(search);
                     return true;
                 case R.id.navigation_settings:
