@@ -57,6 +57,13 @@ public class Home extends AppCompatActivity{
         fillList();
 
         adapter = new EventListAdapter(getApplicationContext(), eventList);
+        try {
+            getId();
+        } catch (ExecutionException e) {
+            Log.d("HOME!", e.getMessage());
+        } catch (InterruptedException e) {
+            Log.d("HOME!", e.getMessage());
+        }
         lvEvent.setAdapter(adapter);
 
         lvEvent.setOnItemClickListener(new AdapterView.OnItemClickListener() {
