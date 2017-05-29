@@ -33,7 +33,7 @@ public class DescriptionPopUp extends Activity {
 
         int width = dm.widthPixels;
         int height = dm.heightPixels;
-        getWindow().setLayout((int)(width*.87), (int)(height*.75));
+        getWindow().setLayout((int)(width*.87), (int)(height*.5));
 
         String description;
         String endTime;
