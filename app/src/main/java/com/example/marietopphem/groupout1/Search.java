@@ -35,16 +35,11 @@ public class Search extends AppCompatActivity {
     SharedPreferences sharedPrefs;
     LocationManager locationManager;
 
-    String inputCondition;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Bundle extras = getIntent().getExtras();
-        inputCondition = extras.getString("inputCondition");
-
-        Log.v("ZLATANÄRVÅRGUD", inputCondition);
 
 
         setContentView(R.layout.search);
@@ -103,18 +98,18 @@ public class Search extends AppCompatActivity {
             public Fragment getItem(int position) {
                 switch (position) {
                     case 0:
-                        PlaceSearch t1 = new PlaceSearch();
-                        ps = t1;
-                        ps.getFavorites(sharedPrefs.getString("Token","FAIL"));
-                        return t1;
+                        MapSearch t3 = new MapSearch();
+                        ms = t3;
+                        return t3;
                     case 1:
                         CategorySearch t2 = new CategorySearch();
                         cs = t2;
                         return t2;
                     case 2:
-                        MapSearch t3 = new MapSearch();
-                        ms = t3;
-                        return t3;
+                        PlaceSearch t1 = new PlaceSearch();
+                        ps = t1;
+                        ps.getFavorites(sharedPrefs.getString("Token","FAIL"));
+                        return t1;
                     default:
                         return null;
                 }
@@ -130,11 +125,11 @@ public class Search extends AppCompatActivity {
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0:
-                    return "Plats";
+                    return "Karta";
                 case 1:
                     return "Kategori";
                 case 2:
-                    return "Karta";
+                    return "Plats";
             }
             return null;
         }
@@ -156,7 +151,6 @@ public class Search extends AppCompatActivity {
                     return true;
                 case R.id.navigation_search:
                     Intent search = new Intent(Search.this, Search.class);
-                    search.putExtra("inputCondition", "1");
                     startActivity(search);
                     return true;
                 case R.id.navigation_settings:

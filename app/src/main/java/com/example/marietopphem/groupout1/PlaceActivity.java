@@ -190,8 +190,6 @@ public class PlaceActivity extends AppCompatActivity {
     public void goToMap(View view){
         Intent intent = new Intent(PlaceActivity.this, Search.class);
         Log.v("DEBUG", "GoToMap1234567890+123456789012345678901234567890");
-        intent.putExtra("inputCondition", "3");
-
         startActivity(intent);
         Log.v("DEBUG", "öljyfhtgjklökjhgfdsfghjklö-kjhgfdfhjklökjhgfdsfghjklökjhgfdsfghjklökgasdSDGJKLÖKJHGFDSADFGHJKLÖLKJHGFDSFGHJKL");
     }
