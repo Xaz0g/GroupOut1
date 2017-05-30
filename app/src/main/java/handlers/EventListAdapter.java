@@ -74,18 +74,14 @@ public class EventListAdapter extends BaseAdapter {
         TextView date = (TextView) v.findViewById(R.id.date_maker);
         TextView startTime = (TextView) v.findViewById(R.id.startTime_maker);
         TextView endTime = (TextView) v.findViewById(R.id.endTime_maker);
-        TextView participants = (TextView) v.findViewById(R.id.numberOfParticipants);
-        TextView difficulty = (TextView) v.findViewById(R.id.difficulty);
+
 
         //set text for textview
         eventName.setText(mEventList.get(position).getName());
         placeName.setText(mEventList.get(position).getPlaceName());
         date.setText("Datum och Tid:  " + mEventList.get(position).getEventDate());
         startTime.setText(mEventList.get(position).getStartTime() + " - ");
-        //endTime.setText(mEventList.get(position).getEndTime());
         endTime.setText(mEventList.get(position).getEndTime());
-        participants.setText("Antal anmälda:  " + mEventList.get(position).getRegistration());
-        difficulty.setText("Svårighetsgrad:  " + mEventList.get(position).getDifficulty() + "/5");
 
         Log.d("BLAO user: ", userId + "");
         if ((mEventList.get(position).getLeaderId() != userId)) {
@@ -151,10 +147,12 @@ public class EventListAdapter extends BaseAdapter {
                 info.putExtra("Difficulty", difficultyToPopUp);
 
                 int maxCapacityToPopUp = mEventList.get(position).getMaxCapacity();
-                info.putExtra("MaxCapacity", maxCapacityToPopUp);
+                String max = maxCapacityToPopUp + " ";
+                info.putExtra("MaxCapacity", max);
 
                 int minCapacityToPopUp = mEventList.get(position).getMinCapacity();
-                info.putExtra("MinCapacity", minCapacityToPopUp);
+                String min = minCapacityToPopUp + " ";
+                info.putExtra("MinCapacity", min);
 
                 String placeToPopUp = mEventList.get(position).getPlaceName();
                 info.putExtra("Place", placeToPopUp);
@@ -162,6 +160,7 @@ public class EventListAdapter extends BaseAdapter {
 
             }
         });
+
 
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
