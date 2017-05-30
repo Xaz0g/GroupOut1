@@ -63,7 +63,7 @@ public class PlaceEventAdapter extends BaseAdapter {
         eventName.setText(mEventList.get(position).getName());
         endTime.setText(mEventList.get(position).getEndTime());
         startTime.setText(mEventList.get(position).getStartTime() + " - ");
-        date.setText("Datum och Tid:  " + mEventList.get(position).getEventDate());
+        date.setText(mEventList.get(position).getEventDate());
 
         final CheckBox participate = (CheckBox) v.findViewById(R.id.pparticipateCheck);
 
