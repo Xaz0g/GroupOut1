@@ -71,7 +71,7 @@ public class DescriptionPopUp extends Activity {
             category = extras.getString("Category");
         }
         TextView descriptionPopUpView = (TextView) findViewById(R.id.descriptionPopUp);
-        descriptionPopUpView.setText(description);
+        descriptionPopUpView.setText("    " + description);
 
         TextView endTimePopUpView = (TextView) findViewById(R.id.endTimePopUp);
         endTimePopUpView.setText(endTime);
@@ -99,7 +99,6 @@ public class DescriptionPopUp extends Activity {
 
         TextView categoryPopUpView = (TextView) findViewById(R.id.categoryPopUp);
         categoryPopUpView.setText(category);
-
 
         ShareButton fbShareButton = (ShareButton) findViewById(R.id.fbShareButton);
         ShareLinkContent content = new ShareLinkContent.Builder()
