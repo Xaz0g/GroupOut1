@@ -43,13 +43,15 @@ public class MapSearch extends Fragment implements OnMapReadyCallback, GoogleMap
     View view;
     SharedPreferences refPref;
 
+    private String JSON_TEST_DATA;
+
     ArrayList<PositionObject> javaPositions = new ArrayList<>();
 
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         refPref = PreferenceManager.getDefaultSharedPreferences(getActivity().getBaseContext());
-        JSON_TEST_DATA = getPositions();
+         JSON_TEST_DATA = getPositions();
     }
 
     @Override
@@ -97,8 +99,6 @@ public class MapSearch extends Fragment implements OnMapReadyCallback, GoogleMap
         javaPositions.clear();
         Log.v(TAG + "Print pos-Array", javaPositions.toString());
     }
-
-    private String JSON_TEST_DATA;
 
     public String getPositions(){
         double x = 59.334591;
