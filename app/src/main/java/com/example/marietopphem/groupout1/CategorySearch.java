@@ -67,11 +67,13 @@ public class CategorySearch extends Fragment{
         CheckBox mobilityCheck = (CheckBox) getView().findViewById(R.id.checkMobility);
         CheckBox strengthTrainingCheck = (CheckBox) getView().findViewById(R.id.checkStrengthTraining);
         CheckBox ballSportsCheck = (CheckBox) getView().findViewById(R.id.checkBallSports);
+        CheckBox miscellaneousCheck = (CheckBox) getView().findViewById(R.id.miscellaneous);
 
         boolean cardio = cardioCheck.isChecked();
         boolean mobility = mobilityCheck.isChecked();
         boolean strengthTraining = strengthTrainingCheck.isChecked();
         boolean ballSports = ballSportsCheck.isChecked();
+        boolean miscellaneous = miscellaneousCheck.isChecked();
 
         String categoryString = "";
         int cats = 0;
@@ -104,6 +106,14 @@ public class CategorySearch extends Fragment{
             }
 
             categoryString += "Bollsport";
+            cats++;
+        }
+
+        if(miscellaneous){
+            if (cardio || mobility || strengthTraining || ballSports) {
+                categoryString += "-";
+            }
+            categoryString += "Övrigt";
             cats++;
         }
 

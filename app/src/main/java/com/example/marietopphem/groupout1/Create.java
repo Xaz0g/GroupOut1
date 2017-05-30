@@ -258,7 +258,9 @@ public class Create extends AppCompatActivity {
                 Log.d(TAG,token);
 
                 try {
-                    String httpResponse = new HttpTask().execute("put", HttpHandler.newEvent(json+ "/" + token)).get();
+                    String request = HttpHandler.newEvent(json+ "/" + token);
+                    Log.d(TAG, "httpReQuest " + request);
+                    String httpResponse = new HttpTask().execute("put", request).get();
                     Log.d(TAG, "httpResponse " + httpResponse);
                     finish();
                 } catch (InterruptedException e1) {

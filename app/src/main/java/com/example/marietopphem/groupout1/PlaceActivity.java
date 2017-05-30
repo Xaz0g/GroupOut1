@@ -133,7 +133,7 @@ public class PlaceActivity extends AppCompatActivity {
         String placeId = extras.getString("Id");
         String token = sharedPrefs.getString("Token","FAIL");
 
-        String request = HttpHandler.getEvent("get",token,placeId);
+        String request = HttpHandler.getEvent("place",token,placeId);
         Log.d("PLASAC",request);
 
         try {
