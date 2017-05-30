@@ -52,7 +52,7 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.24000001"
-            app:srcCompat="@android:drawable/ic_menu_today" />
+            app:srcCompat="@drawable/ic_date_range" />
 
         <ImageButton
             android:id="@+id/starttime"
@@ -71,7 +71,7 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.349"
-            app:srcCompat="@android:drawable/ic_menu_recent_history" />
+            app:srcCompat="@drawable/ic_query_builder" />
 
         <ImageButton
             android:id="@+id/end_time"
@@ -90,7 +90,7 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.351"
-            app:srcCompat="@android:drawable/ic_menu_recent_history" />
+            app:srcCompat="@drawable/ic_query_builder" />
 
         <EditText
             android:id="@+id/min_capacity"

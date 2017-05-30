@@ -52,7 +52,7 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.321"
-            app:srcCompat="@android:drawable/ic_menu_recent_history" />
+            app:srcCompat="@drawable/ic_query_builder" />
 
         <ImageButton
             android:id="@+id/eend_time"
@@ -71,7 +71,7 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.321"
-            app:srcCompat="@android:drawable/ic_menu_recent_history" />
+            app:srcCompat="@drawable/ic_query_builder" />
 
         <EditText
             android:id="@+id/emin_capacity"
@@ -477,7 +477,8 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.226"
-            app:srcCompat="@android:drawable/ic_menu_today" />
+            app:srcCompat="@drawable/ic_date_range"
+             />
 
     </android.support.constraint.ConstraintLayout>
 
