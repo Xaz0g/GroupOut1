@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.example.marietopphem.groupout1.Home;
 import com.example.marietopphem.groupout1.R;
+import com.facebook.share.model.ShareHashtag;
 import com.facebook.share.model.ShareLinkContent;
 import com.facebook.share.widget.ShareButton;
 
@@ -103,6 +104,10 @@ public class DescriptionPopUp extends Activity {
         ShareButton fbShareButton = (ShareButton) findViewById(R.id.fbShareButton);
         ShareLinkContent content = new ShareLinkContent.Builder()
                 .setContentUrl(Uri.parse("https://fb.me/464928887185539"))
+                .setQuote("Häng med mig och på passet " + eventName + " på " + place + " den " + date + " klockan " +startTime)
+                .setShareHashtag(new ShareHashtag.Builder()
+                        .setHashtag("#Groupout")
+                        .build())
                 .build();
         fbShareButton.setShareContent(content);
     }

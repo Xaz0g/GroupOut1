@@ -81,7 +81,7 @@ public class Create extends AppCompatActivity {
         min = (EditText) findViewById(R.id.min_capacity);
         max = (EditText) findViewById(R.id.max_capacity);
         descField = (EditText) findViewById(R.id.description);
-        placeText = (TextView) findViewById(R.id.textView4);
+        placeText = (TextView) findViewById(R.id.eventPlaceSettings);
 
         diff = (RadioGroup) findViewById(R.id.radioGroup);
         RadioButton but = (RadioButton) findViewById(R.id.level1);

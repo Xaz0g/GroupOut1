@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.marietopphem.groupout1.EventSettings;
 import com.example.marietopphem.groupout1.Home;
 import com.example.marietopphem.groupout1.R;
 
@@ -162,13 +163,54 @@ public class EventListAdapter extends BaseAdapter {
             }
         });
 
+        settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(mContext, EventSettings.class);
+
+                String descriptionToPopUp = mEventList.get(position).getDescription();
+                intent.putExtra("Description", descriptionToPopUp);
+
+                String endTimeToPopUp = mEventList.get(position).getEndTime();
+                intent.putExtra("EndTime", endTimeToPopUp);
+
+                String startTimeToPopUp = mEventList.get(position).getStartTime();
+                intent.putExtra("StartTime", startTimeToPopUp);
+
+                String categoryToPopUp = mEventList.get(position).getCategory();
+                intent.putExtra("Category", categoryToPopUp);
+
+                String dateToPopUp = mEventList.get(position).getEventDate();
+                intent.putExtra("Date", dateToPopUp);
+
+                String eventNameToPopUp = mEventList.get(position).getName();
+                intent.putExtra("EventName", eventNameToPopUp);
+
+                String difficultyToPopUp = mEventList.get(position).getDifficulty();
+                intent.putExtra("Difficulty", difficultyToPopUp);
+
+                int maxCapacityToPopUp = mEventList.get(position).getMaxCapacity();
+                intent.putExtra("MaxCapacity", maxCapacityToPopUp);
+
+                int minCapacityToPopUp = mEventList.get(position).getMinCapacity();
+                intent.putExtra("MinCapacity", minCapacityToPopUp);
+
+                String placeToPopUp = mEventList.get(position).getPlaceName();
+                intent.putExtra("Place", placeToPopUp);
+                mContext.startActivity(intent);
+            }
+        });
 
         v.setTag(mEventList.get(position).getStartTime());
         return v;
+
     }
 
     public void setToken(String token)
     {
         this.token = token;
     }
+
+
 }
