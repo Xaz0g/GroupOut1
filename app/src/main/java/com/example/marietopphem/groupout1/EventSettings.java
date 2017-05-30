@@ -15,6 +15,8 @@ import android.widget.TextView;
 
 public class EventSettings extends Activity {
 
+    //hejdhfoikdlsökdjfghfkdslökdfjhbdkljhgfchjkljhgfcdxghjkhg
+
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.event_settings);
