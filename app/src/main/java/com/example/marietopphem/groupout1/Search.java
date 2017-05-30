@@ -19,6 +19,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -32,12 +33,15 @@ public class Search extends AppCompatActivity {
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
     SharedPreferences sharedPrefs;
-
     LocationManager locationManager;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
         setContentView(R.layout.search);
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
@@ -52,6 +56,7 @@ public class Search extends AppCompatActivity {
 
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
+        mSectionsPagerAdapter.getItem(2);
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
@@ -87,22 +92,24 @@ public class Search extends AppCompatActivity {
                 super(fm);
             }
 
+
+
             @Override
             public Fragment getItem(int position) {
                 switch (position) {
                     case 0:
-                        PlaceSearch t1 = new PlaceSearch();
-                        ps = t1;
-                        ps.getFavorites(sharedPrefs.getString("Token","FAIL"));
-                        return t1;
+                        MapSearch t3 = new MapSearch();
+                        ms = t3;
+                        return t3;
                     case 1:
                         CategorySearch t2 = new CategorySearch();
                         cs = t2;
                         return t2;
                     case 2:
-                        MapSearch t3 = new MapSearch();
-                        ms = t3;
-                        return t3;
+                        PlaceSearch t1 = new PlaceSearch();
+                        ps = t1;
+                        ps.getFavorites(sharedPrefs.getString("Token","FAIL"));
+                        return t1;
                     default:
                         return null;
                 }
@@ -118,11 +125,11 @@ public class Search extends AppCompatActivity {
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0:
-                    return "Plats";
+                    return "Karta";
                 case 1:
                     return "Kategori";
                 case 2:
-                    return "Karta";
+                    return "Plats";
             }
             return null;
         }
