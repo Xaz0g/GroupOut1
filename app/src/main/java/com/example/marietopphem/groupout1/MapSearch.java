@@ -109,22 +109,30 @@ public class MapSearch extends Fragment implements GoogleMap.OnInfoWindowClickLi
             @Override
             public void onInfoWindowClick(Marker marker) {
                 final String name = marker.getTitle();
+                try {
+                    parseJSON();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
                 Log.v(TAG, "OnInforWindowClick111111");
                 String id;
                 Intent i = new Intent(getActivity(), PlaceActivity.class);
                 i.putExtra("Name", name);
-                Log.v(TAG, "OnInforWindowClick22222");
+                Log.v(TAG, javaPositions.toString());
 
                 for (PositionObject pos : javaPositions) {
-                    if (name == pos.getName()) {
+                       if (name.equals(pos.getName().trim())) {
                         id = pos.getId();
                         i.putExtra("Id", id);
 
-                        Log.v(TAG, "OnInforWindowClick333333");
+
+                        Log.v(TAG, "OnInfoWindowClick " + id);
                     }
                 }
 
                 // Switch view to id's location, activity_place
+
+                Log.v(TAG, "OnInforWindowClick3333333");
 
                 startActivity(i);
             }
