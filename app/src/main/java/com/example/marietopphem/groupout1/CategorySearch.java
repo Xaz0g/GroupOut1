@@ -6,12 +6,18 @@ package com.example.marietopphem.groupout1;
 
         import android.support.v4.app.Fragment;
         import android.os.Bundle;
+        import android.util.Log;
         import android.view.LayoutInflater;
         import android.view.View;
         import android.view.ViewGroup;
         import android.widget.CheckBox;
         import android.widget.EditText;
         import android.widget.TextView;
+
+        import java.util.concurrent.ExecutionException;
+
+        import handlers.HttpHandler;
+        import handlers.HttpTask;
 
 public class CategorySearch extends Fragment{
 
@@ -26,51 +32,69 @@ public class CategorySearch extends Fragment{
     public void searchForCategory(View v){
         if(v.getId() == R.id.searchButton){
             EditText s = (EditText) getView().findViewById(R.id.categorySearchTextField);
-            String searchCategory = s.getText().toString();
+            String searchPattern = s.getText().toString();
 
             CheckBox cardioCheck = (CheckBox) getView().findViewById(R.id.checkCardio);
             CheckBox mobilityCheck = (CheckBox) getView().findViewById(R.id.checkMobility);
             CheckBox strengthTrainingCheck = (CheckBox) getView().findViewById(R.id.checkStrengthTraining);
             CheckBox ballSportsCheck = (CheckBox) getView().findViewById(R.id.checkBallSports);
 
-            boolean cardio;
-            if (cardioCheck.isChecked()){
-                cardio = true;
-            }else{
-                cardio = false;
-            }
-            boolean mobility;
-            if (mobilityCheck.isChecked()){
-                mobility = true;
-            }else{
-                mobility = false;
-            }
-            boolean strengthTraining;
-            if (strengthTrainingCheck.isChecked()){
-                strengthTraining = true;
-            }else{
-                strengthTraining = false;
-            }
-            boolean ballSports;
-            if (ballSportsCheck.isChecked()){
-                ballSports  = true;
-            }else{
-                ballSports = false;
+            boolean cardio = cardioCheck.isChecked();
+            boolean mobility = mobilityCheck.isChecked();
+            boolean strengthTraining = strengthTrainingCheck.isChecked();
+            boolean ballSports = ballSportsCheck.isChecked();
+
+            String categoryString = "";
+            int cats = 0;
+            if(cardio)
+            {
+                categoryString += "Kondition";
+                cats++;
             }
 
-            if (cardio == true){
-                //List cardio-activities
+            if(mobility)
+            {
+                if(cardio)
+                {
+                    categoryString += "-";
+                }
+
+                categoryString += "Rörlighet+och+dans";
+                cats++;
             }
-            if (mobility == true){
-                //List mobility-activities
+
+            if(strengthTraining)
+            {
+                if(cardio || mobility)
+                {
+                    categoryString += "-";
+                }
+
+                categoryString += "Styrketräning";
+                cats++;
             }
-            if (strengthTraining == true){
-                //List strengthTraining-activities
+
+            if (ballSports)
+            {
+                if(cardio || mobility || strengthTraining)
+                {
+                    categoryString += "-";
+                }
+
+                categoryString += "Bollsport";
+                cats++;
             }
-            if (ballSports == true){
-                //List ballsport-activities
-            }else{
-                //List all activities
+
+            String request = (cats > 0 && cats <= 4) ? HttpHandler.eventSearch(searchPattern, categoryString) :
+                    HttpHandler.eventSearch(searchPattern, "All");
+
+            try {
+                String response = new HttpTask().execute("get", request).get();
+
+            } catch (InterruptedException e) {
+                Log.e("CATSEA", e.getMessage());
+            } catch (ExecutionException e) {
+                Log.e("CATSEA", e.getMessage());
             }
         }
     }

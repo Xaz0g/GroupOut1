@@ -120,4 +120,9 @@ public class HttpHandler
     public static String eventCounter(String placeID){
         return HOST_ADRESS + PLACE + EVENT_COUNT + placeID;
     }
+
+    public static String eventSearch(String pattern, String categories)
+    {
+        return HOST_ADRESS + EVENT + pattern + "/" + categories;
+    }
 }
