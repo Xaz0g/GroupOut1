@@ -14,26 +14,18 @@
 
 
     <TextView
-        android:id="@+id/pdifficulty_maker"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="difficulty"
-        android:textColor="#f9fafa"
-        android:textSize="16dp"
-        android:textStyle="bold"
-        android:layout_below="@+id/info_btn"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <TextView
         android:id="@+id/pevent_name_maker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
         android:text="eventName"
         android:textColor="#80cbc4"
         android:textSize="20dp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="12dp"
+        android:layout_marginStart="12dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -43,22 +35,9 @@
         android:textSize="16dp"
         android:textStyle="bold"
         android:textColor="#f9fafa"
-        android:layout_below="@+id/pnumberOfParticipants_maker"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="25dp" />
-
-    <TextView
-        android:id="@+id/pnumberOfParticipants_maker"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="participants"
-        android:textColor="#f9fafa"
-        android:textSize="16dp"
-        android:textStyle="bold"
-        android:layout_below="@+id/pparticipateCheck"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_below="@+id/info_btn"
+        android:layout_alignLeft="@+id/pevent_name_maker"
+        android:layout_alignStart="@+id/pevent_name_maker" />
 
     <TextView
         android:id="@+id/pstartTime_maker"
@@ -68,27 +47,22 @@
         android:textColor="#f9fafa"
         android:textSize="16dp"
         android:textStyle="bold"
-        android:layout_alignBaseline="@+id/pdate_maker"
-        android:layout_alignBottom="@+id/pdate_maker"
-        android:layout_toRightOf="@+id/pdate_maker"
-        android:layout_toEndOf="@+id/pdate_maker"
-        android:layout_marginLeft="37dp"
-        android:layout_marginStart="37dp" />
+        android:layout_alignBaseline="@+id/pendTime_maker"
+        android:layout_alignBottom="@+id/pendTime_maker"
+        android:layout_alignLeft="@+id/pdate_maker"
+        android:layout_alignStart="@+id/pdate_maker" />
 
     <TextView
         android:id="@+id/pendTime_maker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="startTime"
+        android:text="endTime"
         android:textColor="#f9fafa"
         android:textSize="16dp"
         android:textStyle="bold"
-        android:layout_alignBaseline="@+id/pdate_maker"
-        android:layout_alignBottom="@+id/pdate_maker"
-        android:layout_toRightOf="@+id/pdate_maker"
-        android:layout_toEndOf="@+id/pdate_maker"
-        android:layout_marginLeft="37dp"
-        android:layout_marginStart="37dp" />
+        android:layout_alignBottom="@+id/pparticipateCheck"
+        android:layout_toRightOf="@+id/pstartTime_maker"
+        android:layout_toEndOf="@+id/pstartTime_maker" />
 
     <CheckBox
         android:id="@+id/pparticipateCheck"
@@ -97,8 +71,8 @@
         android:button="@drawable/participationbutton_checkbox"
         android:textSize="14sp"
         android:layout_below="@+id/info_btn"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignLeft="@+id/info_btn"
+        android:layout_alignStart="@+id/info_btn" />
 
     <Button
         android:id="@+id/info_btn"
@@ -108,7 +82,9 @@
         android:textSize="14sp"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="13dp"
+        android:layout_marginEnd="13dp" />
 
 
 </RelativeLayout>

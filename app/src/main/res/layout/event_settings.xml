@@ -301,8 +301,8 @@
 
     <Button
         android:id="@+id/ecreate_activity"
-        android:layout_width="226dp"
-        android:layout_height="48dp"
+        android:layout_width="147dp"
+        android:layout_height="46dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
@@ -316,7 +316,8 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.853" />
+        app:layout_constraintVertical_bias="0.936"
+        app:layout_constraintHorizontal_bias="0.04" />
 
     <RadioGroup
         android:id="@+id/eradioGroup"
@@ -442,6 +443,24 @@
         app:layout_constraintRight_toLeftOf="@+id/eeventPlaceSettings"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.791" />
+
+    <Button
+        android:id="@+id/eDeleteEvent"
+        android:layout_width="147dp"
+        android:layout_height="46dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@android:color/holo_red_dark"
+        android:backgroundTint="@android:color/holo_red_dark"
+        android:text="Ta bort event"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.959"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.937" />
 
     <TextView
         android:id="@+id/eeventPlaceSettings"
