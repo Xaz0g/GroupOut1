@@ -49,6 +49,10 @@ public class PositionObject {
         return longitude;
     }
 
+    public String getId(){
+        return id;
+    }
+
     public String toString(){
         return "Name: " + name + " (id = " + id + ") x = " + latitude + " y = " + longitude ;
     }

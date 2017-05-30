@@ -57,6 +57,14 @@ public class Home extends AppCompatActivity{
         fillList();
 
         adapter = new EventListAdapter(getApplicationContext(), eventList);
+        adapter.setToken(sharedPrefs.getString("Token", "FAIL"));
+        try {
+            getId();
+        } catch (ExecutionException e) {
+            Log.d("HOME!", e.getMessage());
+        } catch (InterruptedException e) {
+            Log.d("HOME!", e.getMessage());
+        }
         lvEvent.setAdapter(adapter);
 
         lvEvent.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -69,6 +77,13 @@ public class Home extends AppCompatActivity{
         });
 
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        fillList();
+        adapter.notifyDataSetChanged();
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener

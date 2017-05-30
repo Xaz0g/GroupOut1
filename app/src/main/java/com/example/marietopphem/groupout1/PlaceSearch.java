@@ -14,17 +14,13 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
-import android.widget.SearchView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import static com.example.marietopphem.groupout1.R.layout.t1place;
 
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
@@ -118,6 +114,8 @@ public class PlaceSearch extends Fragment {
         favCheck.setChecked(false);
         EditText s = (EditText) getView().findViewById(R.id.placeSearchTextField);
         String searchPlace = s.getText().toString();
+        searchPlace = replaceBlank(searchPlace);
+
         Log.d("PLASEA",searchPlace);
 
         CheckBox ballCourtCheck = (CheckBox) getView().findViewById(R.id.checkBallCourt);
@@ -192,6 +190,26 @@ public class PlaceSearch extends Fragment {
         }
 
     }
+
+    private String replaceBlank(String search)
+    {
+        String newSearch = "";
+
+        for(char c : search.toCharArray())
+        {
+            if(c == ' ')
+            {
+                newSearch += "+";
+            }
+            else
+            {
+                newSearch += c;
+            }
+        }
+
+        return newSearch;
+    }
+
 
     private void getPlaces(String request) throws ExecutionException, InterruptedException, JSONException {
 
