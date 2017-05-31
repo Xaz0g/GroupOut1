@@ -150,9 +150,8 @@ public class EventListAdapter extends BaseAdapter {
                 String max = maxCapacityToPopUp + " ";
                 info.putExtra("MaxCapacity", max);
 
-                int minCapacityToPopUp = mEventList.get(position).getMinCapacity();
-                String min = minCapacityToPopUp + " ";
-                info.putExtra("MinCapacity", min);
+                String registrationToPopUp = mEventList.get(position).getRegistration();
+                info.putExtra("Registrations", registrationToPopUp);
 
                 String placeToPopUp = mEventList.get(position).getPlaceName();
                 info.putExtra("Place", placeToPopUp);

@@ -150,14 +150,14 @@ public class PlaceEventAdapter extends BaseAdapter {
                 info.putExtra("Difficulty", difficultyToPopUp);
 
                 int maxCapacityToPopUp = mEventList.get(position).getMaxCapacity();
-                info.putExtra("MaxCapacity", maxCapacityToPopUp);
+                String max = maxCapacityToPopUp + " ";
+                info.putExtra("MaxCapacity", max);
 
-                int minCapacityToPopUp = mEventList.get(position).getMinCapacity();
-                info.putExtra("MinCapacity", minCapacityToPopUp);
+                String registrationToPopUp = mEventList.get(position).getRegistration();
+                info.putExtra("Registrations", registrationToPopUp);
 
-                String placePopup = mEventList.get(position).getPlaceName();
-                info.putExtra("Place", placePopup);
-                Log.v("Debug", placePopup);
+                info.putExtra("Place", " - ");
+
                 mContext.startActivity(info);
 
             }

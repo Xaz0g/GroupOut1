@@ -42,7 +42,7 @@ public class DescriptionPopUp extends Activity {
         String eventName;
         String place;
         String difficulty;
-        String minCapacity;
+        String registration;
         String maxCapacity;
         String date;
         String category;
@@ -54,7 +54,7 @@ public class DescriptionPopUp extends Activity {
             eventName = null;
             place = null;
             difficulty = null;
-            minCapacity = null;
+            registration = null;
             maxCapacity = null;
             date = null;
             category = null;
@@ -64,14 +64,14 @@ public class DescriptionPopUp extends Activity {
             startTime = extras.getString("StartTime");
             eventName = extras.getString("EventName");
             place = extras.getString("Place");
-            difficulty = extras.getString("Diffuculty");
-            minCapacity = extras.getString("MinCapacity");
+            difficulty = extras.getString("Difficulty");
+            registration = extras.getString("Registrations");
             maxCapacity = extras.getString("MaxCapacity");
             date = extras.getString("Date");
             category = extras.getString("Category");
         }
         TextView descriptionPopUpView = (TextView) findViewById(R.id.descriptionPopUp);
-        descriptionPopUpView.setText("    " + description);
+        descriptionPopUpView.setText(description);
 
         TextView endTimePopUpView = (TextView) findViewById(R.id.endTimePopUp);
         endTimePopUpView.setText(endTime);
@@ -89,10 +89,7 @@ public class DescriptionPopUp extends Activity {
         difficultyPopUpView.setText(difficulty);
 
         TextView minCapacityPopUpView = (TextView) findViewById(R.id.minCapacityPopUp);
-        minCapacityPopUpView.setText(minCapacity);
-
-        TextView maxCapacityPopUpView = (TextView) findViewById(R.id.maxCapacityPopUp);
-        maxCapacityPopUpView.setText(maxCapacity);
+        minCapacityPopUpView.setText(registration + "/" + maxCapacity);
 
         TextView datePopUpView = (TextView) findViewById(R.id.datePopUp);
         datePopUpView.setText(date);
