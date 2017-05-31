@@ -153,10 +153,12 @@ public class EventListAdapter extends BaseAdapter {
                 info.putExtra("EventName", eventNameToPopUp);
 
                 int difficultyToPopUp = Integer.parseInt(mEventList.get(position).getDifficulty());
-                info.putExtra("Difficulty", difficultyToPopUp);
+                String diff = difficultyToPopUp + "";
+                info.putExtra("Difficulty", diff);
 
                 int maxCapacityToPopUp = mEventList.get(position).getMaxCapacity();
-                info.putExtra("MaxCapacity", maxCapacityToPopUp);
+                String max = maxCapacityToPopUp + "";
+                info.putExtra("MaxCapacity", max);
 
                 String registrationToPopUp = mEventList.get(position).getRegistration();
                 info.putExtra("Registrations", registrationToPopUp);
