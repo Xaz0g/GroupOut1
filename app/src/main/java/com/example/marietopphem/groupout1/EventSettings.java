@@ -74,6 +74,9 @@ public class EventSettings extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.event_settings);
 
+        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        navigation.getMenu().getItem(0).setChecked(true);
         bundle = getIntent().getExtras();
 
         dateF = (TextView) findViewById(R.id.echoose_date);
