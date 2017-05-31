@@ -30,6 +30,7 @@ import java.util.concurrent.ExecutionException;
 
 import handlers.HttpHandler;
 import handlers.HttpTask;
+import models.EveObject;
 import models.NewEvent;
 
 /**
@@ -38,147 +39,48 @@ import models.NewEvent;
 
 public class EventSettings extends Activity {
 
-    //hejdhfoikdlsökdjfghfkdslökdfjhbdkljhgfchjkljhgfcdxghjkhg
+    private static final String TAG = EventSettings.class.getSimpleName();
 
-    private static final String TAG = Create.class.getSimpleName();
+    private SharedPreferences sharedPrefs;
+    private EditText nameField;
+    private ImageButton calendar;
+    private TextView dateF;
+    private TextView st;
+    private TextView ft;
 
-    SharedPreferences sharedPrefs;
-    EditText nameField;
-    ImageButton calendar;
-    TextView df;
-    TextView st;
-    TextView ft;
+    private int year_x;
+    private int month_x;
+    private int day_x;
+    private static final int DIALOG_ID = 0;
+    private final Calendar c = Calendar.getInstance();
+    private int startHour;
+    private int startMinute;
+    private int finishHour;
+    private int finishMinute;
+    private Spinner kat;
+    private EditText min;
+    private EditText max;
+    private EditText descField;
+    private TextView placeText;
+    private Bundle bundle;
 
-    int year_x;
-    int month_x;
-    int day_x;
-    static final int DIALOG_ID = 0;
-    final Calendar c = Calendar.getInstance();
-    int startHour;
-    int startMinute;
-    int finishHour;
-    int finishMinute;
-    Spinner kat;
-    EditText min;
-    EditText max;
-    EditText descField;
-    TextView placeText;
-    Bundle bundle;
+    private EveObject changedEvent;
 
-    boolean findPlace;
+    private boolean findPlace;
 
-    RadioGroup diffi;
+    private RadioGroup diffi;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.event_settings);
 
+        bundle = getIntent().getExtras();
 
-        String description;
-        String endTime;
-        String startTime;
-        String eventName;
-        String place;
-        String difficulty;
-        String minCapacity;
-        String maxCapacity;
-        String date;
-        String category;
-        Bundle extras = getIntent().getExtras();
-        if(extras == null) {
-            description= null;
-            endTime = null;
-            startTime = null;
-            eventName = null;
-            place = null;
-            difficulty = null;
-            minCapacity = null;
-            maxCapacity = null;
-            date = null;
-            category = null;
-        } else {
-            description = extras.getString("Description");
-            endTime = extras.getString("EndTime");
-            startTime = extras.getString("StartTime");
-            eventName = extras.getString("EventName");
-            place = extras.getString("Place");
-            difficulty = extras.getString("Difficulty");
-            minCapacity = extras.getString("MinCapacity");
-            maxCapacity = extras.getString("MaxCapacity");
-            date = extras.getString("Date");
-            category = extras.getString("Category");
-        }
+        dateF = (TextView) findViewById(R.id.echoose_date);
+        st = (TextView) findViewById(R.id.echoose_starttime);
+        ft = (TextView) findViewById(R.id.echoose_end_time);
 
-        EditText descriptionSettings = (EditText) findViewById(R.id.edescription);
-        descriptionSettings.setText(description, TextView.BufferType.EDITABLE);
-
-        TextView endTimeSettings = (TextView) findViewById(R.id.echoose_end_time);
-        endTimeSettings.setText(endTime);
-
-        TextView startTimeSettings = (TextView) findViewById(R.id.echoose_starttime);
-        startTimeSettings.setText(startTime);
-
-        EditText eventNameSettings = (EditText) findViewById(R.id.eevent_name_maker);
-        eventNameSettings.setText(eventName, TextView.BufferType.EDITABLE);
-
-        TextView placeSettings = (TextView) findViewById(R.id.eeventPlaceSettings);
-        placeSettings.setText(place);
-
-        //RadioGroup difficultySettings = (RadioGroup) findViewById(R.id.eradioGroup);
-        RadioButton r1 = (RadioButton) findViewById(R.id.elevel1);
-        RadioButton r2 = (RadioButton) findViewById(R.id.elevel2);
-        RadioButton r3 = (RadioButton) findViewById(R.id.elevel3);
-        RadioButton r4 = (RadioButton) findViewById(R.id.elevel4);
-        RadioButton r5 = (RadioButton) findViewById(R.id.elevel5);
-
-        Log.d("diff", difficulty + "");
-
-        int diff = Integer.parseInt(difficulty);
-       if(diff==1){
-            r1.setChecked(true);
-        }
-        if(diff==2){
-            r2.setChecked(true);
-        }
-        if(diff==3){
-            r3.setChecked(true);
-        }
-        if(diff==4){
-            r4.setChecked(true);
-        }
-        if(diff==5){
-            r5.setChecked(true);
-        }
-
-
-        EditText minCapacitySettings = (EditText) findViewById(R.id.emin_capacity);
-        minCapacitySettings.setText(minCapacity,TextView.BufferType.EDITABLE);
-
-        EditText maxCapacitySettings = (EditText) findViewById(R.id.emax_capacity);
-        maxCapacitySettings.setText(maxCapacity,TextView.BufferType.EDITABLE);
-
-        TextView dateSettings = (TextView) findViewById(R.id.echoose_date);
-        dateSettings.setText(date);
-
-        Spinner categorySettings = (Spinner) findViewById(R.id.ecategory_roll_list);
-
-        int cate = -1;
-        if(category.equals("Styrketräning")){
-            cate = 0;
-        }
-        if(category.equals("Kondition")){
-            cate = 1;
-        }
-        if(category.equals("Rörelse och dans")){
-            cate = 2;
-        }
-        if(category.equals("Bollsport")){
-            cate = 3;
-        }
-        if(category.equals("Övrigt")){
-            cate = 4;
-        }
-        categorySettings.setSelection(cate);
+        descField = (EditText) findViewById(R.id.edescription);
 
         nameField = (EditText) findViewById(R.id.eevent_name_maker);
         year_x = c.get(Calendar.YEAR);
@@ -186,18 +88,23 @@ public class EventSettings extends Activity {
         day_x = c.get(Calendar.DAY_OF_MONTH);
         min = (EditText) findViewById(R.id.emin_capacity);
         max = (EditText) findViewById(R.id.emax_capacity);
-        descField = (EditText) findViewById(R.id.edescription);
         placeText = (TextView) findViewById(R.id.eeventPlaceSettings);
-
         diffi = (RadioGroup) findViewById(R.id.eradioGroup);
-
+        kat = (Spinner) findViewById(R.id.ecategory_roll_list);
         sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this.getBaseContext());
 
-        showDialogOnCalendarClick();
-
-        kat = (Spinner) findViewById(R.id.ecategory_roll_list);
         kat.setPrompt("Kategori");
 
+        if(bundle != null){
+            setChangedEvent();
+            setDifficulty();
+            setCategory();
+            showDialogOnCalendarClick();
+
+        }else{
+            throw new NullPointerException("Oncreate -Why dont I have NO bundle...? I want BUNDLE");
+        }
+        /*
         kat.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id){
@@ -206,17 +113,88 @@ public class EventSettings extends Activity {
             public void onNothingSelected(AdapterView<?> parent){
 
             }
-        });
+        });*/
+    }
 
-        bundle = getIntent().getExtras();
-
-        if(bundle != null)
-        {
-            placeText.setText(bundle.getString("placeName"));
-            sharedPrefs.edit().putString("finderId", bundle.getString("placeId")).apply();
+    private void setCategory() {
+        switch(changedEvent.getCategory()){
+            case "Styrketräning":
+                kat.setSelection(0);
+                break;
+            case "Kondition":
+                kat.setSelection(1);
+                break;
+            case "Rörelse och dans":
+                kat.setSelection(2);
+                break;
+            case "Bollsport":
+                kat.setSelection(3);
+                break;
+            default:
+                kat.setSelection(4);
+                break;
         }
     }
 
+    private void setDifficulty() {
+        //RadioGroup difficultySettings = (RadioGroup) findViewById(R.id.eradioGroup);
+        RadioButton r1 = (RadioButton) findViewById(R.id.elevel1);
+        RadioButton r2 = (RadioButton) findViewById(R.id.elevel2);
+        RadioButton r3 = (RadioButton) findViewById(R.id.elevel3);
+        RadioButton r4 = (RadioButton) findViewById(R.id.elevel4);
+        RadioButton r5 = (RadioButton) findViewById(R.id.elevel5);
+
+        Log.d(TAG, changedEvent.getDifficulty());
+
+        switch(Integer.parseInt(changedEvent.getDifficulty())){
+            case 1:
+                r1.setChecked(true);
+                break;
+            case 2:
+                r2.setChecked(true);
+                break;
+            case 3:
+                r3.setChecked(true);
+                break;
+            case 4:
+                r4.setChecked(true);
+                break;
+            case 5:
+                r5.setChecked(true);
+                break;
+            default:
+                throw new IllegalArgumentException("EventSetings- Why are you giving me difficulties that dont exist?");
+        }
+    }
+
+    private void setChangedEvent(){
+        String description = bundle.getString("Description");
+        String endTime = bundle.getString("EndTime");
+        String startTime = bundle.getString("StartTime");
+        String eventName = bundle.getString("EventName");
+        String place = bundle.getString("Place");
+        int difficulty = bundle.getInt("Difficulty");
+        int minCapacity = bundle.getInt("MinCapacity");
+        int maxCapacity = bundle.getInt("MaxCapacity");
+        String date = bundle.getString("Date");
+        String category = bundle.getString("Category");
+        String placeId = bundle.getString("EvePlaceID");
+        int id = bundle.getInt("EveEventID");
+        int leaderId = bundle.getInt("EveLeaderID");
+        boolean participating = false;
+
+        changedEvent = new EveObject(eventName, category, description, placeId, date, startTime,
+                endTime, true, id, leaderId, minCapacity, maxCapacity, 0, difficulty, participating, place);
+
+        descField.setText(changedEvent.getDescription(), TextView.BufferType.EDITABLE);
+        ft.setText(changedEvent.getEndTime());
+        st.setText(changedEvent.getStartTime());
+        nameField.setText(changedEvent.getName(), TextView.BufferType.EDITABLE);
+        placeText.setText(changedEvent.getPlaceName());
+        min.setText(""+changedEvent.getMinCapacity(),TextView.BufferType.EDITABLE);
+        max.setText(""+changedEvent.getMaxCapacity(),TextView.BufferType.EDITABLE);
+        dateF.setText(changedEvent.getEventDate());
+    }
 
     public void showDialogOnCalendarClick(){
         calendar = (ImageButton) findViewById(R.id.ecalendar);
@@ -229,7 +207,6 @@ public class EventSettings extends Activity {
                     }
                 }
         );
-
     }
 
     @Override
@@ -245,8 +222,7 @@ public class EventSettings extends Activity {
             year_x = year;
             month_x = monthOfYear;
             day_x = dayOfMonth;
-            df = (TextView) findViewById(R.id.echoose_date);
-            df.setText(day_x + "/" + (month_x+1) + "-" + year_x);
+            dateF.setText(day_x + "/" + (month_x+1) + "-" + year_x);
 
         }
     };
@@ -258,7 +234,6 @@ public class EventSettings extends Activity {
         TimePickerDialog startTimePickerDialog = new TimePickerDialog(EventSettings.this, new TimePickerDialog.OnTimeSetListener(){
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute){
-                st = (TextView) findViewById(R.id.echoose_starttime);
                 if(hourOfDay<10){
                     if(minute<10){
                         st.setText("0" + hourOfDay + ":" + "0" + minute);
@@ -285,7 +260,6 @@ public class EventSettings extends Activity {
         TimePickerDialog finishTimePickerDialog = new TimePickerDialog(EventSettings.this, new TimePickerDialog.OnTimeSetListener(){
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute){
-                ft = (TextView) findViewById(R.id.echoose_end_time);
                 if(hourOfDay<10){
                     if(minute<10){
                         ft.setText("0" + hourOfDay + ":" + "0" + minute);
@@ -324,31 +298,10 @@ public class EventSettings extends Activity {
     public void onResume(){
         super.onResume();
 
-        if(findPlace)
-        {
-            String str = sharedPrefs.getString("finderName", "FAIL");
-
-            Log.d(TAG, str);
-            if(!str.equalsIgnoreCase("FAIL")){
-                placeText.setText(str);
-            }
-
-            findPlace = false;
-        }
-        else
-        {
-            bundle = getIntent().getExtras();
-            if(bundle != null)
-            {
-                placeText.setText(bundle.getString("placeName"));
-                sharedPrefs.edit().putString("finderId", bundle.getString("placeId")).apply();
-            }
-        }
-
     }
 
-    public void createEvent(View view){
-        if (view.getId()== R.id.ecreate_activity){
+    public void changeEvent(View view){
+        if (view.getId()== R.id.echange_activity){
 
             boolean check = checkValues();
             Log.d(TAG, "Check: " + check);
@@ -378,13 +331,13 @@ public class EventSettings extends Activity {
     private NewEvent createNewEvent() {
         NewEvent e = new NewEvent();
         e.setName(nameField.getText().toString());
-        e.setPlaceId(sharedPrefs.getString("finderId","FAIL"));       //temp
+        e.setPlaceId(sharedPrefs.getString("finderId","FAIL"));
         e.setEventDate(new Date(year_x - 1900, month_x, day_x));
         int[] tempStart = parseTime(st.getText().toString());
         e.setStartTime(new Time(tempStart[0],tempStart[1],0));
         int[] tempEnd = parseTime(ft.getText().toString());
         e.setEndTime(new Time(tempEnd[0],tempEnd[1],0));
-        e.setCategory((String)kat.getSelectedItem());   // is obj
+        e.setCategory((String)kat.getSelectedItem());
         e.setMinCapacity(Integer.parseInt(min.getText().toString()));
         e.setMaxCapacity(Integer.parseInt(max.getText().toString()));
         String s = ((RadioButton) findViewById(diffi.getCheckedRadioButtonId() )).getText().toString();

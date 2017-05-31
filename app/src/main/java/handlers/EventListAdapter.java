@@ -125,6 +125,15 @@ public class EventListAdapter extends BaseAdapter {
             public void onClick(View view) {
                 Intent info = new Intent(mContext, DescriptionPopUp.class);
 
+                String placeIDToPopUp = mEventList.get(position).getPlaceId();
+                info.putExtra("EvePlaceID", placeIDToPopUp);
+
+                int eventIDToPopUp = mEventList.get(position).getId();
+                info.putExtra("EveEventID", eventIDToPopUp);
+
+                int leaderIDToPopUp = mEventList.get(position).getLeaderId();
+                info.putExtra("EveLeaderID", leaderIDToPopUp);
+
                 String descriptionToPopUp = mEventList.get(position).getDescription();
                 info.putExtra("Description", descriptionToPopUp);
 
@@ -143,16 +152,14 @@ public class EventListAdapter extends BaseAdapter {
                 String eventNameToPopUp = mEventList.get(position).getName();
                 info.putExtra("EventName", eventNameToPopUp);
 
-                String difficultyToPopUp = mEventList.get(position).getDifficulty();
+                int difficultyToPopUp = Integer.parseInt(mEventList.get(position).getDifficulty());
                 info.putExtra("Difficulty", difficultyToPopUp);
 
                 int maxCapacityToPopUp = mEventList.get(position).getMaxCapacity();
-                String max = maxCapacityToPopUp + " ";
-                info.putExtra("MaxCapacity", max);
+                info.putExtra("MaxCapacity", maxCapacityToPopUp);
 
                 int minCapacityToPopUp = mEventList.get(position).getMinCapacity();
-                String min = minCapacityToPopUp + " ";
-                info.putExtra("MinCapacity", min);
+                info.putExtra("MinCapacity", minCapacityToPopUp);
 
                 String placeToPopUp = mEventList.get(position).getPlaceName();
                 info.putExtra("Place", placeToPopUp);
@@ -166,38 +173,47 @@ public class EventListAdapter extends BaseAdapter {
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(mContext, EventSettings.class);
+                Intent info = new Intent(mContext, EventSettings.class);
+
+                String placeIDToPopUp = mEventList.get(position).getPlaceId();
+                info.putExtra("EvePlaceID", placeIDToPopUp);
+
+                int eventIDToPopUp = mEventList.get(position).getId();
+                info.putExtra("EveEventID", eventIDToPopUp);
+
+                int leaderIDToPopUp = mEventList.get(position).getLeaderId();
+                info.putExtra("EveLeaderID", leaderIDToPopUp);
 
                 String descriptionToPopUp = mEventList.get(position).getDescription();
-                intent.putExtra("Description", descriptionToPopUp);
+                info.putExtra("Description", descriptionToPopUp);
 
                 String endTimeToPopUp = mEventList.get(position).getEndTime();
-                intent.putExtra("EndTime", endTimeToPopUp);
+                info.putExtra("EndTime", endTimeToPopUp);
 
                 String startTimeToPopUp = mEventList.get(position).getStartTime();
-                intent.putExtra("StartTime", startTimeToPopUp);
+                info.putExtra("StartTime", startTimeToPopUp);
 
                 String categoryToPopUp = mEventList.get(position).getCategory();
-                intent.putExtra("Category", categoryToPopUp);
+                info.putExtra("Category", categoryToPopUp);
 
                 String dateToPopUp = mEventList.get(position).getEventDate();
-                intent.putExtra("Date", dateToPopUp);
+                info.putExtra("Date", dateToPopUp);
 
                 String eventNameToPopUp = mEventList.get(position).getName();
-                intent.putExtra("EventName", eventNameToPopUp);
+                info.putExtra("EventName", eventNameToPopUp);
 
-                String difficultyToPopUp = mEventList.get(position).getDifficulty();
-                intent.putExtra("Difficulty", difficultyToPopUp);
+                int difficultyToPopUp = Integer.parseInt(mEventList.get(position).getDifficulty());
+                info.putExtra("Difficulty", difficultyToPopUp);
 
                 int maxCapacityToPopUp = mEventList.get(position).getMaxCapacity();
-                intent.putExtra("MaxCapacity", maxCapacityToPopUp);
+                info.putExtra("MaxCapacity", maxCapacityToPopUp);
 
                 int minCapacityToPopUp = mEventList.get(position).getMinCapacity();
-                intent.putExtra("MinCapacity", minCapacityToPopUp);
+                info.putExtra("MinCapacity", minCapacityToPopUp);
 
                 String placeToPopUp = mEventList.get(position).getPlaceName();
-                intent.putExtra("Place", placeToPopUp);
-                mContext.startActivity(intent);
+                info.putExtra("Place", placeToPopUp);
+                mContext.startActivity(info);
             }
         });
 

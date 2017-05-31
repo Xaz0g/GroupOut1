@@ -135,7 +135,9 @@ public class EveObject {
         return eventDate;
     }
 
-    public String getStartTime (){ return startTime; }
+    public String getStartTime (){
+        return startTime;
+    }
 
     public String getEndTime (){
         return endTime;
