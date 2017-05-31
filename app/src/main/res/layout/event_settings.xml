@@ -259,7 +259,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="0dp"
             android:background="#80cbc4"
-            android:onClick="createEvent"
+            android:onClick="changeEvent"
             android:text="Spara Ändringar"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="0.075"
@@ -454,6 +454,7 @@
             android:background="@android:color/holo_red_dark"
             android:backgroundTint="@android:color/holo_red_dark"
             android:text="Ta bort event"
+            android:onClick="deleteEvent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="0.959"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -478,20 +479,20 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.226"
             android:src="@drawable/ic_date_range"
-             />
+            />
 
     </android.support.constraint.ConstraintLayout>
 
     <android.support.design.widget.BottomNavigationView
-    android:id="@+id/navigation"
-    android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:layout_weight="1"
-    android:background="?android:attr/windowBackground"
-    android:gravity="bottom"
-    app:menu="@menu/navigation"
-    app:itemIconTint="@drawable/tab_marked"
-    app:itemTextColor="@drawable/tab_marked">
+        android:id="@+id/navigation"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="?android:attr/windowBackground"
+        android:gravity="bottom"
+        app:menu="@menu/navigation"
+        app:itemIconTint="@drawable/tab_marked"
+        app:itemTextColor="@drawable/tab_marked">
 
     </android.support.design.widget.BottomNavigationView>
 

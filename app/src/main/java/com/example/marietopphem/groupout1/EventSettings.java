@@ -28,6 +28,7 @@ import java.sql.Time;
 import java.util.Calendar;
 import java.util.concurrent.ExecutionException;
 
+import handlers.EventActivity;
 import handlers.HttpHandler;
 import handlers.HttpTask;
 import models.EveObject;
@@ -107,16 +108,6 @@ public class EventSettings extends Activity {
         }else{
             throw new NullPointerException("Oncreate -Why dont I have NO bundle...? I want BUNDLE");
         }
-        /*
-        kat.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id){
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> parent){
-
-            }
-        });*/
     }
 
     private void setCategory() {
@@ -189,6 +180,11 @@ public class EventSettings extends Activity {
         changedEvent = new EveObject(eventName, category, description, placeId, date, startTime,
                 endTime, true, id, leaderId, minCapacity, maxCapacity, 0, difficulty, participating, place);
 
+        String[] dateArray = changedEvent.getEventDate().split("-");
+        year_x = Integer.parseInt(dateArray[0].trim());
+        month_x = Integer.parseInt(dateArray[1].trim());
+        day_x = Integer.parseInt(dateArray[2].trim());
+
         descField.setText(changedEvent.getDescription(), TextView.BufferType.EDITABLE);
         ft.setText(changedEvent.getEndTime());
         st.setText(changedEvent.getStartTime());
@@ -225,7 +221,7 @@ public class EventSettings extends Activity {
             year_x = year;
             month_x = monthOfYear;
             day_x = dayOfMonth;
-            dateF.setText(day_x + "/" + (month_x+1) + "-" + year_x);
+            dateF.setText( year_x+ "-" + month_x + "-" + day_x );
 
         }
     };
@@ -282,6 +278,33 @@ public class EventSettings extends Activity {
         finishTimePickerDialog.show();
     }
 
+    public void deleteEvent(View view){
+
+        if (view.getId()== R.id.eDeleteEvent){
+
+            String request = HttpHandler.removeEvent(changedEvent.getId(), sharedPrefs.getString("Token", "FAIL"));
+            Log.d(TAG, request);
+
+            try {
+                String response = new HttpTask().execute("PUT", request).get();
+                Log.d(TAG, response);
+
+                if(response.trim().equals("Removed")){
+
+                    finish();
+
+                }
+
+            } catch (InterruptedException e) {
+                Log.d(TAG, e.getMessage());
+            } catch (ExecutionException e) {
+                Log.d(TAG, e.getMessage());
+            }
+
+        }
+
+    }
+
     public void goHome(View view){
         if (view.getId()== R.id.home){
             Intent i = new Intent(EventSettings.this, Home.class);
@@ -301,6 +324,11 @@ public class EventSettings extends Activity {
     public void onResume(){
         super.onResume();
 
+        String str = sharedPrefs.getString("finderName", "FAIL");
+        if(!str.equalsIgnoreCase("FAIL")){
+            changedEvent.setPlaceName(str);
+            placeText.setText(str);
+        }
     }
 
     public void changeEvent(View view){
@@ -311,48 +339,46 @@ public class EventSettings extends Activity {
 
             if(check)
             {
-                NewEvent e = createNewEvent();
-                String json = e.toJsonString();
-                Log.d(TAG, "json " + json);
-                String token = sharedPrefs.getString("Token","FAIL");
-                Log.d(TAG,token);
+                changedEvent.setName(nameField.getText().toString());
+                changedEvent.setPlaceId(sharedPrefs.getString("finderId","FAIL"));
+                changedEvent.setEventDate(new Date(year_x - 1900, month_x -1, day_x).toString());
+                int[] tempStart = parseTime(st.getText().toString());
+                changedEvent.setStartTime(new Time(tempStart[0],tempStart[1],0).toString());
+                int[] tempEnd = parseTime(ft.getText().toString());
+                changedEvent.setEndTime(new Time(tempEnd[0],tempEnd[1],0).toString());
+                changedEvent.setCategory((String)kat.getSelectedItem());
+                changedEvent.setMinCapacity(Integer.parseInt(min.getText().toString()));
+                changedEvent.setMaxCapacity(Integer.parseInt(max.getText().toString()));
+                String s = ((RadioButton) findViewById(diffi.getCheckedRadioButtonId() )).getText().toString();
+                changedEvent.setDifficulty(Integer.parseInt(s));
+                changedEvent.setDescription(descField.getText().toString());
+
+                String eJson = EventActivity.eveToJson(changedEvent);
+                Log.d(TAG, "WE DO DA EVENTTOJSON: \n " + eJson);
+
+                String request = HttpHandler.changeEvent(eJson);
+                Log.d(TAG, "REQUEST: " + request);
 
                 try {
-                    String httpResponse = new HttpTask().execute("put", HttpHandler.newEvent(json+ "/" + token)).get();
-                    Log.d(TAG, "httpResponse " + httpResponse);
-                    finish();
-                } catch (InterruptedException e1) {
-                    Log.d(TAG, "InterruptedException " + e1.getMessage());
-                } catch (ExecutionException e1) {
-                    Log.d(TAG, "ExecutionException " + e1.getMessage());
+                    String response = new HttpTask().execute("PUT", request).get();
+                    Log.d(TAG, "RESPONSE: " + response);
+
+                    if(response.trim().equals("OK"))
+                    {
+                        finish();
+                    }
+
+                } catch (InterruptedException e) {
+                    Log.d(TAG, "RESPONSE: " + e.getMessage());
+                } catch (ExecutionException e) {
+                    Log.d(TAG, "RESPONSE: " + e.getMessage());
                 }
             }
         }
     }
 
-
-    private NewEvent createNewEvent() {
-        NewEvent e = new NewEvent();
-        e.setName(nameField.getText().toString());
-        e.setPlaceId(sharedPrefs.getString("finderId","FAIL"));
-        e.setEventDate(new Date(year_x - 1900, month_x, day_x));
-        int[] tempStart = parseTime(st.getText().toString());
-        e.setStartTime(new Time(tempStart[0],tempStart[1],0));
-        int[] tempEnd = parseTime(ft.getText().toString());
-        e.setEndTime(new Time(tempEnd[0],tempEnd[1],0));
-        e.setCategory((String)kat.getSelectedItem());
-        e.setMinCapacity(Integer.parseInt(min.getText().toString()));
-        e.setMaxCapacity(Integer.parseInt(max.getText().toString()));
-        String s = ((RadioButton) findViewById(diffi.getCheckedRadioButtonId() )).getText().toString();
-        e.setDifficulty(Integer.parseInt(s));
-        e.setDescription(descField.getText().toString());
-
-        return e;
-    }
-
     private boolean checkValues(){
-
-        return checkNameField() && checkDate() && checkMinAndMax() && checkDescription() && checkPlace();
+        return checkNameField() && checkDate() && checkMinAndMax() && checkDescription() && checkPlace() && checkFinishTime();
     }
 
     private boolean checkNameField(){

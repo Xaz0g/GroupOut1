@@ -29,11 +29,14 @@ public class HttpHandler
     private static final String CANCEL_PARTICIPATION = "cancelParticipation/";
     private static final String NEARBY = "nearby/";
     private static final String EVENT_COUNT = "eventCount/";
+    private static final String CHANGE = "change/";
+    private static final String REMOVE_EVENT = "removeEvent/";
 
     private static final String GET_SALT = "getSalt/";
     private static final String GET = "get/";
     private static final String SET = "set/";
     private static final String REMOVE = "remove/";
+    private static final String FB = "fb/";
 
     public static String newUser(String user)
     {
@@ -41,10 +44,22 @@ public class HttpHandler
         return HOST_ADRESS + USER + NEW_USER + user;
     }
 
+    public static String fbUser(String name, String email)
+    {
+
+        return HOST_ADRESS + USER + LOGIN + FB + name
+                + "/" + email;
+    }
+
     public static String newEvent(String newEvent)
     {
 
         return HOST_ADRESS + EVENT + NEW_EVENT + newEvent;
+    }
+
+    public static String removeEvent(int eventId, String token){
+
+        return HOST_ADRESS + EVENT + REMOVE_EVENT + eventId + "/" + token;
     }
 
     public static String checkToken(String token)
@@ -124,5 +139,10 @@ public class HttpHandler
     public static String eventSearch(String pattern, String categories, String token)
     {
         return HOST_ADRESS + EVENT + SEARCH + pattern + "/" + categories + "/" + token;
+    }
+
+    public static String changeEvent (String json)
+    {
+        return HOST_ADRESS + EVENT + CHANGE + json;
     }
 }
