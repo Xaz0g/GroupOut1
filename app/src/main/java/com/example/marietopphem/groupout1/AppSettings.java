@@ -76,5 +76,13 @@ public class AppSettings extends Activity{
         }
 
     };
+
+    public void logoutUser (View view){
+
+        Intent logout = new Intent(AppSettings.this, MainActivity.class);
+
+        startActivity(logout);
+
+    }
 }
 
