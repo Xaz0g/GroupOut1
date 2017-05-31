@@ -20,7 +20,6 @@ import org.json.JSONException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
-import java.util.logging.Logger;
 
 import handlers.EventActivity;
 import handlers.EventListAdapter;
@@ -39,7 +38,7 @@ public class Home extends AppCompatActivity{
 
     private ListView lvEvent;
     private EventListAdapter adapter;
-    private List<EveObject> eventList;
+    private final ArrayList<EveObject> eventList = new ArrayList<>();
 
 
     @Override
@@ -53,11 +52,10 @@ public class Home extends AppCompatActivity{
         navigation.getMenu().getItem(0).setChecked(true);
 
         lvEvent = (ListView) findViewById(R.id.listView);
-        eventList = new ArrayList<>();
-        fillList();
 
         adapter = new EventListAdapter(getApplicationContext(), eventList);
         adapter.setToken(sharedPrefs.getString("Token", "FAIL"));
+        fillList();
         try {
             getId();
         } catch (ExecutionException e) {
@@ -82,8 +80,8 @@ public class Home extends AppCompatActivity{
     @Override
     protected void onResume() {
         super.onResume();
+        Log.d("TAGATAGA", "ON_RESUME");
         fillList();
-        adapter.notifyDataSetChanged();
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -156,7 +154,9 @@ public class Home extends AppCompatActivity{
     }
 
     private void fillList(){
-        eventList = getEventParticipation();
+        eventList.clear();
+        eventList.addAll(getEventParticipation());
+        adapter.notifyDataSetChanged();
     }
 
     private String getEventJson () throws ExecutionException, InterruptedException {

@@ -3,6 +3,7 @@ package models;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.util.function.Function;
 
 /**
  * Created by Xaz0g on 2017-05-19.
@@ -17,12 +18,26 @@ public class NewEvent
 
     public String toJsonString()
     {
+        String nameParsed = parseToLegal(name);
+        String descParced = parseToLegal(description);
+
         return "{\"minCapacity\":\"" + minCapacity + "\",\"maxCapacity\":\"" + maxCapacity
-                + "\",\"difficulty\":\"" + difficulty + "\",\"name\":\"" + name
+                + "\",\"difficulty\":\"" + difficulty + "\",\"name\":\"" + nameParsed
                 + "\",\"category\":\"" + category
-                + "\",\"description\":\"" + description + "\",\"placeId\":\"" + placeId
+                + "\",\"description\":\"" + descParced + "\",\"placeId\":\"" + placeId
                 + "\",\"eventDate\":\"" + eventDate + "\",\"startTime\":\"" +startTime
                 + "\",\"endTime\":\"" + endTime + "\"}";
+    }
+
+    private String parseToLegal(String s){
+        String sParsed = "";
+
+        for(char c : s.toCharArray())
+        {
+            sParsed += (c == '?') ? "*!*" : c;
+        }
+
+        return sParsed;
     }
 
     public int getMinCapacity() {
