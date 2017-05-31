@@ -59,11 +59,11 @@
         android:layout_alignParentEnd="true" />
 
     <CheckBox
-        android:id="@+id/checkCardio"
+        android:id="@+id/checkStrengthTraining"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:text="Kondition"
+        android:text="Styrketräning"
         android:textStyle="bold|italic"
         android:textColor="?attr/colorAccent"
         android:layout_marginLeft="16dp"
@@ -79,23 +79,23 @@
         android:text="Rörlighet och dans"
         android:textColor="?attr/colorAccent"
         android:textStyle="bold|italic"
-        android:layout_alignBaseline="@+id/checkCardio"
-        android:layout_alignBottom="@+id/checkCardio"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
         android:layout_marginRight="27dp"
-        android:layout_marginEnd="27dp" />
+        android:layout_marginEnd="27dp"
+        android:layout_alignBaseline="@+id/checkStrengthTraining"
+        android:layout_alignBottom="@+id/checkStrengthTraining"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <CheckBox
-        android:id="@+id/checkStrengthTraining"
+        android:id="@+id/checkCardio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="?attr/colorAccent"
+        android:text="Kondition"
+        android:textStyle="bold|italic"
         android:layout_alignBaseline="@+id/checkBallSports"
         android:layout_alignBottom="@+id/checkBallSports"
-        android:layout_alignLeft="@+id/checkMobility"
-        android:textColor="?attr/colorAccent"
-        android:text="Styrketräning"
-        android:textStyle="bold|italic" />
+        android:layout_centerHorizontal="true" />
 
     <CheckBox
         android:id="@+id/checkBallSports"
@@ -105,7 +105,40 @@
         android:text="Bollsport"
         android:textColor="?attr/colorAccent"
         android:textStyle="bold|italic"
-        android:layout_below="@+id/checkCardio"
-        android:layout_alignLeft="@+id/checkCardio" />
+        android:layout_below="@+id/checkStrengthTraining"
+        android:layout_alignLeft="@+id/checkStrengthTraining" />
+
+    <CheckBox
+        android:id="@+id/miscellaneous"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="?attr/colorAccent"
+        android:text="Övrigt"
+        android:textStyle="bold|italic"
+        android:layout_marginRight="9dp"
+        android:layout_marginEnd="9dp"
+        android:layout_alignBaseline="@+id/checkCardio"
+        android:layout_alignBottom="@+id/checkCardio"
+        android:layout_alignRight="@+id/checkMobility"
+        android:layout_alignEnd="@+id/checkMobility" />
+
+    <ListView
+        android:id="@+id/eventlistcat"
+        android:layout_width="420dp"
+        android:layout_height="450dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/miscellaneous"
+        android:divider="@null"
+        android:dividerHeight="@dimen/com_facebook_auth_dialog_corner_radius_oversized"
+        android:splitMotionEvents="false"
+        android:verticalScrollbarPosition="defaultPosition"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        tools:layout_editor_absoluteY="80dp" />
 
 </RelativeLayout>

@@ -78,6 +78,13 @@ public class Search extends AppCompatActivity {
         }
     }
 
+    public void searchForCategory(View v){
+        if(v.getId() == R.id.searchButton){
+
+            mSectionsPagerAdapter.cs.searchEvent();
+        }
+    }
+
         /**
          * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
          * one of the sections/tabs/pages.

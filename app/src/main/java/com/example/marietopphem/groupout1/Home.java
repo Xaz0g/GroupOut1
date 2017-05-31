@@ -133,7 +133,7 @@ public class Home extends AppCompatActivity{
         } catch (JSONException e) {
             Log.d("HOME!", e.getMessage());
         }
-        return null;
+        throw new RuntimeException("Something went wrong, again..");
     }
 
     private void getId() throws ExecutionException, InterruptedException {

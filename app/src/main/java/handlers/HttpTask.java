@@ -38,8 +38,8 @@ public class HttpTask extends AsyncTask<String, Integer, String> {
                 connection.setRequestMethod("GET");
             }
 
-            connection.setConnectTimeout(10000);
-            connection.setReadTimeout(10000);
+            connection.setConnectTimeout(100000);
+            connection.setReadTimeout(100000);
             connection.connect();
 
             int code = connection.getResponseCode();

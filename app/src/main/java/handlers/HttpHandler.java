@@ -121,8 +121,8 @@ public class HttpHandler
         return HOST_ADRESS + PLACE + EVENT_COUNT + placeID;
     }
 
-    public static String eventSearch(String pattern, String categories)
+    public static String eventSearch(String pattern, String categories, String token)
     {
-        return HOST_ADRESS + EVENT + pattern + "/" + categories;
+        return HOST_ADRESS + EVENT + SEARCH + pattern + "/" + categories + "/" + token;
     }
 }
