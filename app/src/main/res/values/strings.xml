@@ -20,4 +20,5 @@
         <item>Övrigt</item>
     </string-array>
     <string name="title_activity_maps">Map</string>
+    <string name="fbLoginButton">Logga in med Facebook</string>
 </resources>
