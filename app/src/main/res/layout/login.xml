@@ -78,7 +78,6 @@
 
         xmlns:fb="http://schemas.android.com/apk/res-auto"
         android:id="@+id/fbLoginButton"
-        facebook:com_facebook_login_text=""
         android:layout_width="294dp"
         android:layout_height="26dp"
         android:layout_centerInParent="true"
