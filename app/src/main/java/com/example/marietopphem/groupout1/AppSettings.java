@@ -2,13 +2,21 @@ package com.example.marietopphem.groupout1;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Switch;
+
+import java.util.concurrent.ExecutionException;
+
+import handlers.HttpHandler;
+import handlers.HttpTask;
 
 /**
  * Created by Elina on 2017-05-10.
@@ -16,14 +24,43 @@ import android.widget.Switch;
 
 public class AppSettings extends Activity{
 
+    private SharedPreferences sharedPrefs;
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings);
+        sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this.getBaseContext());
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         navigation.getMenu().getItem(3).setChecked(true);
+    }
+
+    public void logout(View view)
+    {
+        if(view.getId() == R.id.logout)
+        {
+            String token = sharedPrefs.getString("Token","FAIL");
+            String request = HttpHandler.logout(token);
+            Log.d("LOGOUT!", request);
+
+            try {
+                String response = new HttpTask().execute("PUT", request).get();
+                Log.d("LOGOUT!", response);
+
+                if(response.trim().equals("true"))
+                {
+                    Intent logout = new Intent(AppSettings.this, MainActivity.class);
+
+                    startActivity(logout);
+                }
+
+            } catch (InterruptedException e) {
+                Log.d("LOGOUT!",e.getMessage());
+            } catch (ExecutionException e) {
+                Log.d("LOGOUT!",e.getMessage());
+            }
+        }
     }
 
     public void saveSettings(View v){
@@ -48,6 +85,8 @@ public class AppSettings extends Activity{
             startActivity(i);
         }
     }
+
+
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {

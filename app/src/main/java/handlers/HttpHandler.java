@@ -19,6 +19,7 @@ public class HttpHandler
     private static final String NEW_USER = "newUser/";
     private static final String CHECK_TOKEN = "checkToken/";
     private static final String LOGIN = "login/";
+    private static final String LOGOUT = "logout/";
     private static final String NEW_EVENT = "newEvent/";
     private static final String SEARCH = "search/";
     private static final String USER_ID = "userId/";
@@ -37,6 +38,11 @@ public class HttpHandler
     private static final String SET = "set/";
     private static final String REMOVE = "remove/";
     private static final String FB = "fb/";
+
+    public static String logout(String token)
+    {
+        return HOST_ADRESS + USER + LOGOUT + token;
+    }
 
     public static String newUser(String user)
     {
