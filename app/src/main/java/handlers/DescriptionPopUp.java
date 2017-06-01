@@ -34,7 +34,7 @@ public class DescriptionPopUp extends Activity {
 
         int width = dm.widthPixels;
         int height = dm.heightPixels;
-        getWindow().setLayout((int)(width*.87), (int)(height*.65));
+        getWindow().setLayout((int)(width*.87), (int)(height*.67));
 
         String description;
         String endTime;
@@ -83,12 +83,12 @@ public class DescriptionPopUp extends Activity {
         eventNamePopUpView.setText(eventName);
 
         TextView placePopUpView = (TextView) findViewById(R.id.eventPlacePopUp);
-        placePopUpView.setText(place);
+        placePopUpView.setText(" " + place);
 
         TextView difficultyPopUpView = (TextView) findViewById(R.id.difficultyPopUp);
-        difficultyPopUpView.setText(difficulty);
+        difficultyPopUpView.setText(difficulty + "/5");
 
-        TextView minCapacityPopUpView = (TextView) findViewById(R.id.minCapacityPopUp);
+        TextView minCapacityPopUpView = (TextView) findViewById(R.id.maxCapacityPopUp);
         minCapacityPopUpView.setText(registration + "/" + maxCapacity);
 
         TextView datePopUpView = (TextView) findViewById(R.id.datePopUp);
